@@ -27,3 +27,7 @@ Route::get('/search/{query}','Front@search');
 
 Route::get('hello', 'Hello@index');
 Route::get('/hello/{name}', 'Hello@show');
+
+Route::get('blade', function() {
+    return view('page', array('name' => 'Thomas'));
+});
