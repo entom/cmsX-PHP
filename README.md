@@ -2,6 +2,7 @@
 CMS build on Laravel5, Material design, AngularJS
 ## Instructions
 - composer install
+- npm install
 - php artisan migrate
 
 
