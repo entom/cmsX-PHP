@@ -1,6 +1,8 @@
 # cmsX-PHP
 CMS build on Laravel5, Material design, AngularJS
-
+## Instructions
+- composer install
+- php artisan migrate
 
 
 # Laravel PHP Framework
