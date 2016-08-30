@@ -9,13 +9,13 @@
                 <h5>Brands</h5>
                 <ul>
                     @foreach($brands as $brand)
-                        <li>{{$brand->name}}</li>
+                        <li><a href='{{url("/products/brand/$brand->url")}}'>{{$brand->name}}</a></li>
                     @endforeach
                 </ul>
                 <h5>Categories</h5>
                 <ul>
                     @foreach($categories as $category)
-                        <li>{{$category->name}}</li>
+                        <li><a href='{{url("/product/category/$category->url")}}'>{{$category->name}}</a></li>
                     @endforeach
                 </ul>
             </div>

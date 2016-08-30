@@ -36,8 +36,8 @@ class Front extends Controller
      */
     public function __construct()
     {
-        $this->_brands = ShopBrand::all(['name']);
-        $this->_categories = ShopCategory::all(['name']);
+        $this->_brands = ShopBrand::all(['name', 'url']);
+        $this->_categories = ShopCategory::all(['name', 'url']);
         $this->_products = ShopProduct::all(['id', 'name', 'price']);
     }
 
