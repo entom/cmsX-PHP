@@ -1,14 +1,9 @@
-<html>
-<head>
-    <title>@yield('title')</title>
-</head>
-<body>
-@section('sidebar')
-    This is the master sidebar.
-@show
+@include('layouts.partial.header')
 
-<div class="container">
+@include('layouts.partial.menu')
+
+<div class="top-separator">
     @yield('content')
 </div>
-</body>
-</html>
+
+@include('layouts.partial.footer')
