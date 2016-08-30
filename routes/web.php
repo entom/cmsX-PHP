@@ -19,8 +19,8 @@ Route::get('/products/brands','Front@product_brands');
 Route::get('/blog','Front@blog');
 Route::get('/blog/post/{id}','Front@blog_post');
 Route::get('/contact-us','Front@contact_us');
-Route::get('/login','Front@login');
-Route::get('/logout','Front@logout');
+//Route::get('/login','Front@login');
+//Route::get('/logout','Front@logout');
 Route::get('/cart','Front@cart');
 Route::get('/checkout','Front@checkout');
 Route::get('/search/{query}','Front@search');
@@ -30,4 +30,14 @@ Route::get('/hello/{name}', 'Hello@show');
 
 Route::get('blade', function() {
     return view('page', array('name' => 'Thomas'));
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::group(array('namespace'=>'Admin'), function()
+{
+    Route::get('/admin/login', ['as' => 'admin', 'uses' => 'Login@login']);
+    Route::get('/admin', ['middleware' => ['admin'], 'as' => 'admin', 'uses' => 'Dashboard@home']);
 });

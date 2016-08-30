@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\ShopBrand;
+use App\ShopCategory;
+use App\ShopProduct;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -13,10 +16,41 @@ use App\Http\Requests;
 class Front extends Controller
 {
 
+    /**
+     * @var \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    private $_brands;
+
+    /**
+     * @var \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    private $_categories;
+
+    /**
+     * @var \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    private $_products;
+
+    /**
+     * Front constructor.
+     */
+    public function __construct()
+    {
+        $this->_brands = ShopBrand::all(['name', 'url']);
+        $this->_categories = ShopCategory::all(['name', 'url']);
+        $this->_products = ShopProduct::all(['id', 'name', 'price']);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         return view('front.index', [
-            'title' => 'Homepage'
+            'title' => 'Homepage',
+            'brands' => $this->_brands,
+            'categories' => $this->_categories,
+            'products' => $this->_products
         ]);
     }
 
