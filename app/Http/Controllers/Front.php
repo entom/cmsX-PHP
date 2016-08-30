@@ -15,7 +15,9 @@ class Front extends Controller
 
     public function index()
     {
-        return 'index page';
+        return view('front.index', [
+            'title' => 'Homepage'
+        ]);
     }
 
     public function products()
