@@ -17,6 +17,8 @@ CMS build on Laravel5, Material design, AngularJS
 - cd public/ 
 - npm install (installing packages when in public folder)
 
+## Description
+- I have made a field "admin" in users table, which is responsible for user role - this field allow to login as admin or block access for non admin users. There is also a middleware "Admin" which is checking if user is authenticated and if is he admin or not.
 
 # Laravel PHP Framework
 
