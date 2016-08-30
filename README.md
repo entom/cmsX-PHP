@@ -5,10 +5,15 @@ CMS build on Laravel5, Material design, AngularJS
 - npm install (installing packages in root folder)
 - php artisan migrate (making database)
 - making test data:
-- - php artisan db:seed --class=DeptsTableSeeder
-- - php artisan db:seed --class=ShopBrandsTableSeeder
-- - php artisan db:seed --class=ShopCategoriesTableSeeder
-- - php artisan db:seed --class=ShopProductsTableSeeder
+
+ php artisan db:seed --class=DeptsTableSeeder
+ 
+ php artisan db:seed --class=ShopBrandsTableSeeder
+ 
+ php artisan db:seed --class=ShopCategoriesTableSeeder
+ 
+ php artisan db:seed --class=ShopProductsTableSeeder
+
 - cd public/ 
 - npm install (installing packages when in public folder)
 
