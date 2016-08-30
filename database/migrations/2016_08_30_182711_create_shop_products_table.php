@@ -17,6 +17,7 @@ class CreateShopProductsTable extends Migration
             $table->increments('id');
             $table->string('name', 255)->unique();
             $table->string('title', 255)->nullable();
+            $table->text('description')->nullable();
             $table->text('content')->nullable();
             $table->integer('price');
             $table->integer('shop_category_id')->nullable();
