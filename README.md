@@ -1,9 +1,11 @@
 # cmsX-PHP
 CMS build on Laravel5, Material design, AngularJS
 ## Instructions
-- composer install
-- npm install
-- php artisan migrate
+- composer install (installing vendors)
+- npm install (installing packages in root folder)
+- php artisan migrate (making database)
+- cd public/ 
+- npm install (installing packages when in public folder)
 
 
 # Laravel PHP Framework
