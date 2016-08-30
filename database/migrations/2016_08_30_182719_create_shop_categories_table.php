@@ -13,7 +13,14 @@ class CreateShopCategoriesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('shop_categories', function(Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 255)->unique();
+            $table->string('url', 512);
+            $table->timestamps();
+            $table->string('created_at_ip')->nullable();
+            $table->string('updated_at_ip')->nullable();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class CreateShopCategoriesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('shop_categories');
     }
 }

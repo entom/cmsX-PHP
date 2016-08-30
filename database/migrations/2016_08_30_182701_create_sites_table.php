@@ -13,7 +13,16 @@ class CreateSitesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('sites', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('url', 512)->unique();
+            $table->string('title', 255);
+            $table->text('description')->nullable();
+            $table->text('content')->nullable();
+            $table->timestamps();
+            $table->string('created_at_ip')->nullable();
+            $table->string('updated_at_ip')->nullable();
+        });
     }
 
     /**
@@ -23,6 +32,6 @@ class CreateSitesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('sites');
     }
 }
