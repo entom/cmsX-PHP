@@ -1,81 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <title>Admin</title>
+    <meta charset="UTF-8">
+    <title>CMSX</title>
 
-    <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="/node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="/css/extra.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/dashboard/css/style.css" type="text/css">
 
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="/dashboard/js/init.js"></script>
 </head>
-
 <body>
-
-<div class="navbar-fixed">
-    <ul id="dropdown1" class="dropdown-content">
-        <li><a href="{{ url('/account') }}">My Account</a></li>
-        <li>
-            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-            </form>
-            <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                Logout
+<header class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="{{url('/admin')}}" class="brand-logo">
+                cms
+                <u>X</u>
             </a>
-        </li>
-    </ul>
-    <nav class="light-blue darken-1">
-        <div class="nav-wrapper container">
-            <a href="{{ url('/') }}" class="brand-logo">Logo</a>
+            <a href="#" data-activates="side-out" class="button-collapse">
+                <i class="material-icons">menu</i>
+            </a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="{{ url('/') }}">Home</a></li>
-                @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
-                @else
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{ Auth::user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
-                @endif
+                <li>
+                    <a href="sass.html">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="badges.html">
+                        <i class="fa fa-bell" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-button" data-beloworigin="true" href="#!" data-activates="dropdown-navbar">
+                            <span class="navbar__avatar">
+                                <img src="/dashboard/images/avatar-male.svg" class="responsive-img">
+                            </span>
+                        <span class="navbar__user-info">
+                                <span class="navbar__user-name">{{ Auth::user()->name }}</span>
+                                <u class="navbar__user-role">Administrator</u>
+                            </span>
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <ul id="dropdown-navbar" class="dropdown-content dropdown__navbar">
+                    <li><a href="#!">My profile</a></li>
+                    <li><a href="#!">Preference</a></li>
+                    <li class="divider"></li>
+
+                    <li>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                        <a href="#!" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fa fa-power-off" aria-hidden="true"></i>
+                            <span>Wyloguj</span>
+                        </a>
+                    </li>
+                </ul>
             </ul>
         </div>
     </nav>
-</div>
-
-<div class="top-separator">
-    @yield('content')
-</div>
-
-<footer class="page-footer light-black darken-1">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-            </div>
+</header>
+<main>
+    <div class="row">
+        <aside>
+            <ul id="side-out" class="side-nav fixed">
+                <li>
+                    <a href="index.html" class="current-page">
+                        <sapn class="icon__container">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                        </sapn>
+                        <span class="side-nav__element">Panel</span>
+                    </a>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
+                                    <i class="fa fa-th" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Strony</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/sites')}}">Lista</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <div class="col s12 pt80">
+            @yield('content')
         </div>
     </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © 2016 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-        </div>
-    </div>
-</footer>
-
+</main>
 </body>
 </html>
