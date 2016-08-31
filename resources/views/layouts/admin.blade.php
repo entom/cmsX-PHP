@@ -93,9 +93,27 @@
                         </li>
                     </ul>
                 </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Użytkownicy</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/users')}}">Lista</a></li>
+                                    <li><a href="{{url('/admin/users/create')}}">Nowy</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </aside>
-        <div class="col s12 pt80">
+        <div class="col s12">
             @yield('content')
         </div>
     </div>
