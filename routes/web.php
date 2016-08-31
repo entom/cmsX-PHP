@@ -39,5 +39,6 @@ Route::get('/home', 'HomeController@index');
 Route::group(array('namespace'=>'Admin'), function()
 {
     Route::get('/admin/login', ['as' => 'admin', 'uses' => 'Login@login']);
+    Route::post('/admin/login', ['as' => 'admin', 'uses' => 'Login@postLogin']);
     Route::get('/admin', ['middleware' => ['admin'], 'as' => 'admin', 'uses' => 'Dashboard@home']);
 });
