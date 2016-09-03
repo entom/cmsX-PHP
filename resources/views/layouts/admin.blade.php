@@ -99,6 +99,24 @@
                         <li class="collapsible__element">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
+                                    <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Blog</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/blogs')}}">Lista</a></li>
+                                    <li><a href="{{url('/admin/blogs/create')}}">Nowy wpis</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
                                     <i class="fa fa-users" aria-hidden="true"></i>
                                 </sapn>
                                 <span>Użytkownicy</span>
