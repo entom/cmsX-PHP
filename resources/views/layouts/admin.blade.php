@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/dashboard/css/style.css" type="text/css">
 
-    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="/dashboard/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/dashboard/node_modules/materialize-css/dist/js/materialize.min.js"></script>
     <script src="/dashboard/js/init.js"></script>
 </head>
 <body>
