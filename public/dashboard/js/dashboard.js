@@ -7,6 +7,7 @@ $(document).ready(function () {
     tinymce.init({
         selector: '.editor',
         height: 350,
+        language_url: '/dashboard/tinymce/langs/pl.js',
         theme: 'modern',
         plugins: [
             'advlist autolink lists link image charmap print preview hr anchor pagebreak',
