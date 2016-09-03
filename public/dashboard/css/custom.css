@@ -9,3 +9,23 @@
 .has-error .help-block {
     color: red!important;
 }
+
+table .badge {
+    position: relative!important;
+    right: auto!important;
+}
+
+.pagination li {
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+
+.pagination li span {
+    line-height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
