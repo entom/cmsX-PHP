@@ -69,7 +69,7 @@
         <aside>
             <ul id="side-out" class="side-nav fixed">
                 <li>
-                    <a href="index.html" class="current-page">
+                    <a href="{{url('/admin')}}" class="current-page">
                         <sapn class="icon__container">
                             <i class="fa fa-home" aria-hidden="true"></i>
                         </sapn>
@@ -88,6 +88,7 @@
                             <div class="collapsible-body">
                                 <ul>
                                     <li><a href="{{url('/admin/sites')}}">Lista</a></li>
+                                    <li><a href="{{url('/admin/sites/create')}}">Nowa strona</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -105,7 +106,7 @@
                             <div class="collapsible-body">
                                 <ul>
                                     <li><a href="{{url('/admin/users')}}">Lista</a></li>
-                                    <li><a href="{{url('/admin/users/create')}}">Nowy</a></li>
+                                    <li><a href="{{url('/admin/users/create')}}">Nowy użytkownik</a></li>
                                 </ul>
                             </div>
                         </li>
