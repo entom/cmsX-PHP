@@ -1,0 +1,11 @@
+.mce-tinymce {
+    margin-top: 50px!important;
+}
+
+.has-error .mce-tinymce {
+    margin-top: 20px!important;
+}
+
+.has-error .help-block {
+    color: red!important;
+}

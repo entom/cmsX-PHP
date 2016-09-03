@@ -6,12 +6,26 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/dashboard/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/dashboard/css/custom.css" type="text/css">
 
     <script src="/dashboard/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/dashboard/node_modules/tinymce/tinymce.min.js"></script>
     <script src="/dashboard/node_modules/materialize-css/dist/js/materialize.min.js"></script>
     <script src="/dashboard/js/init.js"></script>
+    <script src="/dashboard/js/dashboard.js"></script>
+
+    <script src="/dashboard/node_modules/angular/angular.min.js"></script>
+    <script src="/dashboard/node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="/dashboard/node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="/dashboard/node_modules/angular-messages/angular-messages.min.js"></script>
+
+    <link rel="stylesheet" href="/dashboard/node_modules/angular-material/angular-material.min.css" />
+    <link rel="stylesheet" href="/dashboard/node_modules/angular-material-data-table/dist/md-data-table.min.css" />
+    <script src="/dashboard/node_modules/angular-material/angular-material.min.js"></script>
+    <script src="/dashboard/node_modules/angular-material-data-table/dist/md-data-table.min.js"></script>
+    <script src="/dashboard/js/app.js"></script>
 </head>
-<body>
+<body ng-app="cmsxApp">
 <header class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
@@ -89,6 +103,24 @@
                                 <ul>
                                     <li><a href="{{url('/admin/sites')}}">Lista</a></li>
                                     <li><a href="{{url('/admin/sites/create')}}">Nowa strona</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
+                                    <i class="fa fa-folder-open-o" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Blog</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/blogs')}}">Lista</a></li>
+                                    <li><a href="{{url('/admin/blogs/create')}}">Nowy wpis</a></li>
                                 </ul>
                             </div>
                         </li>
