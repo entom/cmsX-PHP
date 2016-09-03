@@ -20,24 +20,24 @@
                                 <div class="input-field col s12 m6 {{ $errors->has('title') ? 'has-error' : ''}}">
                                     {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
                                     {!! Form::text('title', null, []) !!}
-                                    {!! Form::label('title', 'Title', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
+                                    {!! Form::label('title', 'Tytuł', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
                                 </div>
 
                                 <div class="input-field col s12 m6 {{ $errors->has('active') ? 'has-error' : ''}}">
                                     {!! $errors->first('active', '<p class="help-block">:message</p>') !!}
                                     {!! Form::text('active', null, []) !!}
-                                    {!! Form::label('active', 'Active', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
+                                    {!! Form::label('active', 'Aktywny', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
                                 </div>
 
                                 <div class="input-field col s12 m12 {{ $errors->has('content') ? 'has-error' : ''}}">
                                     {!! $errors->first('content', '<p class="help-block">:message</p>') !!}
-                                    {!! Form::label('content', 'Content', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
+                                    {!! Form::label('content', 'Treść', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
                                     {!! Form::textarea('content', null, ['class' => 'editor']) !!}
                                 </div>
 
                                 <div class="col s12 m12">
                                     <div class="pt20">
-                                        {!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}
+                                        {!! Form::submit('Zapisz', ['class' => 'btn btn-primary']) !!}
                                     </div>
                                 </div>
                                 @if ($errors->any())
