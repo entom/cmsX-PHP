@@ -42,9 +42,14 @@ class BlogsController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'active' => 'required'
+        ]);
+
         $requestData = $request->all();
-        
+
         Blog::create($requestData);
 
         Session::flash('flash_message', 'Blog added!');
