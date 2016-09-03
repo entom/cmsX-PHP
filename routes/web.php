@@ -43,3 +43,5 @@ Route::group(array('namespace'=>'Admin'), function()
     Route::resource('/admin/users', 'UsersController');
     Route::resource('/admin/sites', 'SitesController');
 });
+
+Route::resource('admin/blogs', 'Admin\\BlogsController');
