@@ -12,6 +12,14 @@ use Session;
 class BlogsController extends Controller
 {
     /**
+     * BlogsController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\View\View
