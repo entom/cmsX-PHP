@@ -10431,10 +10431,18 @@ nav a.button-collapse {
 
 .card__login {
   margin-top: 30%; }
+  @media only screen and (max-width: 600px) {
+    .card__login .input-field label {
+      font-size: 12px; } }
   .card__login .btn__card--next {
     margin-top: -56px;
     top: 50%;
     left: 100%; }
+  .card__login .login__link {
+    font-size: 12px;
+    color: #607d8b; }
+    .card__login .login__link:hover {
+      border-bottom: 1px dotted #26a69a; }
 
 .tabs {
   height: 56px; }

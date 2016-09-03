@@ -7,8 +7,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/dashboard/css/style.css" type="text/css">
 
-    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="/dashboard/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/dashboard/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="/dashboard/bower_components/jquery-backstretch-2/jquery.backstretch.js"></script>
     <script src="/dashboard/js/init.js"></script>
 </head>
 <body>
@@ -53,11 +54,23 @@
                                 <i class="material-icons">trending_flat</i>
                             </button>
                         </div>
+
+                        <div class="input-field col s10">
+                            <a href="/" class="login__link">Zapomniałeś hasła ?</a>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </main>
+
+<script>
+    $.backstretch([
+        "/dashboard/images/login-bg.jpg",
+        "/dashboard/images/login-bg1.jpg"
+    ], {duration: 6000, fade: 2000});
+</script>
+
 </body>
 </html>

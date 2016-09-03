@@ -1,5 +1,10 @@
 vendor/
 node_modules/
+bower_components/
+public/bower_components
+public/node_modules/
+public/dashboard/bower_components
+public/dashboard/node_modules/
 
 # Laravel 4 specific
 bootstrap/compiled.php
