@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Site;
+use App\Blog;
+use App\User;
+
 /**
  * Class Dashboard
  * @package App\Http\Controllers\Admin
@@ -24,7 +28,11 @@ class Dashboard extends Controller
      */
     public function home()
     {
-        return view('admin.dashboard.home');
+        return view('admin.dashboard.home', [
+            'users_counter' => User::count(),
+            'sites_counter' => Site::count(),
+            'blogs_counter' => Blog::count()
+        ]);
     }
 
 }

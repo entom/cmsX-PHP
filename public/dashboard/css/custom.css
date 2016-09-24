@@ -44,3 +44,7 @@ table .badge {
     width: 100%;
     border-bottom: 1px solid #DDD;
 }
+
+.homepage .card i {
+    font-size: 50px;
+}
