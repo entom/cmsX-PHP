@@ -77,7 +77,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -127,6 +129,10 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+
+        Session::flash('flash_message', 'User deleted!');
+
+        return redirect('admin/users');
     }
 }
