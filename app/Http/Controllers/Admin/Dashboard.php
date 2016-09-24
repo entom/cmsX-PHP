@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Site;
 use App\Blog;
 use App\User;
+use App\News;
 
 /**
  * Class Dashboard
@@ -31,7 +32,8 @@ class Dashboard extends Controller
         return view('admin.dashboard.home', [
             'users_counter' => User::count(),
             'sites_counter' => Site::count(),
-            'blogs_counter' => Blog::count()
+            'blogs_counter' => Blog::count(),
+            'news_counter' => News::count()
         ]);
     }
 
