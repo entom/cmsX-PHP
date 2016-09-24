@@ -5,14 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Blog;
+use App\Album;
 use Illuminate\Http\Request;
 use Session;
 
-class BlogsController extends Controller
+class AlbumsController extends Controller
 {
+
     /**
-     * BlogsController constructor.
+     * AlbumsController constructor.
      */
     public function __construct()
     {
@@ -26,9 +27,9 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::paginate(25);
+        $albums = Album::paginate(25);
 
-        return view('admin.blogs.index', compact('blogs'));
+        return view('admin.albums.index', compact('albums'));
     }
 
     /**
@@ -38,7 +39,7 @@ class BlogsController extends Controller
      */
     public function create()
     {
-        return view('admin.blogs.create');
+        return view('admin.albums.create');
     }
 
     /**
@@ -52,19 +53,18 @@ class BlogsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:255',
-            'content' => 'required',
             'active' => 'required'
         ]);
 
         $requestData = $request->all();
 
         $requestData['url'] = str_slug($requestData['title'], '-');
+        
+        Album::create($requestData);
 
-        Blog::create($requestData);
+        Session::flash('flash_message', 'Album added!');
 
-        Session::flash('flash_message', 'Blog added!');
-
-        return redirect('admin/blogs');
+        return redirect('admin/albums');
     }
 
     /**
@@ -76,9 +76,9 @@ class BlogsController extends Controller
      */
     public function show($id)
     {
-        $blog = Blog::findOrFail($id);
+        $album = Album::findOrFail($id);
 
-        return view('admin.blogs.show', compact('blog'));
+        return view('admin.albums.show', compact('album'));
     }
 
     /**
@@ -90,9 +90,9 @@ class BlogsController extends Controller
      */
     public function edit($id)
     {
-        $blog = Blog::findOrFail($id);
+        $album = Album::findOrFail($id);
 
-        return view('admin.blogs.edit', compact('blog'));
+        return view('admin.albums.edit', compact('album'));
     }
 
     /**
@@ -107,16 +107,14 @@ class BlogsController extends Controller
     {
         
         $requestData = $request->all();
-        
-        $blog = Blog::findOrFail($id);
-
         $requestData['url'] = str_slug($requestData['title'], '-');
+        
+        $album = Album::findOrFail($id);
+        $album->update($requestData);
 
-        $blog->update($requestData);
+        Session::flash('flash_message', 'Album updated!');
 
-        Session::flash('flash_message', 'Blog updated!');
-
-        return redirect('admin/blogs');
+        return redirect('admin/albums');
     }
 
     /**
@@ -128,10 +126,10 @@ class BlogsController extends Controller
      */
     public function destroy($id)
     {
-        Blog::destroy($id);
+        Album::destroy($id);
 
-        Session::flash('flash_message', 'Blog deleted!');
+        Session::flash('flash_message', 'Album deleted!');
 
-        return redirect('admin/blogs');
+        return redirect('admin/albums');
     }
 }

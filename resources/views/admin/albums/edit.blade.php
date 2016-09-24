@@ -5,11 +5,11 @@
     <div class="col s12">
         <header class="row">
             <div class="col s12">
-                <h1>Strony</h1>
+                <h1>Album</h1>
             </div>
         </header>
 
-        {!! Form::open(['url' => '/admin/sites', 'class' => 'col s12', 'files' => true]) !!}
+        {!! Form::model($album, ['method' => 'PATCH', 'url' => ['/admin/albums', $album->id], 'class' => 'col s12', 'files' => true]) !!}
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
@@ -36,12 +36,6 @@
                                 {!! Form::label('active', 'Aktywny', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
                             </div>
 
-                            <div class="input-field col s12 m12 {{ $errors->has('description') ? 'has-error' : ''}}">
-                                {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
-                                {!! Form::label('description', 'Krótka treść', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
-                                {!! Form::textarea('description', null, ['class' => 'editor']) !!}
-                            </div>
-
                             <div class="input-field col s12 m12 {{ $errors->has('content') ? 'has-error' : ''}}">
                                 {!! $errors->first('content', '<p class="help-block">:message</p>') !!}
                                 {!! Form::label('content', 'Treść', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
@@ -54,7 +48,7 @@
             <div id="seoTab" class="col s12">
                 <div class="card">
                     <div class="card__header">
-                        <span>SEO - Meta dane</span>
+                        <span>SEO</span>
                     </div>
                     <div class="card-content">
                         <div class="row">

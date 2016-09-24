@@ -45,3 +45,5 @@ Route::group(['namespace'=>'Admin'], function()
 
 Route::resource('admin/blogs', 'Admin\\BlogsController');
 Route::resource('admin/sites', 'Admin\\SitesController');
+Route::resource('admin/news', 'Admin\\NewsController');
+Route::resource('admin/albums', 'Admin\\AlbumsController');

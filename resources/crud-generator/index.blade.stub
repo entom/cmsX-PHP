@@ -1,43 +1,61 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-<div class="container">
-
-    <h1>%%crudNameCap%% <a href="{{ url('/%%routeGroup%%%%viewName%%/create') }}" class="btn btn-primary btn-xs" title="Add New %%modelName%%"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
-    <div class="table">
-        <table class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>S.No</th>%%formHeadingHtml%%<th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach($%%crudName%% as $item)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    %%formBodyHtml%%
-                    <td>
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $item->%%primaryKey%%) }}" class="btn btn-success btn-xs" title="View %%modelName%%"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $item->%%primaryKey%% . '/edit') }}" class="btn btn-primary btn-xs" title="Edit %%modelName%%"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['/%%routeGroup%%%%viewName%%', $item->%%primaryKey%%],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete %%modelName%%" />', array(
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete %%modelName%%',
-                                    'onclick'=>'return confirm("Confirm delete?")'
-                            )) !!}
-                        {!! Form::close() !!}
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-        <div class="pagination-wrapper"> {!! $%%crudName%%->render() !!} </div>
+    <div class="col s12">
+        <header class="row navigation-row">
+            <div class="col s6">
+                <h1>%%crudNameCap%%</h1>
+            </div>
+            <div class="col s6">
+                <a href="{{ url('/%%routeGroup%%%%viewName%%/create') }}" class="waves-effect waves-light btn right" title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card__header">
+                        <span>Lista wpisów</span>
+                    </div>
+                    <div class="card-content">
+                        <table class="responsive-table bordered striped highlight">
+                            <thead>
+                            <tr>
+                                <th class="center"> # </th>
+                                %%formHeadingHtml%%
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($%%crudName%% as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    %%formBodyHtml%%
+                                    <td>
+                                        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $item->%%primaryKey%%) }}" class="waves-effect waves-light btn"
+                                           title="Zobacz"><i class="fa fa-folder-open"></i></a>
+                                        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $item->%%primaryKey%% . '/edit') }}" class="waves-effect waves-light btn"
+                                           title="Edycja"><i class="fa fa-edit"></i></a>
+                                        {!! Form::open([
+                                            'method'=>'DELETE',
+                                            'url' => ['/%%routeGroup%%%%viewName%%', $item->%%primaryKey%%],
+                                            'style' => 'display:inline'
+                                        ]) !!}
+                                        {!! Form::button('<i class="fa fa-trash"></i>', array(
+                                                'type' => 'submit',
+                                                'class' => 'waves-effect waves-light btn',
+                                                'title' => 'Usuń wpis',
+                                                'onclick'=>'return confirm("Czy na pewno usunąć?")'
+                                        )) !!}
+                                        {!! Form::close() !!}
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        <div class="pagination-wrapper"> {!! $%%crudName%%->render() !!} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-</div>
 @endsection

@@ -5,23 +5,23 @@
 
         <div class="row navigation-row">
             <div class="col s6">
-                <h1>Blog {{ $blog->id }}</h1>
+                <h1>Użytkownik {{ $user->id }}</h1>
             </div>
             <div class="col s6">
                 {!! Form::open([
                     'method'=>'DELETE',
-                    'url' => ['admin/blogs', $blog->id],
+                    'url' => ['admin/users', $user->id],
                     'style' => 'display:inline'
                 ]) !!}
                 {!! Form::button('<i class="fa fa-trash"></i>', array(
                         'type' => 'submit',
                         'class' => 'waves-effect waves-light btn right',
-                        'title' => 'Usuń wpis',
+                        'title' => 'Usuń użytkownika',
                         'onclick'=>'return confirm("Czy na pewno chcesz usunąć?")'
                 ))!!}
                 {!! Form::close() !!}
-                <a href="{{ url('admin/blogs/' . $blog->id . '/edit') }}" class="waves-effect waves-light btn right mr10"
-                   title="Edycja wpisu"><i class="fa fa-pencil"></i></a>
+                <a href="{{ url('admin/users/' . $user->id . '/edit') }}" class="waves-effect waves-light btn right mr10"
+                   title="Edycja użytkownika"><i class="fa fa-pencil"></i></a>
             </div>
         </div>
 
@@ -30,13 +30,13 @@
                 <div class="row">
                     <dl>
                         <dt>ID</dt>
-                        <dd>{{ $blog->id }}</dd>
-                        <dt> Tytuł</dt>
-                        <dd> {{ $blog->title }} </dd>
-                        <dt> Treść</dt>
-                        <dd> {{ $blog->content }} </dd>
+                        <dd>{{ $user->id }}</dd>
+                        <dt> Email</dt>
+                        <dd> {{ $user->email }} </dd>
+                        <dt> Administrator</dt>
+                        <dd> {{ $user->admin }} </dd>
                         <dt> Aktywny</dt>
-                        <dd> {{ $blog->active }} </dd>
+                        <dd> {{ $user->active }} </dd>
                     </dl>
                 </div>
             </div>

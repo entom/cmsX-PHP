@@ -38,12 +38,12 @@
             </a>
             <ul class="right hide-on-med-and-down">
                 <li>
-                    <a href="sass.html">
+                    <a href="#">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="badges.html">
+                    <a href="#">
                         <i class="fa fa-bell" aria-hidden="true"></i>
                     </a>
                 </li>
@@ -60,8 +60,7 @@
                     </a>
                 </li>
                 <ul id="dropdown-navbar" class="dropdown-content dropdown__navbar">
-                    <li><a href="#!">My profile</a></li>
-                    <li><a href="#!">Preference</a></li>
+                    <li><a href="/admin/users/{{ Auth::user()->id }}/edit">Moje konto</a></li>
                     <li class="divider"></li>
 
                     <li>
@@ -121,6 +120,42 @@
                                 <ul>
                                     <li><a href="{{url('/admin/blogs')}}">Lista</a></li>
                                     <li><a href="{{url('/admin/blogs/create')}}">Nowy wpis</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
+                                    <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Aktualności</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/news')}}">Lista</a></li>
+                                    <li><a href="{{url('/admin/news/create')}}">Nowy wpis</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
+                                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Galeria</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/albums')}}">Lista</a></li>
+                                    <li><a href="{{url('/admin/albums/create')}}">Nowy wpis</a></li>
                                 </ul>
                             </div>
                         </li>

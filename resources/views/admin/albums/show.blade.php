@@ -5,23 +5,23 @@
 
     <div class="row navigation-row">
         <div class="col s6">
-            <h1>%%modelName%% {{ $%%crudNameSingular%%->%%primaryKey%% }}</h1>
+            <h1>Album {{ $album->id }}</h1>
         </div>
         <div class="col s6">
             {!! Form::open([
                 'method'=>'DELETE',
-                'url' => ['%%routeGroup%%%%crudName%%', $%%crudNameSingular%%->%%primaryKey%%],
+                'url' => ['admin/albums', $album->id],
                 'style' => 'display:inline'
             ]) !!}
                 {!! Form::button('<i class="fa fa-trash"></i>', array(
                         'type' => 'submit',
                         'class' => 'waves-effect waves-light btn right',
-                        'title' => 'Usuń %%modelName%%',
+                        'title' => 'Usuń Album',
                         'onclick'=>'return confirm("Czy na pewno usunąć?")'
                 ))!!}
             {!! Form::close() !!}
 
-            <a href="{{ url('%%routeGroup%%%%viewName%%/' . $%%crudNameSingular%%->%%primaryKey%% . '/edit') }}" class="waves-effect waves-light btn right mr10" title="Edycja %%modelName%%"><i class="fa fa-pencil"></i></a>
+            <a href="{{ url('admin/albums/' . $album->id . '/edit') }}" class="waves-effect waves-light btn right mr10" title="Edycja Album"><i class="fa fa-pencil"></i></a>
         </div>
     </div>
 
@@ -30,9 +30,9 @@
             <div class="row">
                 <dl>
                     <dt>ID</dt>
-                    <dd>{{ $%%crudNameSingular%%->%%primaryKey%% }}</dd>
+                    <dd>{{ $album->id }}</dd>
 
-                    %%formBodyHtmlForShowView%%
+                    <tr><th> Title </th><td> {{ $album->title }} </td></tr><tr><th> Url </th><td> {{ $album->url }} </td></tr><tr><th> Content </th><td> {{ $album->content }} </td></tr>
 
                 </dl>
             </div>

@@ -5,14 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Blog;
+use App\News;
 use Illuminate\Http\Request;
 use Session;
 
-class BlogsController extends Controller
+/**
+ * Class NewsController
+ * @package App\Http\Controllers\Admin
+ */
+class NewsController extends Controller
 {
+
     /**
-     * BlogsController constructor.
+     * NewsController constructor.
      */
     public function __construct()
     {
@@ -26,9 +31,9 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::paginate(25);
+        $news = News::paginate(25);
 
-        return view('admin.blogs.index', compact('blogs'));
+        return view('admin.news.index', compact('news'));
     }
 
     /**
@@ -38,7 +43,7 @@ class BlogsController extends Controller
      */
     public function create()
     {
-        return view('admin.blogs.create');
+        return view('admin.news.create');
     }
 
     /**
@@ -50,21 +55,16 @@ class BlogsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required|max:255',
-            'content' => 'required',
-            'active' => 'required'
-        ]);
-
+        
         $requestData = $request->all();
 
         $requestData['url'] = str_slug($requestData['title'], '-');
 
-        Blog::create($requestData);
+        News::create($requestData);
 
-        Session::flash('flash_message', 'Blog added!');
+        Session::flash('flash_message', 'News added!');
 
-        return redirect('admin/blogs');
+        return redirect('admin/news');
     }
 
     /**
@@ -76,9 +76,9 @@ class BlogsController extends Controller
      */
     public function show($id)
     {
-        $blog = Blog::findOrFail($id);
+        $news = News::findOrFail($id);
 
-        return view('admin.blogs.show', compact('blog'));
+        return view('admin.news.show', compact('news'));
     }
 
     /**
@@ -90,9 +90,9 @@ class BlogsController extends Controller
      */
     public function edit($id)
     {
-        $blog = Blog::findOrFail($id);
+        $news = News::findOrFail($id);
 
-        return view('admin.blogs.edit', compact('blog'));
+        return view('admin.news.edit', compact('news'));
     }
 
     /**
@@ -108,15 +108,13 @@ class BlogsController extends Controller
         
         $requestData = $request->all();
         
-        $blog = Blog::findOrFail($id);
-
+        $news = News::findOrFail($id);
         $requestData['url'] = str_slug($requestData['title'], '-');
+        $news->update($requestData);
 
-        $blog->update($requestData);
+        Session::flash('flash_message', 'News updated!');
 
-        Session::flash('flash_message', 'Blog updated!');
-
-        return redirect('admin/blogs');
+        return redirect('admin/news');
     }
 
     /**
@@ -128,10 +126,10 @@ class BlogsController extends Controller
      */
     public function destroy($id)
     {
-        Blog::destroy($id);
+        News::destroy($id);
 
-        Session::flash('flash_message', 'Blog deleted!');
+        Session::flash('flash_message', 'News deleted!');
 
-        return redirect('admin/blogs');
+        return redirect('admin/news');
     }
 }

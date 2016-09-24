@@ -10,7 +10,7 @@
             <h1>Blog</h1>
         </div>
         <div class="col s6">
-            <a href="{{ url('/admin/blogs/create') }}" class="btn btn-primary btn-xs right" title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
+            <a href="{{ url('/admin/blogs/create') }}" class="waves-effect waves-light btn right" title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
         </div>
     </header>
     <div class="row">
@@ -44,8 +44,8 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ url('/admin/blogs/' . $item->id) }}" class="btn btn-success btn-xs" title="Zobacz"><i class="fa fa-folder-open"></i></a>
-                                    <a href="{{ url('/admin/blogs/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edycja"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ url('/admin/blogs/' . $item->id) }}" class="waves-effect waves-light btn" title="Zobacz"><i class="fa fa-folder-open"></i></a>
+                                    <a href="{{ url('/admin/blogs/' . $item->id . '/edit') }}" class="waves-effect waves-light btn" title="Edycja"><i class="fa fa-edit"></i></a>
                                     {!! Form::open([
                                         'method'=>'DELETE',
                                         'url' => ['/admin/blogs', $item->id],
@@ -53,7 +53,7 @@
                                     ]) !!}
                                     {!! Form::button('<i class="fa fa-trash"></i>', array(
                                             'type' => 'submit',
-                                            'class' => 'btn btn-danger btn-xs',
+                                            'class' => 'waves-effect waves-light btn',
                                             'title' => 'Usuń',
                                             'onclick'=>'return confirm("Potwierdź usunięcie?")'
                                     )) !!}

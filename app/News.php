@@ -4,14 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+/**
+ * Class News
+ * @package App
+ */
+class News extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'blogs';
+    protected $table = 'news';
 
     /**
     * The database primary key value.
@@ -26,7 +30,7 @@ class Blog extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'content', 'active', 'url',
+        'title', 'url', 'content', 'active',
         'meta_title', 'meta_keywords', 'meta_description'
     ];
 

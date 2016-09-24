@@ -5,11 +5,11 @@
     <div class="col s12">
         <header class="row">
             <div class="col s12">
-                <h1>Strony</h1>
+                <h1>Aktualności</h1>
             </div>
         </header>
 
-        {!! Form::open(['url' => '/admin/sites', 'class' => 'col s12', 'files' => true]) !!}
+        {!! Form::model($news, ['method' => 'PATCH', 'url' => ['/admin/news', $news->id], 'class' => 'col s12', 'files' => true]) !!}
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
@@ -36,12 +36,6 @@
                                 {!! Form::label('active', 'Aktywny', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
                             </div>
 
-                            <div class="input-field col s12 m12 {{ $errors->has('description') ? 'has-error' : ''}}">
-                                {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
-                                {!! Form::label('description', 'Krótka treść', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
-                                {!! Form::textarea('description', null, ['class' => 'editor']) !!}
-                            </div>
-
                             <div class="input-field col s12 m12 {{ $errors->has('content') ? 'has-error' : ''}}">
                                 {!! $errors->first('content', '<p class="help-block">:message</p>') !!}
                                 {!! Form::label('content', 'Treść', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
@@ -51,6 +45,7 @@
                     </div>
                 </div>
             </div>
+
             <div id="seoTab" class="col s12">
                 <div class="card">
                     <div class="card__header">
@@ -83,7 +78,7 @@
 
         <div class="col s12 m12">
             <div class="pt20">
-                {!! Form::submit('Zapisz', ['class' => 'waves-effect waves-light btn']) !!}
+                {!! Form::submit('Edytuj', ['class' => 'waves-effect waves-light btn']) !!}
             </div>
         </div>
         @if ($errors->any())
@@ -93,7 +88,6 @@
                 @endforeach
             </ul>
         @endif
-
         {!! Form::close() !!}
     </div>
 @endsection

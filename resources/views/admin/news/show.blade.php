@@ -5,22 +5,22 @@
 
         <div class="row navigation-row">
             <div class="col s6">
-                <h1>Blog {{ $blog->id }}</h1>
+                <h1>Aktualność {{ $news->id }}</h1>
             </div>
             <div class="col s6">
                 {!! Form::open([
                     'method'=>'DELETE',
-                    'url' => ['admin/blogs', $blog->id],
+                    'url' => ['admin/news', $news->id],
                     'style' => 'display:inline'
                 ]) !!}
                 {!! Form::button('<i class="fa fa-trash"></i>', array(
                         'type' => 'submit',
                         'class' => 'waves-effect waves-light btn right',
                         'title' => 'Usuń wpis',
-                        'onclick'=>'return confirm("Czy na pewno chcesz usunąć?")'
+                        'onclick'=>'return confirm("Confirm delete?")'
                 ))!!}
                 {!! Form::close() !!}
-                <a href="{{ url('admin/blogs/' . $blog->id . '/edit') }}" class="waves-effect waves-light btn right mr10"
+                <a href="{{ url('admin/news/' . $news->id . '/edit') }}" class="mr10 waves-effect waves-light btn right"
                    title="Edycja wpisu"><i class="fa fa-pencil"></i></a>
             </div>
         </div>
@@ -30,13 +30,15 @@
                 <div class="row">
                     <dl>
                         <dt>ID</dt>
-                        <dd>{{ $blog->id }}</dd>
+                        <dd>{{ $news->id }}</dd>
                         <dt> Tytuł</dt>
-                        <dd> {{ $blog->title }} </dd>
+                        <dd> {{ $news->title }} </dd>
+                        <dt> Url</dt>
+                        <dd> {{ $news->url }} </dd>
                         <dt> Treść</dt>
-                        <dd> {{ $blog->content }} </dd>
+                        <dd> {{ $news->content }} </dd>
                         <dt> Aktywny</dt>
-                        <dd> {{ $blog->active }} </dd>
+                        <dd> {{ $news->active }} </dd>
                     </dl>
                 </div>
             </div>

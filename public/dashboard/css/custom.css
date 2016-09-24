@@ -33,3 +33,26 @@ table .badge {
 .navigation-row .btn {
     margin: 2.1rem 0 1.68rem 0;
 }
+
+.card-view dt {
+    font-weight: bold;
+}
+
+.card-view dd {
+    margin: 0px 0px 20px 0px;
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+    border-bottom: 1px solid #DDD;
+}
+
+.homepage .card i {
+    font-size: 50px;
+}
+
+.homepage .card .card-action:first-of-type {
+    border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+}
+
+.badge {
+    padding: 10px 25px!important;
+}
