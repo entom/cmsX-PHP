@@ -15,12 +15,12 @@
                 ]) !!}
                 {!! Form::button('<i class="fa fa-trash"></i>', array(
                         'type' => 'submit',
-                        'class' => 'btn btn-danger btn-xs right',
+                        'class' => 'waves-effect waves-light btn right',
                         'title' => 'Usuń wpis',
                         'onclick'=>'return confirm("Czy na pewno chcesz usunąć?")'
                 ))!!}
                 {!! Form::close() !!}
-                <a href="{{ url('admin/sites/' . $site->id . '/edit') }}" class="btn btn-primary btn-xs right mr10"
+                <a href="{{ url('admin/sites/' . $site->id . '/edit') }}" class="waves-effect waves-light btn right mr10"
                    title="Edycja wpisu"><i class="fa fa-pencil"></i></a>
             </div>
         </div>

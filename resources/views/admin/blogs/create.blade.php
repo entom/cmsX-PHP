@@ -77,7 +77,7 @@
 
         <div class="col s12 m12">
             <div class="pt20">
-                {!! Form::submit('Zapisz', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Zapisz', ['class' => 'waves-effect waves-light btn']) !!}
             </div>
         </div>
         @if ($errors->any())
