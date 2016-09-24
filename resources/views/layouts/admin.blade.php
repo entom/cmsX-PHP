@@ -38,12 +38,12 @@
             </a>
             <ul class="right hide-on-med-and-down">
                 <li>
-                    <a href="sass.html">
+                    <a href="#">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="badges.html">
+                    <a href="#">
                         <i class="fa fa-bell" aria-hidden="true"></i>
                     </a>
                 </li>
@@ -60,8 +60,7 @@
                     </a>
                 </li>
                 <ul id="dropdown-navbar" class="dropdown-content dropdown__navbar">
-                    <li><a href="#!">My profile</a></li>
-                    <li><a href="#!">Preference</a></li>
+                    <li><a href="/admin/users/{{ Auth::user()->id }}/edit">Moje konto</a></li>
                     <li class="divider"></li>
 
                     <li>
