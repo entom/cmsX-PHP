@@ -14,6 +14,10 @@ class Site extends BaseModel
     /**
      * @var array
      */
-    protected $fillable = ['title', 'url', 'description', 'content', 'created_at_ip', 'updated_at_ip'];
+    protected $fillable = [
+        'title', 'url', 'description', 'content', 'active',
+        'created_at_ip', 'updated_at_ip',
+        'meta_title', 'meta_keywords', 'meta_description'
+    ];
 
 }

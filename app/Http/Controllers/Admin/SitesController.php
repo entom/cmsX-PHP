@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
+use App\Site;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
 use Session;
 
-class UsersController extends Controller
+class SitesController extends Controller
 {
-
     /**
-     * UsersController constructor.
+     * SitesController constructor.
      */
     public function __construct()
     {
@@ -27,9 +26,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(25);
+        $sites = Site::paginate(25);
 
-        return view('admin.users.index', compact('users'));
+        return view('admin.sites.index', compact('sites'));
     }
 
     /**
@@ -39,7 +38,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.sites.create');
     }
 
     /**
@@ -51,22 +50,21 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email|unique:users',
-            'active' => 'required',
-            'admin' => 'required',
-            'name' => 'required',
-            'password' => 'required'
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'active' => 'required'
         ]);
 
         $requestData = $request->all();
 
-        $requestData['password'] = bcrypt($requestData['password']);
+        $requestData['url'] = str_slug($requestData['title'], '-');
+        $requestData['created_at_ip'] = $request->ip();
 
-        User::create($requestData);
+        Site::create($requestData);
 
-        Session::flash('flash_message', 'User added!');
+        Session::flash('flash_message', 'Site added!');
 
-        return redirect('admin/users');
+        return redirect('admin/sites');
     }
 
     /**
@@ -77,7 +75,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $site = Site::findOrFail($id);
+
+        return view('admin.sites.show', compact('site'));
     }
 
     /**
@@ -88,9 +88,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $site = Site::findOrFail($id);
 
-        return view('admin.users.edit', compact('user'));
+        return view('admin.sites.edit', compact('site'));
     }
 
     /**
@@ -104,19 +104,16 @@ class UsersController extends Controller
     {
         $requestData = $request->all();
 
-        $user = User::findOrFail($id);
+        $site = Site::findOrFail($id);
 
-        if(isset($requestData['change_password']) && $requestData['change_password'] == 'on') {
-            $requestData['password'] = bcrypt($requestData['password']);
-        } else {
-            $requestData['password'] = $user['password'];
-        }
+        $requestData['url'] = str_slug($requestData['title'], '-');
+        $requestData['updated_at_ip'] = $request->ip();
 
-        $user->update($requestData);
+        $site->update($requestData);
 
-        Session::flash('flash_message', 'User updated!');
+        Session::flash('flash_message', 'Site updated!');
 
-        return redirect('admin/users');
+        return redirect('admin/sites');
     }
 
     /**
@@ -127,6 +124,10 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Site::destroy($id);
+
+        Session::flash('flash_message', 'Site deleted!');
+
+        return redirect('admin/sites');
     }
 }

@@ -41,7 +41,7 @@ Route::group(['namespace'=>'Admin'], function()
     Route::get('/admin', ['middleware' => ['admin'], 'as' => 'admin', 'uses' => 'Dashboard@home']);
 
     Route::resource('/admin/users', 'UsersController');
-    Route::resource('/admin/sites', 'SitesController');
 });
 
 Route::resource('admin/blogs', 'Admin\\BlogsController');
+Route::resource('admin/sites', 'Admin\\SitesController');

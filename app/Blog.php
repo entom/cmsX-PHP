@@ -25,7 +25,10 @@ class Blog extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'content', 'active'];
+    protected $fillable = [
+        'title', 'content', 'active',
+        'meta_title', 'meta_keywords', 'meta_description'
+    ];
 
     
 }

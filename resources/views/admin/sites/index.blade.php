@@ -2,15 +2,13 @@
 
 @section('content')
 
-{{--<script src="/dashboard/js/controllers/blogs.js"></script>--}}
-
 <div class="col s12">
     <header class="row navigation-row">
         <div class="col s6">
-            <h1>Blog</h1>
+            <h1>Strony</h1>
         </div>
         <div class="col s6">
-            <a href="{{ url('/admin/blogs/create') }}" class="btn btn-primary btn-xs right" title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
+            <a href="{{ url('/admin/sites/create') }}" class="btn btn-primary btn-xs right" title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
         </div>
     </header>
     <div class="row">
@@ -31,7 +29,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($blogs as $item)
+                        @foreach($sites as $item)
                             <tr>
                                 <td class="center">{{ $loop->iteration }}</td>
                                 <td>{{ $item->title }}</td>
@@ -44,11 +42,11 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ url('/admin/blogs/' . $item->id) }}" class="btn btn-success btn-xs" title="Zobacz"><i class="fa fa-folder-open"></i></a>
-                                    <a href="{{ url('/admin/blogs/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edycja"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ url('/admin/sites/' . $item->id) }}" class="btn btn-success btn-xs" title="Zobacz"><i class="fa fa-folder-open"></i></a>
+                                    <a href="{{ url('/admin/sites/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edycja"><i class="fa fa-edit"></i></a>
                                     {!! Form::open([
                                         'method'=>'DELETE',
-                                        'url' => ['/admin/blogs', $item->id],
+                                        'url' => ['/admin/sites', $item->id],
                                         'style' => 'display:inline'
                                     ]) !!}
                                     {!! Form::button('<i class="fa fa-trash"></i>', array(
@@ -63,7 +61,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    <div class="pagination-wrapper"> {!! $blogs->render() !!} </div>
+                    <div class="pagination-wrapper"> {!! $sites->render() !!} </div>
                 </div>
             </div>
         </div>

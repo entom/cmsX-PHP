@@ -9,7 +9,7 @@
             </div>
         </header>
 
-        {!! Form::open(['url' => '/admin/users', 'class' => 'col s12', 'files' => true]) !!}
+        {!! Form::model($user, ['method' => 'PATCH', 'url' => ['/admin/users', $user->id], 'class' => 'col s12', 'files' => true]) !!}
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
@@ -19,7 +19,7 @@
             <div id="contentTab" class="col s12">
                 <div class="card">
                     <div class="card__header">
-                        <span>Dane</span>
+                        <span>Treść</span>
                     </div>
                     <div class="card-content">
                         <div class="row">
@@ -33,6 +33,11 @@
                                 {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
                                 {!! Form::text('email', null, []) !!}
                                 {!! Form::label('email', 'Email', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
+                            </div>
+
+                            <div class="input-field col s12 m12">
+                                {!! Form::checkbox('change_password', null, [], ['id' => 'change_password']) !!}
+                                {!! Form::label('change_password', 'Czy zmienić hasło?', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
                             </div>
 
                             <div class="input-field col s12 m12 {{ $errors->has('password') ? 'has-error' : ''}}">
@@ -60,7 +65,7 @@
 
         <div class="col s12 m12">
             <div class="pt20">
-                {!! Form::submit('Zapisz', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Edytuj', ['class' => 'btn btn-primary']) !!}
             </div>
         </div>
         @if ($errors->any())
@@ -72,5 +77,6 @@
         @endif
 
         {!! Form::close() !!}
+
     </div>
 @endsection
