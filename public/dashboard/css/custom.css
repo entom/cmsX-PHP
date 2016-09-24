@@ -48,3 +48,7 @@ table .badge {
 .homepage .card i {
     font-size: 50px;
 }
+
+.homepage .card .card-action:first-of-type {
+    border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+}
