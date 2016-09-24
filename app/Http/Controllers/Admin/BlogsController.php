@@ -58,6 +58,8 @@ class BlogsController extends Controller
 
         $requestData = $request->all();
 
+        $requestData['url'] = str_slug($requestData['title'], '-');
+
         Blog::create($requestData);
 
         Session::flash('flash_message', 'Blog added!');
@@ -107,6 +109,9 @@ class BlogsController extends Controller
         $requestData = $request->all();
         
         $blog = Blog::findOrFail($id);
+
+        $requestData['url'] = str_slug($requestData['title'], '-');
+
         $blog->update($requestData);
 
         Session::flash('flash_message', 'Blog updated!');
