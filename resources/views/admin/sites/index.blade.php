@@ -3,9 +3,12 @@
 @section('content')
 
 <div class="col s12">
-    <header class="row">
-        <div class="col s12">
-            <h1>Strony <a href="{{ url('/admin/sites/create') }}" class="btn btn-primary btn-xs" title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a></h1>
+    <header class="row navigation-row">
+        <div class="col s6">
+            <h1>Strony</h1>
+        </div>
+        <div class="col s6">
+            <a href="{{ url('/admin/sites/create') }}" class="btn btn-primary btn-xs right" title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
         </div>
     </header>
     <div class="row">

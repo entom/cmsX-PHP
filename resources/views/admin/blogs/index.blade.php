@@ -5,9 +5,12 @@
 {{--<script src="/dashboard/js/controllers/blogs.js"></script>--}}
 
 <div class="col s12">
-    <header class="row">
-        <div class="col s12">
-            <h1>Blog <a href="{{ url('/admin/blogs/create') }}" class="btn btn-primary btn-xs" title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a></h1>
+    <header class="row navigation-row">
+        <div class="col s6">
+            <h1>Blog</h1>
+        </div>
+        <div class="col s6">
+            <a href="{{ url('/admin/blogs/create') }}" class="btn btn-primary btn-xs right" title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
         </div>
     </header>
     <div class="row">
