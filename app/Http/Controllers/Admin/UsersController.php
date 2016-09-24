@@ -6,9 +6,20 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\User;
+use Session;
 
 class UsersController extends Controller
 {
+
+    /**
+     * UsersController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +27,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index');
+        $users = User::paginate(25);
+
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -37,7 +50,23 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'email' => 'required|email|unique:users',
+            'active' => 'required',
+            'admin' => 'required',
+            'name' => 'required',
+            'password' => 'required'
+        ]);
+
+        $requestData = $request->all();
+
+        $requestData['password'] = bcrypt($requestData['password']);
+
+        User::create($requestData);
+
+        Session::flash('flash_message', 'User added!');
+
+        return redirect('admin/users');
     }
 
     /**
@@ -59,7 +88,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -71,7 +102,21 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $requestData = $request->all();
+
+        $user = User::findOrFail($id);
+
+        if(isset($requestData['change_password']) && $requestData['change_password'] == 'on') {
+            $requestData['password'] = bcrypt($requestData['password']);
+        } else {
+            $requestData['password'] = $user['password'];
+        }
+
+        $user->update($requestData);
+
+        Session::flash('flash_message', 'User updated!');
+
+        return redirect('admin/users');
     }
 
     /**
