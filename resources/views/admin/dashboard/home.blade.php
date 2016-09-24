@@ -65,5 +65,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="col s12 m3">
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <div class="card-action center">
+                        <a href="/admin/albums">Galeria: <b>{{ $albums_counter }}</b></a>
+                    </div>
+                    <div class="card-content center">
+                        <i class="fa fa-picture-o red-text"></i>
+                    </div>
+                    <div class="card-action center">
+                        <a href="/admin/albums">Zobacz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

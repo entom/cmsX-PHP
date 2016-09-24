@@ -148,6 +148,24 @@
                         <li class="collapsible__element">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
+                                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Galeria</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/albums')}}">Lista</a></li>
+                                    <li><a href="{{url('/admin/albums/create')}}">Nowy wpis</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
                                     <i class="fa fa-users" aria-hidden="true"></i>
                                 </sapn>
                                 <span>Użytkownicy</span>

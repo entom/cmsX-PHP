@@ -11,6 +11,7 @@ use App\Site;
 use App\Blog;
 use App\User;
 use App\News;
+use App\Album;
 
 /**
  * Class Dashboard
@@ -33,7 +34,8 @@ class Dashboard extends Controller
             'users_counter' => User::count(),
             'sites_counter' => Site::count(),
             'blogs_counter' => Blog::count(),
-            'news_counter' => News::count()
+            'news_counter' => News::count(),
+            'albums_counter' => Album::count()
         ]);
     }
 
