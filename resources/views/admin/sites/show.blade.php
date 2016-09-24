@@ -1,33 +1,46 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
+    <div class="container">
 
-    <h1>Blog {{ $blog->id }}
-        <a href="{{ url('admin/blogs/' . $blog->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Blog"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-        {!! Form::open([
-            'method'=>'DELETE',
-            'url' => ['admin/blogs', $blog->id],
-            'style' => 'display:inline'
-        ]) !!}
-            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true"/>', array(
-                    'type' => 'submit',
-                    'class' => 'btn btn-danger btn-xs',
-                    'title' => 'Delete Blog',
-                    'onclick'=>'return confirm("Confirm delete?")'
-            ))!!}
-        {!! Form::close() !!}
-    </h1>
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover">
-            <tbody>
-                <tr>
-                    <th>ID</th><td>{{ $blog->id }}</td>
-                </tr>
-                <tr><th> Title </th><td> {{ $blog->title }} </td></tr><tr><th> Content </th><td> {{ $blog->content }} </td></tr><tr><th> Active </th><td> {{ $blog->active }} </td></tr>
-            </tbody>
-        </table>
+        <div class="row navigation-row">
+            <div class="col s6">
+                <h1>Strona {{ $site->id }}</h1>
+            </div>
+            <div class="col s6">
+                {!! Form::open([
+                    'method'=>'DELETE',
+                    'url' => ['admin/sites', $site->id],
+                    'style' => 'display:inline'
+                ]) !!}
+                {!! Form::button('<i class="fa fa-trash"></i>', array(
+                        'type' => 'submit',
+                        'class' => 'btn btn-danger btn-xs right',
+                        'title' => 'Usuń wpis',
+                        'onclick'=>'return confirm("Czy na pewno chcesz usunąć?")'
+                ))!!}
+                {!! Form::close() !!}
+                <a href="{{ url('admin/sites/' . $site->id . '/edit') }}" class="btn btn-primary btn-xs right mr10"
+                   title="Edycja wpisu"><i class="fa fa-pencil"></i></a>
+            </div>
+        </div>
+
+        <div class="card card-view">
+            <div class="card-content">
+                <div class="row">
+                    <dl>
+                        <dt>ID</dt>
+                        <dd>{{ $site->id }}</dd>
+                        <dt> Tytuł</dt>
+                        <dd> {{ $site->title }} </dd>
+                        <dt> Treść</dt>
+                        <dd> {{ $site->content }} </dd>
+                        <dt> Aktywny</dt>
+                        <dd> {{ $site->active }} </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-</div>
 @endsection
