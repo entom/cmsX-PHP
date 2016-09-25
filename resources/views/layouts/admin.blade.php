@@ -166,6 +166,24 @@
                         <li class="collapsible__element">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
+                                    <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Logotypy</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/logos')}}">Lista</a></li>
+                                    <li><a href="{{url('/admin/logos/create')}}">Nowy wpis</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
                                     <i class="fa fa-users" aria-hidden="true"></i>
                                 </sapn>
                                 <span>Użytkownicy</span>
