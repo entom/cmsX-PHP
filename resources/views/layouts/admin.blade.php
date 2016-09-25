@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>CMSX</title>
 
+    <link rel="stylesheet" href="/dashboard/bower_components/jquery-ui/themes/base/all.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/dashboard/css/style.css" type="text/css">
     <link rel="stylesheet" href="/dashboard/css/custom.css" type="text/css">
@@ -11,6 +12,7 @@
     <script src="/dashboard/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="/dashboard/node_modules/tinymce/tinymce.min.js"></script>
     <script src="/dashboard/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="/dashboard/bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="/dashboard/js/init.js"></script>
     <script src="/dashboard/js/dashboard.js"></script>
 
@@ -156,6 +158,24 @@
                                 <ul>
                                     <li><a href="{{url('/admin/albums')}}">Lista</a></li>
                                     <li><a href="{{url('/admin/albums/create')}}">Nowy wpis</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
+                                    <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Logotypy</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/logos')}}">Lista</a></li>
+                                    <li><a href="{{url('/admin/logos/create')}}">Nowy wpis</a></li>
                                 </ul>
                             </div>
                         </li>

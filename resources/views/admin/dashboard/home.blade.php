@@ -81,5 +81,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="col s12 m3">
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <div class="card-action center">
+                        <a href="/admin/logos">Logotypy: <b>{{ $logos_counter }}</b></a>
+                    </div>
+                    <div class="card-content center">
+                        <i class="fa fa-file-image-o cyan-text accent-3"></i>
+                    </div>
+                    <div class="card-action center">
+                        <a href="/admin/logos">Zobacz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
