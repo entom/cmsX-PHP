@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery-backstretch-2": "^2.1.13"
+    "jquery-backstretch-2": "^2.1.13",
+    "jquery-ui": "^1.12.1"
   }
 }
