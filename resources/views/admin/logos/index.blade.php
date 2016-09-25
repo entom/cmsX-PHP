@@ -21,6 +21,7 @@
                         <table class="responsive-table bordered striped highlight">
                             <thead>
                             <tr>
+                                <th class="center"></th>
                                 <th class="center"> #</th>
                                 <th> Title</th>
                                 <th> Link</th>
@@ -28,9 +29,10 @@
                                 <th>Actions</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="sortable" data-entityname="logos">
                             @foreach($logos as $item)
-                                <tr>
+                                <tr data-itemId="{{ $item->id }}">
+                                    <td class="center sortable-handle"><span class="fa fa-sort"></span></td>
                                     <td class="center">{{ $loop->iteration }}</td>
                                     <td>{{ $item->title }}</td>
                                     <td>{{ $item->link }}</td>
@@ -71,4 +73,14 @@
             </div>
         </div>
     </div>
+
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 @endsection
