@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Logo extends Model
 {
+
+    use \Rutorika\Sortable\SortableTrait;
+
     /**
      * The database table used by the model.
      *
@@ -19,6 +22,8 @@ class Logo extends Model
     * @var string
     */
     protected $primaryKey = 'id';
+
+    protected static $sortableField = 'position';
 
     /**
      * Attributes that should be mass-assignable.

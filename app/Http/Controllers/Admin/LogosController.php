@@ -27,7 +27,7 @@ class LogosController extends Controller
      */
     public function index()
     {
-        $logos = Logo::paginate(25);
+        $logos = Logo::orderBy('position', 'asc')->paginate(25);
 
         return view('admin.logos.index', compact('logos'));
     }
@@ -53,6 +53,7 @@ class LogosController extends Controller
     {
         
         $requestData = $request->all();
+        $requestData['position'] = Logo::count() + 1;
         
         Logo::create($requestData);
 
@@ -120,6 +121,14 @@ class LogosController extends Controller
     public function destroy($id)
     {
         Logo::destroy($id);
+
+        $logos = Logo::sorted()->get();
+        $position = 0;
+        foreach ($logos as $logo) {
+            $position++;
+            $logo->position = $position;
+            $logo->save();
+        }
 
         Session::flash('flash_message', 'Logo deleted!');
 
