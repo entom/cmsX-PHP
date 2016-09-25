@@ -5,7 +5,7 @@
 
         <div class="row navigation-row">
             <div class="col s6">
-                <h1>Logo {{ $logo->id }}</h1>
+                <h1>Logotypy {{ $logo->id }}</h1>
             </div>
             <div class="col s6">
                 {!! Form::open([

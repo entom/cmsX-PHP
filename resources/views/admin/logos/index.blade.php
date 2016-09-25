@@ -4,7 +4,7 @@
     <div class="col s12">
         <header class="row navigation-row">
             <div class="col s6">
-                <h1>Logos</h1>
+                <h1>Logotypy</h1>
             </div>
             <div class="col s6">
                 <a href="{{ url('/admin/logos/create') }}" class="waves-effect waves-light btn right"

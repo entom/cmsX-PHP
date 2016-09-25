@@ -5,7 +5,7 @@
     <div class="col s12">
         <header class="row">
             <div class="col s12">
-                <h1>Logo</h1>
+                <h1>Logotypy</h1>
             </div>
         </header>
 
