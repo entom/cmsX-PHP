@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/dashboard/bower_components/jquery-ui/themes/base/all.css" />
     <link rel="stylesheet" href="/dashboard/node_modules/materialize-css/dist/css/materialize.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/dashboard/node_modules/animate.css/animate.min.css" />
     <link rel="stylesheet" href="/dashboard/css/style.css" type="text/css">
     <link rel="stylesheet" href="/dashboard/css/custom.css" type="text/css">
 
@@ -32,7 +33,7 @@
 <header class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
-            <a href="{{url('/admin')}}" class="brand-logo">
+            <a href="{{url('/admin')}}" class="brand-logo animated flipInY">
                 cms
                 <u>X</u>
             </a>

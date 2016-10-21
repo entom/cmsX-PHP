@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row pt80 homepage">
-        <div class="col s12 m3">
+        <div class="col s12 m3 animated flipInX">
             <div class="card horizontal">
                 <div class="card-stacked">
                     <div class="card-action center">
@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="col s12 m3">
+        <div class="col s12 m3 animated flipInX">
             <div class="card horizontal">
                 <div class="card-stacked">
                     <div class="card-action center">
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="col s12 m3">
+        <div class="col s12 m3 animated flipInX">
             <div class="card horizontal">
                 <div class="card-stacked">
                     <div class="card-action center">
@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <div class="col s12 m3">
+        <div class="col s12 m3 animated flipInX">
             <div class="card horizontal">
                 <div class="card-stacked">
                     <div class="card-action center">
@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <div class="col s12 m3">
+        <div class="col s12 m3 animated flipInX">
             <div class="card horizontal">
                 <div class="card-stacked">
                     <div class="card-action center">
@@ -82,7 +82,7 @@
             </div>
         </div>
 
-        <div class="col s12 m3">
+        <div class="col s12 m3 animated flipInX">
             <div class="card horizontal">
                 <div class="card-stacked">
                     <div class="card-action center">
