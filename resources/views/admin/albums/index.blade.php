@@ -12,7 +12,7 @@
             </div>
         </header>
         <div class="row">
-            <div class="col s12 m12">
+            <div class="col s12 m12 animated flipInX">
                 <div class="card">
                     <div class="card__header">
                         <span>Lista wpisów</span>
