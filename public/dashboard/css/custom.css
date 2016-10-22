@@ -56,3 +56,7 @@ table .badge {
 .badge {
     padding: 10px 25px!important;
 }
+
+.error-message {
+    color: red;
+}

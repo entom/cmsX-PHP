@@ -12,6 +12,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Session;
 
 class CalendarController extends Controller
@@ -32,6 +33,20 @@ class CalendarController extends Controller
     public function index()
     {
         return view('admin.calendar.index');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function store()
+    {
+//        CalendarEvent::create(array(
+//            'title' => Input::get('title'),
+//            'description' => Input::get('description'),
+//            'event_date' => Input::get('date')
+//        ));
+
+        return Response::json(array('success' => true));
     }
 
 }
