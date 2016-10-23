@@ -32,7 +32,10 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->title }}</td>
-                                    <td>{{ $item->color }}</td>
+                                    <td>
+                                        <span class="color-preview" style="background-color: {{ $item->color }}"></span>
+                                        <span>{{ $item->color }}</span>
+                                    </td>
                                     <td>
                                         <a href="{{ url('/admin/calendar-event-category/' . $item->id) }}"
                                            class="waves-effect waves-light btn"

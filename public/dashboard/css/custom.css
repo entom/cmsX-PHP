@@ -60,3 +60,8 @@ table .badge {
 .error-message {
     color: red;
 }
+
+.color-preview {
+    padding: 5px 15px;
+    margin-right: 10px;
+}
