@@ -221,6 +221,7 @@
                             <div class="collapsible-body">
                                 <ul>
                                     <li><a href="{{url('/admin/calendar')}}">Zobacz</a></li>
+                                    <li><a href="{{url('/admin/calendar-event-category')}}">Kategorie</a></li>
                                 </ul>
                             </div>
                         </li>
