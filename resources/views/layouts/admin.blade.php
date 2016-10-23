@@ -20,7 +20,7 @@
     <script type="text/javascript" src="/dashboard/bower_components/moment/min/moment.min.js"></script>
     <script type="text/javascript" src="/dashboard/bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="/dashboard/bower_components/angular-ui-calendar/src/calendar.js"></script>
-    <script type="text/javascript" src="/dashboard/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="/dashboard/node_modules/fullcalendar/dist/fullcalendar.min.js"></script>
     <script type="text/javascript" src="/dashboard/bower_components/fullcalendar/dist/lang-all.js"></script>
 
     <script src="/dashboard/js/init.js"></script>

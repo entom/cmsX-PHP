@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: tomasznicieja
- * Date: 22.10.2016
- * Time: 20:34
+ * Date: 23.10.2016
+ * Time: 22:23
  */
 
 namespace App\Http\Controllers\Admin;
@@ -18,7 +18,7 @@ use Session;
 
 use App\CalendarEvent;
 
-class CalendarController extends Controller
+class CalendarEventsController extends Controller
 {
     /**
      * BlogsController constructor.
@@ -35,15 +35,23 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        return view('admin.calendar.index');
+        $events = CalendarEvent::all();
+        return Response::json(array('events' => $events));
     }
 
     /**
+     * store method
      * @return mixed
      */
     public function store()
     {
+        CalendarEvent::create(array(
+            'title' => Input::get('title'),
+            'description' => Input::get('description'),
+            'event_date' => Input::get('date')
+        ));
 
+        return Response::json(array('success' => true));
     }
 
 }

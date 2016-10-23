@@ -4,7 +4,7 @@
 
 <script src="/dashboard/js/controllers/calendar.js"></script>
 
-<div class="col s12" ng-controller="CalendarController">
+<div class="col s12" ng-controller="CalendarController" ng-init="init()">
     <header class="row navigation-row">
         <div class="col s6">
             <h1>Kalendarz</h1>
