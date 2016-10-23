@@ -46,7 +46,8 @@ Route::group(['namespace'=>'Admin'], function()
 Route::post('sort', '\Rutorika\Sortable\SortableController@sort');
 
 Route::resource('admin/calendar', 'Admin\\CalendarController');
-Route::resource('admin/calendar_events', 'Admin\\CalendarEventsController');
+Route::resource('admin/calendar-events', 'Admin\\CalendarEventsController');
+Route::resource('admin/calendar-event-category', 'Admin\\CalendarEventCategoryController');
 
 Route::resource('admin/blogs', 'Admin\\BlogsController');
 Route::resource('admin/sites', 'Admin\\SitesController');

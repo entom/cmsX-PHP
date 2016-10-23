@@ -59,8 +59,9 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, uiCalen
         if(!errors) {
             var config = {};
             var data = $scope.event;
-            $http.post('/admin/calendar', data, config).then(function (resp) {
+            $http.post('/admin/calendar-events', data, config).then(function (resp) {
                 if(resp.data.success) {
+                    $scope.events.push($scope.event);
                     $('#EventModal').closeModal();
                     Materialize.toast('Zadanie zostało zapisane', 5000);
                 }
@@ -72,7 +73,7 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, uiCalen
      * getEvents method
      */
     $scope.getEvents = function () {
-        $http.get('/admin/calendar_events').then(function (resp) {
+        $http.get('/admin/calendar-events').then(function (resp) {
             console.log(resp);
             var events = resp.data.events;
 
