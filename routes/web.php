@@ -54,3 +54,5 @@ Route::resource('admin/sites', 'Admin\\SitesController');
 Route::resource('admin/news', 'Admin\\NewsController');
 Route::resource('admin/albums', 'Admin\\AlbumsController');
 Route::resource('admin/logos', 'Admin\\LogosController');
+
+Route::resource('api/calendar-event-category', 'Api\\CalendarEventCategoryController');

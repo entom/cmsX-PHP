@@ -32,7 +32,14 @@
                     <input name="title" type="text" ng-model="event.title">
                     <label for="title" data-error="wrong" data-success="right" class="">Tytuł</label>
                 </div>
-                <div class="input-field col s12 m6 ">
+                <div class="input-field col s12 m6">
+                    <select name="calendar_event_category_id"
+                            ng-model="event.calendar_event_category_id"
+                            ng-options="option.title for option in event_categories track by option.id"></select>
+                    <label for="calendar_event_category_id">Wybierz kategorię (opcjonalnie)</label>
+
+                </div>
+                <div class="input-field col s12 m12">
                     <input name="content" type="text" ng-model="event.description">
                     <label for="content" data-error="wrong" data-success="right" class="">Opis</label>
                 </div>

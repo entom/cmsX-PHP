@@ -1,16 +1,17 @@
 /**
  * Created by tomasz on 22.10.2016.
  */
-cmsx.controller('CalendarController', function ($scope, $http, $compile, uiCalendarConfig) {
+cmsx.controller('CalendarController', function ($scope, $http, $compile, $timeout, uiCalendarConfig) {
 
     /**
      * event
-     * @type {{date: string, title: string, description: string}}
+     * @type {{date: string, title: string, description: string, calendar_event_category_id: number}}
      */
     $scope.event = {
         date: '',
         title: '',
-        description: ''
+        description: '',
+        calendar_event_category_id: ''
     };
 
     /**
@@ -30,10 +31,17 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, uiCalen
     $scope.events = [];
 
     /**
+     * event_categories
+     * @type {Array}
+     */
+    $scope.event_categories = [];
+
+    /**
      * init method
      */
     $scope.init = function () {
         $scope.getEvents();
+        $scope.getEventsCategories();
     };
 
     /**
@@ -55,7 +63,7 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, uiCalen
         } else {
             $scope.errors.event.title = '';
         }
-
+console.log($scope.event); return;
         if(!errors) {
             var config = {};
             var data = $scope.event;
@@ -81,6 +89,19 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, uiCalen
                 events[event].start = events[event].event_date;
                 $scope.events.push(events[event]);
             }
+        });
+    };
+
+    /**
+     * getEventsCategories method
+     */
+    $scope.getEventsCategories = function () {
+        $http.get('/api/calendar-event-category').then(function (resp) {
+            console.log(resp);
+            $scope.event_categories = resp.data.event_categories;
+            $timeout(function () {
+                $('select').material_select();
+            }, 1000);
         });
     };
 
