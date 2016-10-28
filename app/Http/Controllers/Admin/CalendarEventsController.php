@@ -35,7 +35,7 @@ class CalendarEventsController extends Controller
      */
     public function index()
     {
-        $events = CalendarEvent::all();
+        $events = CalendarEvent::getAllWithCategory();
         return Response::json(array('events' => $events));
     }
 
