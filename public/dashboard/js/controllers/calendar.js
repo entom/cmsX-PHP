@@ -63,15 +63,25 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, $timeou
         } else {
             $scope.errors.event.title = '';
         }
-console.log($scope.event); return;
+
+        $scope.event.calendar_event_category_id = $scope.event.calendar_event_category_id.id;
+
         if(!errors) {
             var config = {};
             var data = $scope.event;
             $http.post('/admin/calendar-events', data, config).then(function (resp) {
                 if(resp.data.success) {
                     $scope.events.push($scope.event);
-                    $('#EventModal').closeModal();
-                    Materialize.toast('Zadanie zostało zapisane', 5000);
+                    $scope.event = {
+                        date: '',
+                        title: '',
+                        description: '',
+                        calendar_event_category_id: ''
+                    };
+                    $timeout(function () {
+                        $('#EventModal').closeModal();
+                        Materialize.toast('Zadanie zostało zapisane', 5000);
+                    });
                 }
             });
         }

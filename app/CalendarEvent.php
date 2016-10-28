@@ -15,7 +15,7 @@ class CalendarEvent extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'event_date'
+        'title', 'description', 'event_date', 'calendar_event_category_id'
     ];
 
 }

@@ -48,7 +48,8 @@ class CalendarEventsController extends Controller
         CalendarEvent::create(array(
             'title' => Input::get('title'),
             'description' => Input::get('description'),
-            'event_date' => Input::get('date')
+            'event_date' => Input::get('date'),
+            'calendar_event_category_id' => Input::get('calendar_event_category_id')
         ));
 
         return Response::json(array('success' => true));
