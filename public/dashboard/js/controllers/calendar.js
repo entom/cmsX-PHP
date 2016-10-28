@@ -97,6 +97,10 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, $timeou
 
             for(var event in events) {
                 events[event].start = events[event].event_date;
+                if(events[event].category != null && events[event].category.color != null) {
+                    events[event].backgroundColor = events[event].category.color;
+                    events[event].borderColor = events[event].category.color;
+                }
                 $scope.events.push(events[event]);
             }
         });
