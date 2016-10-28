@@ -31,6 +31,12 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, $timeou
     $scope.events = [];
 
     /**
+     * event_selected
+     * @type {{}}
+     */
+    $scope.event_selected = {};
+
+    /**
      * event_categories
      * @type {Array}
      */
@@ -71,6 +77,7 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, $timeou
             var data = $scope.event;
             $http.post('/admin/calendar-events', data, config).then(function (resp) {
                 if(resp.data.success) {
+                    $scope.event.event_date = $scope.event.date;
                     if($scope.event.calendar_event_category_id) {
                         var category = undefined;
                         for(var c in $scope.event_categories) {
@@ -151,7 +158,10 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, $timeou
      * @param view
      */
     $scope.alertOnEventClick = function( date, jsEvent, view){
-        $scope.alertMessage = (date.title + ' was clicked ');
+        console.log('EventClick');
+        console.log(date);
+        $scope.event_selected = date;
+        $('#EventShowModal').openModal();
     };
 
     /**
