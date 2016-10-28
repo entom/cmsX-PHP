@@ -7,6 +7,8 @@ $(function(){
         }
     );
     $('select').material_select();
+    $('ul.tabs').tabs();
+    $('.modal-trigger').leanModal();
 });
 
 /**

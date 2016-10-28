@@ -5,14 +5,24 @@
     <title>CMSX</title>
 
     <link rel="stylesheet" href="/dashboard/bower_components/jquery-ui/themes/base/all.css" />
+    <link rel="stylesheet" href="/dashboard/node_modules/materialize-css/dist/css/materialize.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/dashboard/node_modules/animate.css/animate.min.css" />
     <link rel="stylesheet" href="/dashboard/css/style.css" type="text/css">
     <link rel="stylesheet" href="/dashboard/css/custom.css" type="text/css">
 
     <script src="/dashboard/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="/dashboard/node_modules/tinymce/tinymce.min.js"></script>
-    <script src="/dashboard/node_modules/materialize-css/dist/js/materialize.min.js"></script>
     <script src="/dashboard/bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="/dashboard/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="/dashboard/node_modules/tinymce/tinymce.min.js"></script>
+
+    <link rel="stylesheet" href="/dashboard/node_modules/fullcalendar/dist/fullcalendar.css"/>
+    <script type="text/javascript" src="/dashboard/bower_components/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="/dashboard/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/dashboard/bower_components/angular-ui-calendar/src/calendar.js"></script>
+    <script type="text/javascript" src="/dashboard/node_modules/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="/dashboard/bower_components/fullcalendar/dist/lang-all.js"></script>
+
     <script src="/dashboard/js/init.js"></script>
     <script src="/dashboard/js/dashboard.js"></script>
 
@@ -25,13 +35,13 @@
     {{--<link rel="stylesheet" href="/dashboard/node_modules/angular-material-data-table/dist/md-data-table.min.css" />--}}
     {{--<script src="/dashboard/node_modules/angular-material/angular-material.min.js"></script>--}}
     {{--<script src="/dashboard/node_modules/angular-material-data-table/dist/md-data-table.min.js"></script>--}}
-    {{--<script src="/dashboard/js/app.js"></script>--}}
+    <script src="/dashboard/js/app.js"></script>
 </head>
-<body>
+<body ng-app="cmsxApp">
 <header class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
-            <a href="{{url('/admin')}}" class="brand-logo">
+            <a href="{{url('/admin')}}" class="brand-logo animated flipInY">
                 cms
                 <u>X</u>
             </a>
@@ -194,6 +204,24 @@
                                 <ul>
                                     <li><a href="{{url('/admin/users')}}">Lista</a></li>
                                     <li><a href="{{url('/admin/users/create')}}">Nowy użytkownik</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Kalendarz</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/calendar')}}">Zobacz</a></li>
+                                    <li><a href="{{url('/admin/calendar-event-category')}}">Kategorie</a></li>
                                 </ul>
                             </div>
                         </li>

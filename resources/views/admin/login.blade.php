@@ -5,6 +5,7 @@
     <title>CMSX</title>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/dashboard/node_modules/animate.css/animate.min.css" />
     <link rel="stylesheet" href="/dashboard/css/style.css" type="text/css">
 
     <script src="/dashboard/node_modules/jquery/dist/jquery.min.js"></script>
@@ -15,7 +16,7 @@
 <body>
 <main class="pl0">
     <div class="row">
-        <div class="col s12 m4 offset-m4">
+        <div class="col s12 m4 offset-m4 animated lightSpeedIn">
             <div class="card card__login">
                 <div class="card__header card__header--color">
                     <span class="title">
