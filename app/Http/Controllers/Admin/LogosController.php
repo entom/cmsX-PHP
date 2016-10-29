@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Logo;
+use App\ImageProcessing;
 use Illuminate\Http\Request;
 use Session;
 
@@ -51,9 +52,17 @@ class LogosController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'file' => 'required'
+        ]);
+
         $requestData = $request->all();
         $requestData['position'] = Logo::count() + 1;
+
+        $image = $request->file('file');
+        $fileName = ImageProcessing::transferThumbs($image, 'logos', Logo::$SIZES);
+        $requestData['file'] = $fileName;
         
         Logo::create($requestData);
 
@@ -100,10 +109,19 @@ class LogosController extends Controller
      */
     public function update($id, Request $request)
     {
-        
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'file' => 'required'
+        ]);
+
         $requestData = $request->all();
-        
+
         $logo = Logo::findOrFail($id);
+
+        $image = $request->file('file');
+        $fileName = ImageProcessing::transferThumbs($image, 'logos', Logo::$SIZES, $logo->file);
+        $requestData['file'] = $fileName;
+
         $logo->update($requestData);
 
         Session::flash('flash_message', 'Logo updated!');

@@ -36,7 +36,13 @@
                         <dt> Treść</dt>
                         <dd> {{ $site->content }} </dd>
                         <dt> Aktywny</dt>
-                        <dd> {{ $site->active }} </dd>
+                        <dd>
+                            @if($site->active == 1)
+                                TAK
+                            @else
+                                NIE
+                            @endif
+                        </dd>
                     </dl>
                 </div>
             </div>

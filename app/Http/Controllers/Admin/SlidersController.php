@@ -5,16 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Slider;
 use Illuminate\Http\Request;
 use Session;
-use App\Album;
 use App\ImageProcessing;
 
-class AlbumsController extends Controller
+/**
+ * Class SlidersController
+ * @package App\Http\Controllers\Admin
+ */
+class SlidersController extends Controller
 {
 
     /**
-     * AlbumsController constructor.
+     * SlidersController constructor.
      */
     public function __construct()
     {
@@ -28,9 +32,9 @@ class AlbumsController extends Controller
      */
     public function index()
     {
-        $albums = Album::paginate(25);
+        $sliders = Slider::paginate(25);
 
-        return view('admin.albums.index', compact('albums'));
+        return view('admin.sliders.index', compact('sliders'));
     }
 
     /**
@@ -40,7 +44,7 @@ class AlbumsController extends Controller
      */
     public function create()
     {
-        return view('admin.albums.create');
+        return view('admin.sliders.create');
     }
 
     /**
@@ -54,24 +58,23 @@ class AlbumsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:255',
-            'active' => 'required'
+            'file' => 'required'
         ]);
 
         $requestData = $request->all();
-
-        $requestData['url'] = str_slug($requestData['title'], '-');
+        $requestData['position'] = Slider::count() + 1;
 
         $image = $request->file('file');
         if(!empty($image)) {
-            $fileName = ImageProcessing::transferThumbs($image, 'albums', Album::$SIZES);
+            $fileName = ImageProcessing::transferThumbs($image, 'sliders', Slider::$SIZES);
             $requestData['file'] = $fileName;
         }
-        
-        Album::create($requestData);
 
-        Session::flash('flash_message', 'Album added!');
+        Slider::create($requestData);
 
-        return redirect('admin/albums');
+        Session::flash('flash_message', 'Slider added!');
+
+        return redirect('admin/sliders');
     }
 
     /**
@@ -83,9 +86,9 @@ class AlbumsController extends Controller
      */
     public function show($id)
     {
-        $album = Album::findOrFail($id);
+        $slider = Slider::findOrFail($id);
 
-        return view('admin.albums.show', compact('album'));
+        return view('admin.sliders.show', compact('slider'));
     }
 
     /**
@@ -97,9 +100,9 @@ class AlbumsController extends Controller
      */
     public function edit($id)
     {
-        $album = Album::findOrFail($id);
+        $slider = Slider::findOrFail($id);
 
-        return view('admin.albums.edit', compact('album'));
+        return view('admin.sliders.edit', compact('slider'));
     }
 
     /**
@@ -112,23 +115,26 @@ class AlbumsController extends Controller
      */
     public function update($id, Request $request)
     {
-        
-        $requestData = $request->all();
-        $requestData['url'] = str_slug($requestData['title'], '-');
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'file' => 'required'
+        ]);
 
-        $album = Album::findOrFail($id);
+        $requestData = $request->all();
+        
+        $slider = Slider::findOrFail($id);
 
         $image = $request->file('file');
         if(!empty($image)) {
-            $fileName = ImageProcessing::transferThumbs($image, 'albums', Album::$SIZES, $album->file);
+            $fileName = ImageProcessing::transferThumbs($image, 'sliders', Slider::$SIZES, $slider->file);
             $requestData['file'] = $fileName;
         }
 
-        $album->update($requestData);
+        $slider->update($requestData);
 
-        Session::flash('flash_message', 'Album updated!');
+        Session::flash('flash_message', 'Slider updated!');
 
-        return redirect('admin/albums');
+        return redirect('admin/sliders');
     }
 
     /**
@@ -140,10 +146,10 @@ class AlbumsController extends Controller
      */
     public function destroy($id)
     {
-        Album::destroy($id);
+        Slider::destroy($id);
 
-        Session::flash('flash_message', 'Album deleted!');
+        Session::flash('flash_message', 'Slider deleted!');
 
-        return redirect('admin/albums');
+        return redirect('admin/sliders');
     }
 }

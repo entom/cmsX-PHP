@@ -35,10 +35,22 @@
                         <dd> {{ $news->title }} </dd>
                         <dt> Url</dt>
                         <dd> {{ $news->url }} </dd>
+                        <dt> Aktywny</dt>
+                        <dd>
+                            @if($news->active == 1)
+                                TAK
+                            @else
+                                NIE
+                            @endif
+                        </dd>
+                        @if ($news->file != NULL)
+                            <dt>Miniaturka</dt>
+                            <dd>
+                                <img src="/files/thumb/news/300x300_{{$news->file}}" />
+                            </dd>
+                        @endif
                         <dt> Treść</dt>
                         <dd> {{ $news->content }} </dd>
-                        <dt> Aktywny</dt>
-                        <dd> {{ $news->active }} </dd>
                     </dl>
                 </div>
             </div>

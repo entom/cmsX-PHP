@@ -4,15 +4,15 @@
     <div class="col s12">
         <header class="row navigation-row">
             <div class="col s6">
-                <h1>Galeria</h1>
+                <h1>Banery</h1>
             </div>
             <div class="col s6">
-                <a href="{{ url('/admin/albums/create') }}" class="waves-effect waves-light btn right"
+                <a href="{{ url('/admin/sliders/create') }}" class="waves-effect waves-light btn right"
                    title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
             </div>
         </header>
         <div class="row">
-            <div class="col s12 m12 animated flipInX">
+            <div class="col s12 m12">
                 <div class="card">
                     <div class="card__header">
                         <span>Lista wpisów</span>
@@ -24,21 +24,23 @@
                                 <th class="center"> #</th>
                                 <th> Tytuł</th>
                                 <th> Miniaturka </th>
+                                <th> Link</th>
                                 <th> Aktywny</th>
                                 <th> Akcje</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($albums as $item)
+                            @foreach($sliders as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->title }}</td>
                                     <td>
                                         @if ($item->file != NULL)
-                                            <img src="/files/thumb/albums/100x100_{{ $item->file }}" class="news-image-small" />
+                                            <img src="/files/thumb/sliders/100x100_{{ $item->file }}" class="news-image-small" />
                                         @endif
                                     </td>
-                                    <td>
+                                    <td>{{ $item->link }}</td>
+                                    <td class="center">
                                         @if ($item->active === 1)
                                             <span class="new badge blue" data-badge-caption="">Tak</span>
                                         @else
@@ -46,15 +48,15 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ url('/admin/albums/' . $item->id) }}"
+                                        <a href="{{ url('/admin/sliders/' . $item->id) }}"
                                            class="waves-effect waves-light btn"
                                            title="Zobacz"><i class="fa fa-folder-open"></i></a>
-                                        <a href="{{ url('/admin/albums/' . $item->id . '/edit') }}"
+                                        <a href="{{ url('/admin/sliders/' . $item->id . '/edit') }}"
                                            class="waves-effect waves-light btn"
                                            title="Edycja"><i class="fa fa-edit"></i></a>
                                         {!! Form::open([
                                             'method'=>'DELETE',
-                                            'url' => ['/admin/albums', $item->id],
+                                            'url' => ['/admin/sliders', $item->id],
                                             'style' => 'display:inline'
                                         ]) !!}
                                         {!! Form::button('<i class="fa fa-trash"></i>', array(
@@ -69,7 +71,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="pagination-wrapper"> {!! $albums->render() !!} </div>
+                        <div class="pagination-wrapper"> {!! $sliders->render() !!} </div>
                     </div>
                 </div>
             </div>

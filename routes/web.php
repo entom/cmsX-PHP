@@ -33,6 +33,7 @@ Route::get('blade', function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/account', 'Front@account');
 
 Route::group(['namespace'=>'Admin'], function()
 {
@@ -54,5 +55,8 @@ Route::resource('admin/sites', 'Admin\\SitesController');
 Route::resource('admin/news', 'Admin\\NewsController');
 Route::resource('admin/albums', 'Admin\\AlbumsController');
 Route::resource('admin/logos', 'Admin\\LogosController');
+Route::resource('admin/sliders', 'Admin\\SlidersController');
 
 Route::resource('api/calendar-event-category', 'Api\\CalendarEventCategoryController');
+
+Route::get('/{url}', 'SitesController@show');

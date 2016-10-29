@@ -31,6 +31,12 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, $timeou
     $scope.events = [];
 
     /**
+     * event_selected
+     * @type {{}}
+     */
+    $scope.event_selected = {};
+
+    /**
      * event_categories
      * @type {Array}
      */
@@ -71,6 +77,19 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, $timeou
             var data = $scope.event;
             $http.post('/admin/calendar-events', data, config).then(function (resp) {
                 if(resp.data.success) {
+                    $scope.event.event_date = $scope.event.date;
+                    if($scope.event.calendar_event_category_id) {
+                        var category = undefined;
+                        for(var c in $scope.event_categories) {
+                            if($scope.event_categories[c].id == $scope.event.calendar_event_category_id) {
+                                category = $scope.event_categories[c];
+                            }
+                        }
+                        if(category.color != null) {
+                            $scope.event.backgroundColor = category.color;
+                            $scope.event.borderColor = category.color;
+                        }
+                    }
                     $scope.events.push($scope.event);
                     $scope.event = {
                         date: '',
@@ -97,6 +116,10 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, $timeou
 
             for(var event in events) {
                 events[event].start = events[event].event_date;
+                if(events[event].category != null && events[event].category.color != null) {
+                    events[event].backgroundColor = events[event].category.color;
+                    events[event].borderColor = events[event].category.color;
+                }
                 $scope.events.push(events[event]);
             }
         });
@@ -135,7 +158,10 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, $timeou
      * @param view
      */
     $scope.alertOnEventClick = function( date, jsEvent, view){
-        $scope.alertMessage = (date.title + ' was clicked ');
+        console.log('EventClick');
+        console.log(date);
+        $scope.event_selected = date;
+        $('#EventShowModal').openModal();
     };
 
     /**

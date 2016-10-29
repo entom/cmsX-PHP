@@ -5,11 +5,11 @@
     <div class="col s12">
         <header class="row">
             <div class="col s12">
-                <h1>Logotypy</h1>
+                <h1>Baner</h1>
             </div>
         </header>
 
-        {!! Form::open(['url' => '/admin/logos', 'class' => 'col s12', 'files' => true]) !!}
+        {!! Form::open(['url' => '/admin/sliders', 'class' => 'col s12', 'files' => true]) !!}
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
@@ -25,14 +25,22 @@
                         <div class="row">
                             <div class="input-field col s12 m6 {{ $errors->has('title') ? 'has-error' : ''}}">
                                 {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
-                                {!! Form::label('title', 'Tytuł', ['class' => 'col-sm-3 control-label']) !!}
-                                {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                                {!! Form::text('title', null, []) !!}
+                                {!! Form::label('title', 'Tytuł', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
                             </div>
+
+                            <div class="input-field col s12 m6 {{ $errors->has('subtitle') ? 'has-error' : ''}}">
+                                {!! $errors->first('subtitle', '<p class="help-block">:message</p>') !!}
+                                {!! Form::text('subtitle', null, []) !!}
+                                {!! Form::label('subtitle', 'Podtytuł', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
+                            </div>
+
                             <div class="input-field col s12 m6 {{ $errors->has('link') ? 'has-error' : ''}}">
                                 {!! $errors->first('link', '<p class="help-block">:message</p>') !!}
-                                {!! Form::label('link', 'Link', ['class' => 'col-sm-3 control-label']) !!}
-                                {!! Form::text('link', null, ['class' => 'form-control']) !!}
+                                {!! Form::text('link', null, []) !!}
+                                {!! Form::label('link', 'Link', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
                             </div>
+
                             <div class="input-field col s12 m6 {{ $errors->has('active') ? 'has-error' : ''}}">
                                 {!! $errors->first('active', '<p class="help-block">:message</p>') !!}
                                 {!! Form::select('active', [1 => 'Tak', 0 => 'Nie']) !!}

@@ -30,9 +30,17 @@ class News extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'url', 'content', 'active',
+        'title', 'url', 'content', 'active', 'file',
         'meta_title', 'meta_keywords', 'meta_description'
     ];
 
+    /**
+     * @var array $SIZES
+     */
+    public static $SIZES = [
+        ['w' => 100, 'h' => 100, 'type' => 'resize'],
+        ['w' => 300, 'h' => 300, 'type' => 'resize'],
+        ['w' => 800, 'h' => 600, 'type' => 'resize'],
+    ];
     
 }

@@ -33,10 +33,22 @@
                         <dd>{{ $blog->id }}</dd>
                         <dt> Tytuł</dt>
                         <dd> {{ $blog->title }} </dd>
+                        <dt> Aktywny</dt>
+                        <dd>
+                            @if($blog->active == 1)
+                                TAK
+                            @else
+                                NIE
+                            @endif
+                        </dd>
+                        @if ($blog->file != NULL)
+                            <dt>Miniaturka</dt>
+                            <dd>
+                                <img src="/files/thumb/blogs/300x300_{{$blog->file}}" />
+                            </dd>
+                        @endif
                         <dt> Treść</dt>
                         <dd> {{ $blog->content }} </dd>
-                        <dt> Aktywny</dt>
-                        <dd> {{ $blog->active }} </dd>
                     </dl>
                 </div>
             </div>

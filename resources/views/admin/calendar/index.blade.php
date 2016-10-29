@@ -39,14 +39,26 @@
                     <label for="calendar_event_category_id">Wybierz kategorię (opcjonalnie)</label>
 
                 </div>
-                <div class="input-field col s12 m12">
-                    <input name="content" type="text" ng-model="event.description">
-                    <label for="content" data-error="wrong" data-success="right" class="">Opis</label>
+
+                <div class="input-field col s12">
+                    <textarea ng-model="event.description" id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Opis</label>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-action waves-effect waves-green btn-flat" ng-click="saveEvent()">Zapisz</a>
+        </div>
+    </div>
+
+    <div id="EventShowModal" class="modal bottom-sheet">
+        <div class="modal-content">
+            <h4>Zadanie [[ event_selected.event_date ]]</h4>
+            <h5>[[ event_selected.title ]]</h5>
+            <p>[[ event_selected.description ]]</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
         </div>
     </div>
 
