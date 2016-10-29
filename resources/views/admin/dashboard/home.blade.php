@@ -97,5 +97,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="col s12 m3 animated flipInX">
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <div class="card-action center">
+                        <a href="/admin/calendar">Zadania: <b>{{ $calendar_events_counter }}</b></a>
+                    </div>
+                    <div class="card-content center">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <div class="card-action center">
+                        <a href="/admin/calendar">Zobacz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
