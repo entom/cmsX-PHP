@@ -40,7 +40,20 @@
                         <dd> {{ $logo->link }} </dd>
 
                         <dt> Active</dt>
-                        <dd> {{ $logo->active }} </dd>
+                        <dd>
+                            @if($logo->active == 1)
+                                TAK
+                            @else
+                                NIE
+                            @endif
+                        </dd>
+
+                        @if ($logo->file != NULL)
+                            <dt>Miniaturka</dt>
+                            <dd>
+                                <img src="/files/thumb/logos/300x300_{{$logo->file}}" />
+                            </dd>
+                        @endif
 
                     </dl>
                 </div>

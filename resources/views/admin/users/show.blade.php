@@ -34,9 +34,21 @@
                         <dt> Email</dt>
                         <dd> {{ $user->email }} </dd>
                         <dt> Administrator</dt>
-                        <dd> {{ $user->admin }} </dd>
+                        <dd>
+                            @if($user->admin == 1)
+                                TAK
+                            @else
+                                NIE
+                            @endif
+                        </dd>
                         <dt> Aktywny</dt>
-                        <dd> {{ $user->active }} </dd>
+                        <dd>
+                            @if($user->active == 1)
+                                TAK
+                            @else
+                                NIE
+                            @endif
+                        </dd>
                     </dl>
                 </div>
             </div>
