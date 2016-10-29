@@ -31,8 +31,15 @@ class Logo extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'link', 'active'
+        'title', 'link', 'active', 'file'
     ];
 
+    /**
+     * @var array $SIZES
+     */
+    public static $SIZES = [
+        ['w' => 100, 'h' => 100, 'type' => 'resize'],
+        ['w' => 300, 'h' => 300, 'type' => 'resize']
+    ];
     
 }
