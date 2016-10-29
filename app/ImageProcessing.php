@@ -95,6 +95,11 @@ class ImageProcessing extends BaseModel
                         $constraint->upsize();
                     })->save($destinationPath . '/' . 'thumb' . '/' . $moduleName . '/' . $thumbFileName, 100);
                     break;
+                case 'fit':
+                    $img->fit($w == 0 ? null : $w, $h == 0 ? null : $h, function ($constraint) {
+                        $constraint->upsize();
+                    })->save($destinationPath . '/' . 'thumb' . '/' . $moduleName . '/' . $thumbFileName, 100);
+                    break;
             }
         }
 
