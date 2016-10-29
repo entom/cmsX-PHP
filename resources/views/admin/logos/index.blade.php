@@ -23,10 +23,11 @@
                             <tr>
                                 <th class="center"></th>
                                 <th class="center"> #</th>
-                                <th> Title</th>
+                                <th> Tytuł</th>
+                                <th> Plik</th>
                                 <th> Link</th>
-                                <th class="center"> Active</th>
-                                <th>Actions</th>
+                                <th class="center"> Aktywny</th>
+                                <th>Akcje</th>
                             </tr>
                             </thead>
                             <tbody class="sortable" data-entityname="logos">
@@ -35,6 +36,11 @@
                                     <td class="center sortable-handle"><span class="fa fa-sort"></span></td>
                                     <td class="center">{{ $loop->iteration }}</td>
                                     <td>{{ $item->title }}</td>
+                                    <td>
+                                        @if ($item->file != NULL)
+                                            <img src="/files/thumb/logos/300x300_{{$item->file}}" class="logo-image-small" />
+                                        @endif
+                                    </td>
                                     <td>{{ $item->link }}</td>
                                     <td class="center">
                                         @if ($item->active === 1)
