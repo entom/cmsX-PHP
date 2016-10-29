@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\News;
 use Illuminate\Http\Request;
 use Session;
+use App\News;
+use App\ImageProcessing;
 
 /**
  * Class NewsController
@@ -55,10 +56,19 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request, [
+            'title' => 'required|max:255'
+        ]);
+
         $requestData = $request->all();
 
         $requestData['url'] = str_slug($requestData['title'], '-');
+
+        $image = $request->file('file');
+        if(!empty($image)) {
+            $fileName = ImageProcessing::transferThumbs($image, 'news', News::$SIZES);
+            $requestData['file'] = $fileName;
+        }
 
         News::create($requestData);
 
@@ -105,11 +115,21 @@ class NewsController extends Controller
      */
     public function update($id, Request $request)
     {
-        
+        $this->validate($request, [
+            'title' => 'required|max:255'
+        ]);
+
         $requestData = $request->all();
         
         $news = News::findOrFail($id);
         $requestData['url'] = str_slug($requestData['title'], '-');
+
+        $image = $request->file('file');
+        if(!empty($image)) {
+            $fileName = ImageProcessing::transferThumbs($image, 'news', News::$SIZES, $news->file);
+            $requestData['file'] = $fileName;
+        }
+
         $news->update($requestData);
 
         Session::flash('flash_message', 'News updated!');
