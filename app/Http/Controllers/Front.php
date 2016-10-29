@@ -114,4 +114,9 @@ class Front extends Controller
         return "$query search page";
     }
 
+    public function account()
+    {
+        return "account page";
+    }
+
 }
