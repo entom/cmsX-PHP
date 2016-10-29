@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Blog;
 use Illuminate\Http\Request;
 use Session;
+use App\Blog;
+use App\ImageProcessing;
 
 class BlogsController extends Controller
 {
@@ -60,6 +61,12 @@ class BlogsController extends Controller
 
         $requestData['url'] = str_slug($requestData['title'], '-');
 
+        $image = $request->file('file');
+        if(!empty($image)) {
+            $fileName = ImageProcessing::transferThumbs($image, 'blogs', Blog::$SIZES);
+            $requestData['file'] = $fileName;
+        }
+
         Blog::create($requestData);
 
         Session::flash('flash_message', 'Blog added!');
@@ -111,6 +118,12 @@ class BlogsController extends Controller
         $blog = Blog::findOrFail($id);
 
         $requestData['url'] = str_slug($requestData['title'], '-');
+
+        $image = $request->file('file');
+        if(!empty($image)) {
+            $fileName = ImageProcessing::transferThumbs($image, 'blogs', Blog::$SIZES, $blog->file);
+            $requestData['file'] = $fileName;
+        }
 
         $blog->update($requestData);
 

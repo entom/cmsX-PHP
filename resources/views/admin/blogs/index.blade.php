@@ -25,6 +25,7 @@
                         <tr>
                             <th class="center"> # </th>
                             <th> Tytuł </th>
+                            <th> Miniaturka </th>
                             <th> Treść </th>
                             <th class="center"> Aktywny </th>
                             <th> Akcje </th>
@@ -35,6 +36,11 @@
                             <tr>
                                 <td class="center">{{ $loop->iteration }}</td>
                                 <td>{{ $item->title }}</td>
+                                <td>
+                                    @if ($item->file != NULL)
+                                        <img src="/files/thumb/blogs/100x100_{{ $item->file }}" class="news-image-small" />
+                                    @endif
+                                </td>
                                 <td>{{ str_limit($item->content, 64, '...') }}</td>
                                 <td class="center">
                                     @if ($item->active === 1)
