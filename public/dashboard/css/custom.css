@@ -65,3 +65,7 @@ table .badge {
     padding: 5px 15px;
     margin-right: 10px;
 }
+
+.logo-image-small {
+    height: 30px;
+}
