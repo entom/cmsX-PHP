@@ -76,10 +76,11 @@ class ImageProcessing extends BaseModel
         }
 
         $destinationPath = public_path('files');
-        $img = Image::make($file->getRealPath());
 
         foreach ($sizes as $size)
         {
+            $img = Image::make($file->getRealPath());
+
             $w = $size['w'];
             $h = $size['h'];
             $type = $size['type'];
@@ -89,9 +90,10 @@ class ImageProcessing extends BaseModel
             switch ($type)
             {
                 case 'resize':
-                    $img->resize($w, $h, function ($constraint) {
+                    $img->resize($w == 0 ? null : $w, $h == 0 ? null : $h, function ($constraint) {
                         $constraint->aspectRatio();
-                    })->save($destinationPath . '/' . 'thumb' . '/' . $moduleName . '/' . $thumbFileName);
+                        $constraint->upsize();
+                    })->save($destinationPath . '/' . 'thumb' . '/' . $moduleName . '/' . $thumbFileName, 100);
                     break;
             }
         }
