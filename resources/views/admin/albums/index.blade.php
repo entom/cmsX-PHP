@@ -23,6 +23,7 @@
                             <tr>
                                 <th class="center"> #</th>
                                 <th> Tytuł</th>
+                                <th> Miniaturka </th>
                                 <th> Aktywny</th>
                                 <th> Akcje</th>
                             </tr>
@@ -32,6 +33,11 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->title }}</td>
+                                    <td>
+                                        @if ($item->file != NULL)
+                                            <img src="/files/thumb/albums/100x100_{{ $item->file }}" class="news-image-small" />
+                                        @endif
+                                    </td>
                                     <td>
                                         @if ($item->active === 1)
                                             <span class="new badge blue" data-badge-caption="">Tak</span>

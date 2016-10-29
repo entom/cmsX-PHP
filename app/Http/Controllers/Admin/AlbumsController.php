@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Album;
 use Illuminate\Http\Request;
 use Session;
+use App\Album;
+use App\ImageProcessing;
 
 class AlbumsController extends Controller
 {
@@ -59,6 +60,12 @@ class AlbumsController extends Controller
         $requestData = $request->all();
 
         $requestData['url'] = str_slug($requestData['title'], '-');
+
+        $image = $request->file('file');
+        if(!empty($image)) {
+            $fileName = ImageProcessing::transferThumbs($image, 'albums', Album::$SIZES);
+            $requestData['file'] = $fileName;
+        }
         
         Album::create($requestData);
 
@@ -108,8 +115,15 @@ class AlbumsController extends Controller
         
         $requestData = $request->all();
         $requestData['url'] = str_slug($requestData['title'], '-');
-        
+
         $album = Album::findOrFail($id);
+
+        $image = $request->file('file');
+        if(!empty($image)) {
+            $fileName = ImageProcessing::transferThumbs($image, 'albums', Album::$SIZES, $album->file);
+            $requestData['file'] = $fileName;
+        }
+
         $album->update($requestData);
 
         Session::flash('flash_message', 'Album updated!');
