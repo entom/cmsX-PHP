@@ -14,6 +14,7 @@ use App\News;
 use App\Album;
 use App\Logo;
 use App\CalendarEvent;
+use App\Slider;
 
 /**
  * Class Dashboard
@@ -39,7 +40,8 @@ class Dashboard extends Controller
             'news_counter' => News::count(),
             'albums_counter' => Album::count(),
             'logos_counter' => Logo::count(),
-            'calendar_events_counter' => CalendarEvent::count()
+            'calendar_events_counter' => CalendarEvent::count(),
+            'sliders_counter' => Slider::count()
         ]);
     }
 

@@ -38,6 +38,22 @@
             <div class="card horizontal">
                 <div class="card-stacked">
                     <div class="card-action center">
+                        <a href="/admin/sliders">Banery: <b>{{ $sliders_counter }}</b></a>
+                    </div>
+                    <div class="card-content center">
+                        <i class="fa fa-picture-o pink-text lighten-1"></i>
+                    </div>
+                    <div class="card-action center">
+                        <a href="/admin/sliders">Zobacz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 m3 animated flipInX">
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <div class="card-action center">
                         <a href="/admin/blogs">Blog: <b>{{ $blogs_counter }}</b></a>
                     </div>
                     <div class="card-content center">
