@@ -29,7 +29,7 @@ class Slider extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'link', 'active', 'file'];
+    protected $fillable = ['title', 'subtitle', 'link', 'active', 'file'];
 
     /**
      * @var array $SIZES
