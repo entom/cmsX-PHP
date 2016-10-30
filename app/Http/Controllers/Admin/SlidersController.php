@@ -116,8 +116,7 @@ class SlidersController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            'title' => 'required|max:255',
-            'file' => 'required'
+            'title' => 'required|max:255'
         ]);
 
         $requestData = $request->all();
