@@ -131,7 +131,7 @@ class ImageProcessing extends BaseModel
 
         if(file_exists($dir . '/original/' . $moduleName . '/' . $fileName)) {
             unlink($dir . '/original/' . $moduleName . '/' . $fileName);
-            }
+        }
     }
 
 }
