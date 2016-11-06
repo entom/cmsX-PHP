@@ -1,21 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class News
- * @package App
- */
-class News extends Model
+class Album extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'news';
+    protected $table = 'albums';
 
     /**
     * The database primary key value.

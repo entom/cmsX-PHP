@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Session;
-use App\Album;
-use App\ImageProcessing;
+use App\Model\Album;
+use App\Model\ImageProcessing;
 
 class AlbumsController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Faker\Provider\Base;
 use Illuminate\Database\Eloquent\Model;

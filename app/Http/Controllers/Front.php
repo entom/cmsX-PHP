@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\ShopBrand;
-use App\ShopCategory;
-use App\ShopProduct;
+use App\Model\ShopBrand;
+use App\Model\ShopCategory;
+use App\Model\ShopProduct;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;

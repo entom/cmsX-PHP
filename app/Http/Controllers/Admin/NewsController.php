@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Session;
-use App\News;
-use App\ImageProcessing;
+use App\Model\News;
+use App\Model\ImageProcessing;
 
 /**
  * Class NewsController

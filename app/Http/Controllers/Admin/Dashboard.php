@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Site;
-use App\Blog;
-use App\User;
-use App\News;
-use App\Album;
-use App\Logo;
-use App\CalendarEvent;
-use App\Slider;
-use App\Paralax;
+use App\Model\Site;
+use App\Model\Blog;
+use App\Model\User;
+use App\Model\News;
+use App\Model\Album;
+use App\Model\Logo;
+use App\Model\CalendarEvent;
+use App\Model\Slider;
+use App\Model\Paralax;
 
 /**
  * Class Dashboard

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 use Session;
 
-use App\CalendarEvent;
+use App\Model\CalendarEvent;
 
 class CalendarEventsController extends Controller
 {

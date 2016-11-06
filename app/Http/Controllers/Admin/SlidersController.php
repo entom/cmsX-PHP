@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Slider;
+use App\Model\Slider;
 use Illuminate\Http\Request;
 use Session;
-use App\ImageProcessing;
+use App\Model\ImageProcessing;
 
 /**
  * Class SlidersController

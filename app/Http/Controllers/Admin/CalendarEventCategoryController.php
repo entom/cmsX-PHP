@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\CalendarEventCategory;
+use App\Model\CalendarEventCategory;
 use Illuminate\Http\Request;
 use Session;
 
