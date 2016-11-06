@@ -33,7 +33,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->title }}</td>
                                     <td>
-                                        <img src="/files/thumb/paralax/100x100_{{ $item->file }}" />
+                                        <img class="paralax-image-small" src="/files/thumb/paralax/100x100_{{ $item->file }}" />
                                     </td>
                                     <td>{{ $item->codename }}</td>
                                     <td>
