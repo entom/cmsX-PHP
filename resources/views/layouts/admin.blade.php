@@ -245,6 +245,23 @@
                         </li>
                     </ul>
                 </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
+                                    <i class="fa fa-file-picture-o" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Zdjęcia w tle</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/paralax')}}">Zobacz</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </aside>
         <div class="col s12">

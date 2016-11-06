@@ -15,6 +15,7 @@ use App\Album;
 use App\Logo;
 use App\CalendarEvent;
 use App\Slider;
+use App\Paralax;
 
 /**
  * Class Dashboard
@@ -41,7 +42,8 @@ class Dashboard extends Controller
             'albums_counter' => Album::count(),
             'logos_counter' => Logo::count(),
             'calendar_events_counter' => CalendarEvent::count(),
-            'sliders_counter' => Slider::count()
+            'sliders_counter' => Slider::count(),
+            'paralax_counter' => Paralax::count()
         ]);
     }
 
