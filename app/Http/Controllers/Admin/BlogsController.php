@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Session;
-use App\Blog;
-use App\ImageProcessing;
+use App\Model\Blog;
+use App\Model\ImageProcessing;
 
 class BlogsController extends Controller
 {

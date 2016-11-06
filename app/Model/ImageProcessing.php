@@ -6,7 +6,7 @@
  * Time: 14:41
  */
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Image;
@@ -131,7 +131,7 @@ class ImageProcessing extends BaseModel
 
         if(file_exists($dir . '/original/' . $moduleName . '/' . $fileName)) {
             unlink($dir . '/original/' . $moduleName . '/' . $fileName);
-            }
+        }
     }
 
 }

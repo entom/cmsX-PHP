@@ -1,17 +1,20 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Album extends Model
+class Logo extends Model
 {
+
+    use \Rutorika\Sortable\SortableTrait;
+
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'albums';
+    protected $table = 'logos';
 
     /**
     * The database primary key value.
@@ -20,14 +23,15 @@ class Album extends Model
     */
     protected $primaryKey = 'id';
 
+    protected static $sortableField = 'position';
+
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'title', 'url', 'content', 'active', 'file',
-        'meta_title', 'meta_keywords', 'meta_description'
+        'title', 'link', 'active', 'file'
     ];
 
     /**
@@ -35,8 +39,7 @@ class Album extends Model
      */
     public static $SIZES = [
         ['w' => 100, 'h' => 100, 'type' => 'resize'],
-        ['w' => 300, 'h' => 300, 'type' => 'resize'],
-        ['w' => 800, 'h' => 600, 'type' => 'resize'],
+        ['w' => 300, 'h' => 300, 'type' => 'resize']
     ];
     
 }

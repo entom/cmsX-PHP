@@ -47,7 +47,7 @@
                                 {!! Form::label('active', 'Aktywny', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
                             </div>
 
-                            <div class="file-field input-field col s12 m6 {{ $errors->has('active') ? 'has-error' : ''}}">
+                            <div class="file-field input-field col s12 m6 {{ $errors->has('file') ? 'has-error' : ''}}">
                                 <div class="btn">
                                     <span>Plik</span>
                                     <input type="file" name="file">

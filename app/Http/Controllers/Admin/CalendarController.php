@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\CalendarEventCategory;
+use App\Model\CalendarEventCategory;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 use Session;
 
-use App\CalendarEvent;
+use App\Model\CalendarEvent;
 
 class CalendarController extends Controller
 {

@@ -129,5 +129,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="col s12 m3 animated flipInX">
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <div class="card-action center">
+                        <a href="/admin/paralax">Zdjęcia w tle: <b>{{ $paralax_counter }}</b></a>
+                    </div>
+                    <div class="card-content center">
+                        <i class="fa fa-file-picture-o  deep-purple-text lighten-1"></i>
+                    </div>
+                    <div class="card-action center">
+                        <a href="/admin/paralax">Zobacz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

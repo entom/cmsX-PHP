@@ -5,16 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model\Paralax;
+use App\Model\ImageProcessing;
 use Illuminate\Http\Request;
 use Session;
-use App\Model\Album;
-use App\Model\ImageProcessing;
 
-class AlbumsController extends Controller
+/**
+ * Class ParalaxController
+ * @package App\Http\Controllers\Admin
+ */
+class ParalaxController extends Controller
 {
 
     /**
-     * AlbumsController constructor.
+     * ParalaxController constructor.
      */
     public function __construct()
     {
@@ -28,9 +32,9 @@ class AlbumsController extends Controller
      */
     public function index()
     {
-        $albums = Album::paginate(25);
+        $paralax = Paralax::paginate(25);
 
-        return view('admin.albums.index', compact('albums'));
+        return view('admin.paralax.index', compact('paralax'));
     }
 
     /**
@@ -40,7 +44,7 @@ class AlbumsController extends Controller
      */
     public function create()
     {
-        return view('admin.albums.create');
+        return view('admin.paralax.create');
     }
 
     /**
@@ -54,24 +58,21 @@ class AlbumsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:255',
-            'active' => 'required'
+            'codename' => 'required|max:255',
+            'file' => 'required'
         ]);
 
         $requestData = $request->all();
 
-        $requestData['url'] = str_slug($requestData['title'], '-');
-
         $image = $request->file('file');
-        if(!empty($image)) {
-            $fileName = ImageProcessing::transferThumbs($image, 'albums', Album::$SIZES);
-            $requestData['file'] = $fileName;
-        }
+        $fileName = ImageProcessing::transferThumbs($image, 'paralax', Paralax::$SIZES);
+        $requestData['file'] = $fileName;
         
-        Album::create($requestData);
+        Paralax::create($requestData);
 
-        Session::flash('flash_message', 'Album added!');
+        Session::flash('flash_message', 'Paralax added!');
 
-        return redirect('admin/albums');
+        return redirect('admin/paralax');
     }
 
     /**
@@ -83,9 +84,9 @@ class AlbumsController extends Controller
      */
     public function show($id)
     {
-        $album = Album::findOrFail($id);
+        $paralax = Paralax::findOrFail($id);
 
-        return view('admin.albums.show', compact('album'));
+        return view('admin.paralax.show', compact('paralax'));
     }
 
     /**
@@ -97,9 +98,9 @@ class AlbumsController extends Controller
      */
     public function edit($id)
     {
-        $album = Album::findOrFail($id);
+        $paralax = Paralax::findOrFail($id);
 
-        return view('admin.albums.edit', compact('album'));
+        return view('admin.paralax.edit', compact('paralax'));
     }
 
     /**
@@ -112,23 +113,26 @@ class AlbumsController extends Controller
      */
     public function update($id, Request $request)
     {
-        
-        $requestData = $request->all();
-        $requestData['url'] = str_slug($requestData['title'], '-');
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'codename' => 'required|max:255',
+        ]);
 
-        $album = Album::findOrFail($id);
+        $requestData = $request->all();
+
+        $paralax = Paralax::findOrFail($id);
 
         $image = $request->file('file');
         if(!empty($image)) {
-            $fileName = ImageProcessing::transferThumbs($image, 'albums', Album::$SIZES, $album->file);
+            $fileName = ImageProcessing::transferThumbs($image, 'paralax', Paralax::$SIZES, $paralax->file);
             $requestData['file'] = $fileName;
         }
 
-        $album->update($requestData);
+        $paralax->update($requestData);
 
-        Session::flash('flash_message', 'Album updated!');
+        Session::flash('flash_message', 'Paralax updated!');
 
-        return redirect('admin/albums');
+        return redirect('admin/paralax');
     }
 
     /**
@@ -140,10 +144,10 @@ class AlbumsController extends Controller
      */
     public function destroy($id)
     {
-        Album::destroy($id);
+        Paralax::destroy($id);
 
-        Session::flash('flash_message', 'Album deleted!');
+        Session::flash('flash_message', 'Paralax deleted!');
 
-        return redirect('admin/albums');
+        return redirect('admin/paralax');
     }
 }
