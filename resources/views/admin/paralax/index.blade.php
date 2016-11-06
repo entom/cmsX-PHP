@@ -7,7 +7,7 @@
                 <h1>Zdjęcia w tle</h1>
             </div>
             <div class="col s6">
-                <a href="{{ url('/admin/paralax/create') }}" class="waves-effect waves-light btn right" title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
+{{--                <a href="{{ url('/admin/paralax/create') }}" class="waves-effect waves-light btn right" title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>--}}
             </div>
         </header>
         <div class="row">
@@ -21,32 +21,38 @@
                             <thead>
                             <tr>
                                 <th class="center"> # </th>
-                                <th> Title </th><th> Codename </th><th> File </th>
-                                <th>Actions</th>
+                                <th> Nazwa </th>
+                                <th> Plik </th>
+                                <th> Nazwa kodowa </th>
+                                <th>Akcje</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($paralax as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->title }}</td><td>{{ $item->codename }}</td><td>{{ $item->file }}</td>
+                                    <td>{{ $item->title }}</td>
+                                    <td>
+                                        <img src="/files/thumb/paralax/100x100_{{ $item->file }}" />
+                                    </td>
+                                    <td>{{ $item->codename }}</td>
                                     <td>
                                         <a href="{{ url('/admin/paralax/' . $item->id) }}" class="waves-effect waves-light btn"
                                            title="Zobacz"><i class="fa fa-folder-open"></i></a>
                                         <a href="{{ url('/admin/paralax/' . $item->id . '/edit') }}" class="waves-effect waves-light btn"
                                            title="Edycja"><i class="fa fa-edit"></i></a>
-                                        {!! Form::open([
-                                            'method'=>'DELETE',
-                                            'url' => ['/admin/paralax', $item->id],
-                                            'style' => 'display:inline'
-                                        ]) !!}
-                                        {!! Form::button('<i class="fa fa-trash"></i>', array(
-                                                'type' => 'submit',
-                                                'class' => 'waves-effect waves-light btn',
-                                                'title' => 'Usuń wpis',
-                                                'onclick'=>'return confirm("Czy na pewno usunąć?")'
-                                        )) !!}
-                                        {!! Form::close() !!}
+                                        {{--{!! Form::open([--}}
+                                            {{--'method'=>'DELETE',--}}
+                                            {{--'url' => ['/admin/paralax', $item->id],--}}
+                                            {{--'style' => 'display:inline'--}}
+                                        {{--]) !!}--}}
+                                        {{--{!! Form::button('<i class="fa fa-trash"></i>', array(--}}
+                                                {{--'type' => 'submit',--}}
+                                                {{--'class' => 'waves-effect waves-light btn',--}}
+                                                {{--'title' => 'Usuń wpis',--}}
+                                                {{--'onclick'=>'return confirm("Czy na pewno usunąć?")'--}}
+                                        {{--)) !!}--}}
+                                        {{--{!! Form::close() !!}--}}
                                     </td>
                                 </tr>
                             @endforeach

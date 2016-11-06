@@ -23,27 +23,28 @@
                     </div>
                     <div class="card-content">
                         <div class="row">
-                                        <div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
-                {!! Form::label('title', 'Title', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('title', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('codename') ? 'has-error' : ''}}">
-                {!! Form::label('codename', 'Codename', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('codename', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('codename', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
-            <div class="form-group {{ $errors->has('file') ? 'has-error' : ''}}">
-                {!! Form::label('file', 'File', ['class' => 'col-sm-3 control-label']) !!}
-                <div class="col-sm-6">
-                    {!! Form::text('file', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('file', '<p class="help-block">:message</p>') !!}
-                </div>
-            </div>
+                            <div class="input-field col s12 m6 {{ $errors->has('title') ? 'has-error' : ''}}">
+                                {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
+                                {!! Form::text('title', null, []) !!}
+                                {!! Form::label('title', 'Nazwa', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
+                            </div>
+
+                            <div class="input-field col s12 m6 {{ $errors->has('codename') ? 'has-error' : ''}}">
+                                {!! $errors->first('codename', '<p class="help-block">:message</p>') !!}
+                                {!! Form::text('codename', null, []) !!}
+                                {!! Form::label('codename', 'Nazwa kodowa', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
+                            </div>
+
+                            <div class="file-field input-field col s12 m6 {{ $errors->has('file') ? 'has-error' : ''}}">
+                                <div class="btn">
+                                    <span>Plik</span>
+                                    <input type="file" name="file">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                </div>
+                                {!! $errors->first('file', '<p class="help-block">:message</p>') !!}
+                            </div>
 
                         </div>
                     </div>
