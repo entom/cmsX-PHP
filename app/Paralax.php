@@ -39,5 +39,16 @@ class Paralax extends Model
         ['w' => 300, 'h' => 300, 'type' => 'resize'],
         ['w' => 1920, 'h' => 700, 'type' => 'fit'],
     ];
-    
+
+    /**
+     * getByCodename method
+     *
+     * @param $codename
+     * @return mixed|Paralax
+     */
+    public static function getByCodename($codename)
+    {
+        return self::where('codename', '=', $codename)->firstOrFail();
+    }
+
 }
