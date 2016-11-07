@@ -31,7 +31,7 @@
                             <tbody>
                             @foreach($albums as $item)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td class="center">{{ $loop->iteration }}</td>
                                     <td>{{ $item->title }}</td>
                                     <td>
                                         @if ($item->file != NULL)

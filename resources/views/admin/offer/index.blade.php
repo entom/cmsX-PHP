@@ -21,6 +21,7 @@
                         <table class="responsive-table bordered striped highlight">
                             <thead>
                             <tr>
+                                <th class="center"></th>
                                 <th class="center"> #</th>
                                 <th> Plik</th>
                                 <th> Tytuł</th>
@@ -29,9 +30,10 @@
                                 <th> Akcje</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="sortable" data-entityname="offer">
                             @foreach($offer as $item)
-                                <tr>
+                                <tr data-itemId="{{ $item->id }}">
+                                    <td class="center sortable-handle"><span class="fa fa-sort"></span></td>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
                                         <img src="/files/thumb/offers/100x100_{{ $item->file }}" class="logo-image-small" />
@@ -77,4 +79,14 @@
             </div>
         </div>
     </div>
+
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 @endsection

@@ -21,18 +21,20 @@
                         <table class="responsive-table bordered striped highlight">
                             <thead>
                             <tr>
+                                <th class="center"></th>
                                 <th class="center"> #</th>
                                 <th> Tytuł</th>
                                 <th> Miniaturka </th>
                                 <th> Link</th>
-                                <th> Aktywny</th>
+                                <th class="center"> Aktywny</th>
                                 <th> Akcje</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="sortable" data-entityname="sliders">
                             @foreach($sliders as $item)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                <tr data-itemId="{{ $item->id }}">
+                                    <td class="center sortable-handle"><span class="fa fa-sort"></span></td>
+                                    <td class="center">{{ $loop->iteration }}</td>
                                     <td>{{ $item->title }}</td>
                                     <td>
                                         @if ($item->file != NULL)

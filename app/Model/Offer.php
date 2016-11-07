@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Offer extends Model
 {
+    use \Rutorika\Sortable\SortableTrait;
+
     /**
      * The database table used by the model.
      *
@@ -19,6 +21,11 @@ class Offer extends Model
     * @var string
     */
     protected $primaryKey = 'id';
+
+    /**
+     * @var string $sortableField
+     */
+    protected static $sortableField = 'position';
 
     /**
      * Attributes that should be mass-assignable.

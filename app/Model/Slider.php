@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Slider extends Model
 {
+    use \Rutorika\Sortable\SortableTrait;
+
     /**
      * The database table used by the model.
      *
