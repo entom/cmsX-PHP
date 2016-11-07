@@ -28,7 +28,7 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $offer = Offer::paginate(25);
+        $offer = Offer::orderBy('position', 'asc')->paginate(25);
 
         return view('admin.offer.index', compact('offer'));
     }

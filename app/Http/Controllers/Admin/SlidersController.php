@@ -32,7 +32,7 @@ class SlidersController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::paginate(25);
+        $sliders = Slider::orderBy('position', 'asc')->paginate(25);
 
         return view('admin.sliders.index', compact('sliders'));
     }
