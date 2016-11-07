@@ -214,6 +214,24 @@
                         <li class="collapsible__element">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
+                                    <i class="fa fa-list-ul" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Oferta</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/offer')}}">Lista</a></li>
+                                    <li><a href="{{url('/admin/offer/create')}}">Nowy wpis</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
                                     <i class="fa fa-users" aria-hidden="true"></i>
                                 </sapn>
                                 <span>Użytkownicy</span>

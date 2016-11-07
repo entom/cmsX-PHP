@@ -16,6 +16,7 @@ use App\Model\Logo;
 use App\Model\CalendarEvent;
 use App\Model\Slider;
 use App\Model\Paralax;
+use App\Model\Offer;
 
 /**
  * Class Dashboard
@@ -43,7 +44,8 @@ class Dashboard extends Controller
             'logos_counter' => Logo::count(),
             'calendar_events_counter' => CalendarEvent::count(),
             'sliders_counter' => Slider::count(),
-            'paralax_counter' => Paralax::count()
+            'paralax_counter' => Paralax::count(),
+            'offers_counter' => Offer::count()
         ]);
     }
 
