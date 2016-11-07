@@ -92,7 +92,6 @@
                 </div>
             </div>
         </div>
-        </div>
 
         <div class="col s12 m12">
             <div class="pt20">
