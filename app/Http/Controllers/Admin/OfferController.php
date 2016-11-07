@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Offer;
 use Illuminate\Http\Request;
 use Session;
+use App\Model\Offer;
+use App\Model\ImageProcessing;
 
 class OfferController extends Controller
 {
@@ -51,8 +52,20 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'short_content' => 'required',
+            'file' => 'required'
+        ]);
+
         $requestData = $request->all();
+
+        $requestData['url'] = str_slug($requestData['title'], '-');
+        $requestData['position'] = Offer::count() + 1;
+        $image = $request->file('file');
+        $fileName = ImageProcessing::transferThumbs($image, 'offers', Offer::$SIZES);
+        $requestData['file'] = $fileName;
         
         Offer::create($requestData);
 
@@ -99,10 +112,22 @@ class OfferController extends Controller
      */
     public function update($id, Request $request)
     {
-        
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'short_content' => 'required'
+        ]);
+
         $requestData = $request->all();
-        
         $offer = Offer::findOrFail($id);
+
+        $requestData['url'] = str_slug($requestData['title'], '-');
+        $image = $request->file('file');
+        if(!empty($image)) {
+            $fileName = ImageProcessing::transferThumbs($image, 'offers', Offer::$SIZES, $offer->file);
+            $requestData['file'] = $fileName;
+        }
+
         $offer->update($requestData);
 
         Session::flash('flash_message', 'Offer updated!');

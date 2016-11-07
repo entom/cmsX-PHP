@@ -4,10 +4,11 @@
     <div class="col s12">
         <header class="row navigation-row">
             <div class="col s6">
-                <h1>Offer</h1>
+                <h1>Oferta</h1>
             </div>
             <div class="col s6">
-                <a href="{{ url('/admin/offer/create') }}" class="waves-effect waves-light btn right" title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
+                <a href="{{ url('/admin/offer/create') }}" class="waves-effect waves-light btn right"
+                   title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
             </div>
         </header>
         <div class="row">
@@ -20,20 +21,38 @@
                         <table class="responsive-table bordered striped highlight">
                             <thead>
                             <tr>
-                                <th class="center"> # </th>
-                                <th> Title </th><th> Content </th><th> Short Content </th>
-                                <th>Actions</th>
+                                <th class="center"> #</th>
+                                <th> Plik</th>
+                                <th> Tytuł</th>
+                                <th class="center"> Aktywne</th>
+                                <th> Krótka treść</th>
+                                <th> Akcje</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($offer as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->title }}</td><td>{{ $item->content }}</td><td>{{ $item->short_content }}</td>
                                     <td>
-                                        <a href="{{ url('/admin/offer/' . $item->id) }}" class="waves-effect waves-light btn"
+                                        <img src="/files/thumb/offers/100x100_{{ $item->file }}" class="logo-image-small" />
+                                    </td>
+                                    <td>{{ $item->title }}</td>
+                                    <td class="center">
+                                        @if ($item->active === 1)
+                                            <span class="new badge blue" data-badge-caption="">Tak</span>
+                                        @else
+                                            <span class="new badge red" data-badge-caption="">Nie</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {{ str_limit($item->short_content, 64, '...') }}
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('/admin/offer/' . $item->id) }}"
+                                           class="waves-effect waves-light btn"
                                            title="Zobacz"><i class="fa fa-folder-open"></i></a>
-                                        <a href="{{ url('/admin/offer/' . $item->id . '/edit') }}" class="waves-effect waves-light btn"
+                                        <a href="{{ url('/admin/offer/' . $item->id . '/edit') }}"
+                                           class="waves-effect waves-light btn"
                                            title="Edycja"><i class="fa fa-edit"></i></a>
                                         {!! Form::open([
                                             'method'=>'DELETE',
