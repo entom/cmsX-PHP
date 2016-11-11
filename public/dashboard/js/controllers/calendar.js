@@ -1,7 +1,7 @@
 /**
  * Created by tomasz on 22.10.2016.
  */
-cmsx.controller('CalendarController', function ($scope, $http, $compile, $timeout, uiCalendarConfig) {
+cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $compile, $timeout, uiCalendarConfig) {
 
     /**
      * event
@@ -239,7 +239,10 @@ cmsx.controller('CalendarController', function ($scope, $http, $compile, $timeou
             eventDrop: $scope.alertOnDrop,
             eventResize: $scope.alertOnResize,
             eventRender: $scope.eventRender,
-            dayClick: $scope.alertDayOnClick
+            dayClick: $scope.alertDayOnClick,
+            viewRender: function(view, element) {
+                $scope.getEvents();
+            }
         }
     };
 
