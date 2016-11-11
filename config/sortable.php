@@ -7,5 +7,6 @@ return [
         'logos' => '\App\Model\Logo',
         'offer' => '\App\Model\Offer',
         'sliders' => '\App\Model\Slider',
+        'realizations' => '\App\Model\Realization',
     ],
 ];
