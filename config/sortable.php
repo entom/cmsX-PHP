@@ -8,5 +8,6 @@ return [
         'offer' => '\App\Model\Offer',
         'sliders' => '\App\Model\Slider',
         'realizations' => '\App\Model\Realization',
+        'technologies' => '\App\Model\Technology',
     ],
 ];
