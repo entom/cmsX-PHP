@@ -15,7 +15,7 @@ class CreateTechnologiesTable extends Migration
         Schema::create('technologies', function(Blueprint $table) {
             $table->increments('id');
             $table->string('title', 255);
-            $table->string('title', 512)->nullable()->default(null);
+            $table->string('url', 512)->nullable()->default(null);
             $table->string('subtitle')->nullable()->default(null);
             $table->text('content')->nullable()->default(null);
             $table->boolean('active')->default(true);
