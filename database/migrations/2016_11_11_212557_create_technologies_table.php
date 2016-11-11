@@ -17,7 +17,7 @@ class CreateTechnologiesTable extends Migration
             $table->string('title', 255);
             $table->string('title', 512)->nullable()->default(null);
             $table->string('subtitle')->nullable()->default(null);
-            $table->text('content')->nullable()->default();
+            $table->text('content')->nullable()->default(null);
             $table->boolean('active')->default(true);
             $table->integer('position')->nullable()->default(0);
             $table->string('file', 255)->nullable()->default(null);
