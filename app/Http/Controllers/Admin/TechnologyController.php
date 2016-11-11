@@ -5,10 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Technology;
 use Illuminate\Http\Request;
 use Session;
+use App\Model\Technology;
+use App\Model\ImageProcessing;
 
+/**
+ * Class TechnologyController
+ * @package App\Http\Controllers\Admin
+ */
 class TechnologyController extends Controller
 {
 
@@ -27,7 +32,7 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        $technology = Technology::paginate(25);
+        $technology = Technology::orderBy('position', 'asc')->paginate(25);
 
         return view('admin.technology.index', compact('technology'));
     }
@@ -51,9 +56,20 @@ class TechnologyController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'file' => 'required'
+        ]);
+
         $requestData = $request->all();
-        
+
+        $requestData['position'] = Technology::count() + 1;
+        $requestData['url'] = str_slug($requestData['title'], '-');
+
+        $image = $request->file('file');
+        $fileName = ImageProcessing::transferThumbs($image, 'technologies', Technology::$SIZES);
+        $requestData['file'] = $fileName;
+
         Technology::create($requestData);
 
         Session::flash('flash_message', 'Technology added!');
@@ -103,6 +119,15 @@ class TechnologyController extends Controller
         $requestData = $request->all();
         
         $technology = Technology::findOrFail($id);
+
+        $requestData['url'] = str_slug($requestData['title'], '-');
+
+        $image = $request->file('file');
+        if(!empty($image)) {
+            $fileName = ImageProcessing::transferThumbs($image, 'technologies', Technology::$SIZES, $technology->file);
+            $requestData['file'] = $fileName;
+        }
+
         $technology->update($requestData);
 
         Session::flash('flash_message', 'Technology updated!');
