@@ -286,14 +286,13 @@
                         <li class="collapsible__element">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    <i class="fa fa-file-picture-o" aria-hidden="true"></i>
                                 </sapn>
-                                <span>Kalendarz</span>
+                                <span>Zdjęcia w tle</span>
                             </a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="{{url('/admin/calendar')}}">Zobacz</a></li>
-                                    <li><a href="{{url('/admin/calendar-event-category')}}">Kategorie</a></li>
+                                    <li><a href="{{url('/admin/paralax')}}">Zobacz</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -304,13 +303,14 @@
                         <li class="collapsible__element">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
-                                    <i class="fa fa-file-picture-o" aria-hidden="true"></i>
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </sapn>
-                                <span>Zdjęcia w tle</span>
+                                <span>Kalendarz</span>
                             </a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li><a href="{{url('/admin/paralax')}}">Zobacz</a></li>
+                                    <li><a href="{{url('/admin/calendar')}}">Zobacz</a></li>
+                                    <li><a href="{{url('/admin/calendar-event-category')}}">Kategorie</a></li>
                                 </ul>
                             </div>
                         </li>
