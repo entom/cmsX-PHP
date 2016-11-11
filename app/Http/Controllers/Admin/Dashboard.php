@@ -18,6 +18,7 @@ use App\Model\Slider;
 use App\Model\Paralax;
 use App\Model\Offer;
 use App\Model\Realization;
+use App\Model\Technology;
 
 /**
  * Class Dashboard
@@ -48,6 +49,7 @@ class Dashboard extends Controller
             'paralax_counter' => Paralax::count(),
             'offers_counter' => Offer::count(),
             'realizations_counter' => Realization::count(),
+            'technologies_counter' => Technology::count(),
         ]);
     }
 
