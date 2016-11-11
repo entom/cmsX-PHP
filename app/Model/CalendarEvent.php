@@ -24,7 +24,7 @@ class CalendarEvent extends BaseModel
      */
     public function category()
     {
-        return $this->belongsTo('App\CalendarEventCategory', 'calendar_event_category_id', 'id');
+        return $this->belongsTo('App\Model\CalendarEventCategory', 'calendar_event_category_id', 'id');
     }
 
     /**
