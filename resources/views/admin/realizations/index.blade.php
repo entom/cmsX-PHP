@@ -4,10 +4,11 @@
     <div class="col s12">
         <header class="row navigation-row">
             <div class="col s6">
-                <h1>Realizations</h1>
+                <h1>Realizacje</h1>
             </div>
             <div class="col s6">
-                <a href="{{ url('/admin/realizations/create') }}" class="waves-effect waves-light btn right" title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
+                <a href="{{ url('/admin/realizations/create') }}" class="waves-effect waves-light btn right"
+                   title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
             </div>
         </header>
         <div class="row">
@@ -20,20 +21,38 @@
                         <table class="responsive-table bordered striped highlight">
                             <thead>
                             <tr>
-                                <th class="center"> # </th>
-                                <th> Title </th><th> Content </th>
-                                <th>Actions</th>
+                                <th class="center"></th>
+                                <th class="center"> #</th>
+                                <th>Plik</th>
+                                <th> Tytuł </th>
+                                <th class="center"> Aktywny </th>
+                                <th>Akcje</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="sortable" data-entityname="realizations">
                             @foreach($realizations as $item)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->title }}</td><td>{{ $item->content }}</td>
+                                    <td class="center sortable-handle"><span class="fa fa-sort"></span></td>
+                                    <td class="center">{{ $loop->iteration }}</td>
                                     <td>
-                                        <a href="{{ url('/admin/realizations/' . $item->id) }}" class="waves-effect waves-light btn"
+                                        @if ($item->file != NULL)
+                                            <img src="/files/thumb/realizations/100x100_{{ $item->file }}" class="news-image-small" />
+                                        @endif
+                                    </td>
+                                    <td>{{ $item->title }}</td>
+                                    <td class="center">
+                                        @if ($item->active === 1)
+                                            <span class="new badge blue" data-badge-caption="">Tak</span>
+                                        @else
+                                            <span class="new badge red" data-badge-caption="">Nie</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('/admin/realizations/' . $item->id) }}"
+                                           class="waves-effect waves-light btn"
                                            title="Zobacz"><i class="fa fa-folder-open"></i></a>
-                                        <a href="{{ url('/admin/realizations/' . $item->id . '/edit') }}" class="waves-effect waves-light btn"
+                                        <a href="{{ url('/admin/realizations/' . $item->id . '/edit') }}"
+                                           class="waves-effect waves-light btn"
                                            title="Edycja"><i class="fa fa-edit"></i></a>
                                         {!! Form::open([
                                             'method'=>'DELETE',

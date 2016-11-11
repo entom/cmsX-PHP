@@ -37,20 +37,17 @@
                         <dt> Title</dt>
                         <dd> {{ $slider->title }} </dd>
 
-                        <dt>Miniaturka</dt>
-                        <dd>
                         @if ($slider->file != NULL)
                             <dt>Miniaturka</dt>
                             <dd>
                                 <img src="/files/thumb/sliders/300x300_{{$slider->file}}" />
                             </dd>
-                            @endif
-                        </dd>
+                        @endif
 
                         <dt> Link</dt>
                         <dd> {{ $slider->link }} </dd>
 
-                        <dt> Active</dt>
+                        <dt> Aktywny</dt>
                         <dd>
                             @if($slider->active == 1)
                                 TAK

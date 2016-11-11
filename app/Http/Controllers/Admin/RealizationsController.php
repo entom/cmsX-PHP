@@ -5,10 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Realization;
 use Illuminate\Http\Request;
 use Session;
+use App\Model\Realization;
+use App\Model\ImageProcessing;
 
+/**
+ * Class RealizationsController
+ * @package App\Http\Controllers\Admin
+ */
 class RealizationsController extends Controller
 {
 
@@ -27,7 +32,7 @@ class RealizationsController extends Controller
      */
     public function index()
     {
-        $realizations = Realization::paginate(25);
+        $realizations = Realization::orderBy('position', 'asc')->paginate(25);
 
         return view('admin.realizations.index', compact('realizations'));
     }
@@ -51,8 +56,20 @@ class RealizationsController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'file' => 'required'
+        ]);
+
         $requestData = $request->all();
+
+        $requestData['position'] = Realization::count() + 1;
+        $requestData['url'] = str_slug($requestData['title'], '-');
+
+        $image = $request->file('file');
+        $fileName = ImageProcessing::transferThumbs($image, 'realizations', Realization::$SIZES);
+        $requestData['file'] = $fileName;
         
         Realization::create($requestData);
 
@@ -99,10 +116,18 @@ class RealizationsController extends Controller
      */
     public function update($id, Request $request)
     {
-        
         $requestData = $request->all();
         
         $realization = Realization::findOrFail($id);
+
+        $requestData['url'] = str_slug($requestData['title'], '-');
+
+        $image = $request->file('file');
+        if(!empty($image)) {
+            $fileName = ImageProcessing::transferThumbs($image, 'realizations', Realization::$SIZES, $realization->file);
+            $requestData['file'] = $fileName;
+        }
+
         $realization->update($requestData);
 
         Session::flash('flash_message', 'Realization updated!');
