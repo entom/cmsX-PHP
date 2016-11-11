@@ -17,6 +17,7 @@ use App\Model\CalendarEvent;
 use App\Model\Slider;
 use App\Model\Paralax;
 use App\Model\Offer;
+use App\Model\Realization;
 
 /**
  * Class Dashboard
@@ -45,7 +46,8 @@ class Dashboard extends Controller
             'calendar_events_counter' => CalendarEvent::count(),
             'sliders_counter' => Slider::count(),
             'paralax_counter' => Paralax::count(),
-            'offers_counter' => Offer::count()
+            'offers_counter' => Offer::count(),
+            'realizations_counter' => Realization::count(),
         ]);
     }
 
