@@ -114,7 +114,31 @@
                         </div>
                         <div class="row">
                             <div class="col m3 s4 photo-preview" ng-repeat="photo in photos">
-                                <img src="/files/thumb/photos/300x300_[[ photo.file ]]" />
+                                <div class="card">
+                                    <div class="card-image waves-effect waves-block waves-light">
+                                        <img class="activator" ng-src="/files/thumb/photos/300x300_[[ photo.file ]]">
+                                    </div>
+                                    <div class="card-content">
+                                        <span class="card-title activator grey-text text-darken-4">[[ photo.title ? photo.title : 'Tytuł' ]]<i class="material-icons right">more_vert</i></span>
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">[[ photo.title ? photo.title : 'Tytuł' ]]<i class="material-icons right">close</i></span>
+                                        <div class="input-field col s12">
+                                            <input placeholder="Tytuł" id="title[[photo.id]]" type="text" class="validate">
+                                            <label for="title[[photo.title]]">Tytuł</label>
+                                        </div>
+
+                                        <div class="fixed-action-btn horizontal">
+                                            <a class="btn-floating btn-large red">
+                                                <i class="large material-icons">mode_edit</i>
+                                            </a>
+                                            <ul>
+                                                <li><a class="btn-floating red"><i class="fa fa-remove"></i></a></li>
+                                                <li><a class="btn-floating blue"><i class="fa fa-save"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
