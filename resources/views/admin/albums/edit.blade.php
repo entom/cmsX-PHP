@@ -2,7 +2,9 @@
 
 @section('content')
 
-    <div class="col s12">
+    <script src="/dashboard/js/controllers/photos.js"></script>
+
+    <div class="col s12" ng-controller="PhotosController" ng-init="init()">
         <header class="row">
             <div class="col s12">
                 <h1>Album</h1>
@@ -15,6 +17,7 @@
                 <ul class="tabs">
                     <li class="tab col s3"><a class="active" href="#contentTab">Treść</a></li>
                     <li class="tab col s3"><a href="#seoTab">SEO</a></li>
+                    <li class="tab col s3"><a href="#photosTab">Zdjęcia</a></li>
                 </ul>
             </div>
             <div id="contentTab" class="col s12">
@@ -56,6 +59,7 @@
                     </div>
                 </div>
             </div>
+
             <div id="seoTab" class="col s12">
                 <div class="card">
                     <div class="card__header">
@@ -79,6 +83,30 @@
                                 {!! $errors->first('meta_description', '<p class="help-block">:message</p>') !!}
                                 {!! Form::text('meta_description', null, []) !!}
                                 {!! Form::label('meta_description', 'Opis', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="photosTab" class="col s12">
+                <div class="card">
+                    <div class="card__header">
+                        <span>Zdjęcia</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col s12">
+                                <i class="waves-effect waves-light btn waves-input-wrapper" style="">
+                                    <div class="waves-button-input" ng-file-select="saveFiles($files)" multiple="multiple">Wybierz pliki</div>
+                                </i>
+
+                                <i ng-show="uploading" class="fa fa-spinner faa-spin animated ajax-loader"></i>
+                            </div>
+                            <div class="col s12">
+                                <div class="progress">
+                                    <div class="determinate" style="width: [[percentage]]%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -15,6 +15,7 @@
                 <ul class="tabs">
                     <li class="tab col s3"><a class="active" href="#contentTab">Treść</a></li>
                     <li class="tab col s3"><a href="#seoTab">SEO</a></li>
+                    <li class="tab col s3"><a href="#photosTab">Zdjęcia</a></li>
                 </ul>
             </div>
             <div id="contentTab" class="col s12">
@@ -79,6 +80,21 @@
                                 {!! $errors->first('meta_description', '<p class="help-block">:message</p>') !!}
                                 {!! Form::text('meta_description', null, []) !!}
                                 {!! Form::label('meta_description', 'Opis', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="photosTab" class="col s12">
+                <div class="card">
+                    <div class="card__header">
+                        <span>Zdjęcia</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card-panel blue lighten-2 white-text">Dodawanie zdjęć możliwe po zapisaniu galerii.</div>
                             </div>
                         </div>
                     </div>
