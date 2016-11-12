@@ -18,6 +18,7 @@
   "dependencies": {
     "jquery-backstretch-2": "^2.1.13",
     "jquery-ui": "^1.12.1",
-    "angular-ui-calendar": "^1.0.2"
+    "angular-ui-calendar": "^1.0.2",
+    "font-awesome-animation": "^0.0.9"
   }
 }
