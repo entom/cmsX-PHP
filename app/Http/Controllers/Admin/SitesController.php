@@ -51,8 +51,11 @@ class SitesController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:255',
-            'content' => 'required',
-            'active' => 'required'
+            'content' => 'required'
+        ], [
+            'title.required' => 'Proszę podać tytuł',
+            'title.max' => 'Maksymalna długość tytułu to 255 znaków',
+            'content.required' => 'Proszę podać treść'
         ]);
 
         $requestData = $request->all();
