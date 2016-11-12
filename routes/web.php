@@ -60,6 +60,7 @@ Route::resource('admin/paralax', 'Admin\\ParalaxController');
 Route::resource('admin/offer', 'Admin\\OfferController');
 Route::resource('admin/realizations', 'Admin\\RealizationsController');
 Route::resource('admin/technology', 'Admin\\TechnologyController');
+Route::resource('admin/contact-message', 'Admin\\ContactMessageController');
 
 Route::resource('api/calendar-event-category', 'Api\\CalendarEventCategoryController');
 Route::resource('api/photos', 'Api\\PhotosController');
