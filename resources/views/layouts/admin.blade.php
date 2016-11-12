@@ -48,19 +48,44 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="dropdown-button" data-beloworigin="true" href="#!" data-activates="dropdown-messages">
                         <i class="fa fa-bell" aria-hidden="true"></i>
+                        <span class="new badge blue" data-badge-caption="">{{ $unread_messages_counter }}</span>
                     </a>
                 </li>
+                <ul id="dropdown-messages" class="dropdown-content dropdown__navbar">
+                    @if($unread_messages_counter == 0)
+                        <li>
+                            <a>Brak nowych wiadomości</a>
+                        </li>
+                    @else
+                        @foreach($unread_messages as $um)
+                            <li class="message-preview">
+                                <a href="/admin/contact-message/{{$um->id}}">
+                                    <div class="message-preview-date">{{ $um->created_at }}</div>
+                                    <div>{{ $um->email }}</div>
+                                    <div>
+                                        {{ str_limit($um->content, 80, '...') }}
+                                    </div>
+                                </a>
+                            </li>
+                        @endforeach
+                        <li>
+                            <a class="message-preview-all" href="/admin/contact-message">
+                                Zobacz wszystkie
+                            </a>
+                        </li>
+                    @endif
+                </ul>
                 <li>
                     <a class="dropdown-button" data-beloworigin="true" href="#!" data-activates="dropdown-navbar">
-                            <span class="navbar__avatar">
-                                <img src="/dashboard/images/avatar-male.svg" class="responsive-img">
-                            </span>
+                        <span class="navbar__avatar">
+                            <img src="/dashboard/images/avatar-male.svg" class="responsive-img">
+                        </span>
                         <span class="navbar__user-info">
-                                <span class="navbar__user-name">{{ Auth::user()->name }}</span>
-                                <u class="navbar__user-role">Administrator</u>
-                            </span>
+                            <span class="navbar__user-name">{{ Auth::user()->name }}</span>
+                            <u class="navbar__user-role">Administrator</u>
+                        </span>
                         <i class="fa fa-angle-down" aria-hidden="true"></i>
                     </a>
                 </li>
@@ -304,6 +329,23 @@
                                 <ul>
                                     <li><a href="{{url('/admin/calendar')}}">Zobacz</a></li>
                                     <li><a href="{{url('/admin/calendar-event-category')}}">Kategorie</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Wiadomości</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/contact-message')}}">Zobacz</a></li>
                                 </ul>
                             </div>
                         </li>

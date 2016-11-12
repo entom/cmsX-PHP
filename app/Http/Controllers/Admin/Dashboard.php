@@ -19,6 +19,7 @@ use App\Model\Paralax;
 use App\Model\Offer;
 use App\Model\Realization;
 use App\Model\Technology;
+use App\Model\ContactMessage;
 
 /**
  * Class Dashboard
@@ -50,6 +51,7 @@ class Dashboard extends Controller
             'offers_counter' => Offer::count(),
             'realizations_counter' => Realization::count(),
             'technologies_counter' => Technology::count(),
+            'contact_messages_counter' => ContactMessage::count(),
         ]);
     }
 
