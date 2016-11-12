@@ -85,3 +85,7 @@ span.badge {
 .ajax-loader {
     font-size: 35px;
 }
+
+.photo-preview {
+    margin-bottom: 15px;
+}
