@@ -16,6 +16,7 @@ php artisan migrate (making database)
  php artisan db:seed --class=ShopBrandsTableSeeder
  php artisan db:seed --class=ShopCategoriesTableSeeder
  php artisan db:seed --class=ShopProductsTableSeeder
+ php artisan db:seed --class=ConctactMessageTableSeeder
 ```
 - installing packages in public folder, dashboard folder
 ```
