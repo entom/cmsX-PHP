@@ -81,3 +81,7 @@ table .badge {
 span.badge {
     display: inline-block;
 }
+
+.ajax-loader {
+    font-size: 35px;
+}
