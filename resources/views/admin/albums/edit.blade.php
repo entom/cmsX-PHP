@@ -4,7 +4,7 @@
 
     <script src="/dashboard/js/controllers/photos.js"></script>
 
-    <div class="col s12" ng-controller="PhotosController" ng-init="init()">
+    <div class="col s12" ng-controller="PhotosController" ng-init="init({!! $album->id !!})">
         <header class="row">
             <div class="col s12">
                 <h1>Album</h1>
@@ -96,17 +96,25 @@
                     </div>
                     <div class="card-content">
                         <div class="row">
-                            <div class="col s12">
+                            <div class="col s6">
                                 <i class="waves-effect waves-light btn waves-input-wrapper" style="">
                                     <div class="waves-button-input" ng-file-select="saveFiles($files)" multiple="multiple">Wybierz pliki</div>
                                 </i>
 
                                 <i ng-show="uploading" class="fa fa-spinner faa-spin animated ajax-loader"></i>
                             </div>
+                            <div class="col s6">
+                                <span ng-show="uploading" class="badge new blue" data-badge-caption="">[[percentage]]% [[ files[counter].name ]]</span>
+                            </div>
                             <div class="col s12">
                                 <div class="progress">
                                     <div class="determinate" style="width: [[percentage]]%"></div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col m3 s4 photo-preview" ng-repeat="photo in photos">
+                                <img src="/files/thumb/photos/300x300_[[ photo.file ]]" />
                             </div>
                         </div>
                     </div>
