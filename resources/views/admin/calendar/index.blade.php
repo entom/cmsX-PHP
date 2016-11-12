@@ -17,7 +17,7 @@
         <div class="col s12 m12">
             <div class="card">
                 <div class="card-content">
-                    <div ui-calendar="uiConfig.calendar" ng-model="eventSources"></div>
+                    <div ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="CalendarEvent"></div>
                 </div>
             </div>
         </div>

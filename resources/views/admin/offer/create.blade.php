@@ -5,16 +5,16 @@
     <div class="col s12">
         <header class="row">
             <div class="col s12">
-                <h1>Blog</h1>
+                <h1>Oferta</h1>
             </div>
         </header>
 
-        {!! Form::open(['url' => '/admin/blogs', 'class' => 'col s12', 'files' => true]) !!}
+        {!! Form::open(['url' => '/admin/offer', 'class' => 'col s12', 'files' => true]) !!}
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
                     <li class="tab col s3"><a class="active" href="#contentTab">Treść</a></li>
-                    <li class="tab col s3"><a href="#seoTab">SEO</a></li>
+                    <li class="tab col s3"><a class="active" href="#seoTab">SEO</a></li>
                 </ul>
             </div>
             <div id="contentTab" class="col s12">
@@ -24,16 +24,10 @@
                     </div>
                     <div class="card-content">
                         <div class="row">
-                            <div class="input-field col s12 m6 {{ $errors->has('title') ? 'has-error' : ''}}">
+                            <div class="input-field col s12 m12 {{ $errors->has('title') ? 'has-error' : ''}}">
                                 {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
                                 {!! Form::text('title', null, []) !!}
                                 {!! Form::label('title', 'Tytuł', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
-                            </div>
-
-                            <div class="input-field col s12 m6 {{ $errors->has('active') ? 'has-error' : ''}}">
-                                {!! $errors->first('active', '<p class="help-block">:message</p>') !!}
-                                {!! Form::select('active', [1 => 'Tak', 0 => 'Nie']) !!}
-                                {!! Form::label('active', 'Aktywny', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
                             </div>
 
                             <div class="file-field input-field col s12 m6 {{ $errors->has('file') ? 'has-error' : ''}}">
@@ -47,11 +41,24 @@
                                 {!! $errors->first('file', '<p class="help-block">:message</p>') !!}
                             </div>
 
+                            <div class="input-field col s12 m6 {{ $errors->has('active') ? 'has-error' : ''}}">
+                                {!! $errors->first('active', '<p class="help-block">:message</p>') !!}
+                                {!! Form::select('active', [1 => 'Tak', 0 => 'Nie']) !!}
+                                {!! Form::label('active', 'Aktywny', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
+                            </div>
+
+                            <div class="input-field col s12 m12 {{ $errors->has('short_content') ? 'has-error' : ''}}">
+                                {!! $errors->first('short_content', '<p class="help-block">:message</p>') !!}
+                                {!! Form::label('short_content', 'Krótka treść', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
+                                {!! Form::textarea('short_content', null, ['class' => 'editor']) !!}
+                            </div>
+
                             <div class="input-field col s12 m12 {{ $errors->has('content') ? 'has-error' : ''}}">
                                 {!! $errors->first('content', '<p class="help-block">:message</p>') !!}
                                 {!! Form::label('content', 'Treść', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
                                 {!! Form::textarea('content', null, ['class' => 'editor']) !!}
                             </div>
+
                         </div>
                     </div>
                 </div>

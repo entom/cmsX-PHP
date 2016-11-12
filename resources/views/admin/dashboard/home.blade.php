@@ -145,5 +145,53 @@
                 </div>
             </div>
         </div>
+
+        <div class="col s12 m3 animated flipInX">
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <div class="card-action center">
+                        <a href="/admin/offer">Oferta: <b>{{ $offers_counter }}</b></a>
+                    </div>
+                    <div class="card-content center">
+                        <i class="fa fa-list-ul  light-green-text accent-3"></i>
+                    </div>
+                    <div class="card-action center">
+                        <a href="/admin/offer">Zobacz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 m3 animated flipInX">
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <div class="card-action center">
+                        <a href="/admin/realizations">Realizacje: <b>{{ $realizations_counter }}</b></a>
+                    </div>
+                    <div class="card-content center">
+                        <i class="fa fa-briefcase amber-text lighten-1"></i>
+                    </div>
+                    <div class="card-action center">
+                        <a href="/admin/realizations">Zobacz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 m3 animated flipInX">
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <div class="card-action center">
+                        <a href="/admin/technology">Technologie: <b>{{ $technologies_counter }}</b></a>
+                    </div>
+                    <div class="card-content center">
+                        <i class="fa fa-tags pink-text lighten-1"></i>
+                    </div>
+                    <div class="card-action center">
+                        <a href="/admin/technology">Zobacz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

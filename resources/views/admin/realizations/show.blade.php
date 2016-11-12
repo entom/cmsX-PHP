@@ -5,24 +5,24 @@
 
         <div class="row navigation-row">
             <div class="col s6">
-                <h1>Baner {{ $slider->id }}</h1>
+                <h1>Realizacje {{ $realization->id }}</h1>
             </div>
             <div class="col s6">
                 {!! Form::open([
                     'method'=>'DELETE',
-                    'url' => ['admin/sliders', $slider->id],
+                    'url' => ['admin/realizations', $realization->id],
                     'style' => 'display:inline'
                 ]) !!}
                 {!! Form::button('<i class="fa fa-trash"></i>', array(
                         'type' => 'submit',
                         'class' => 'waves-effect waves-light btn right',
-                        'title' => 'Usuń slider',
+                        'title' => 'Usuń Realization',
                         'onclick'=>'return confirm("Czy na pewno usunąć?")'
                 ))!!}
                 {!! Form::close() !!}
 
-                <a href="{{ url('admin/sliders/' . $slider->id . '/edit') }}"
-                   class="waves-effect waves-light btn right mr10" title="Edycja slider"><i
+                <a href="{{ url('admin/realizations/' . $realization->id . '/edit') }}"
+                   class="waves-effect waves-light btn right mr10" title="Edycja Realization"><i
                             class="fa fa-pencil"></i></a>
             </div>
         </div>
@@ -32,29 +32,30 @@
                 <div class="row">
                     <dl>
                         <dt>ID</dt>
-                        <dd>{{ $slider->id }}</dd>
+                        <dd>{{ $realization->id }}</dd>
 
-                        <dt> Title</dt>
-                        <dd> {{ $slider->title }} </dd>
-
-                        @if ($slider->file != NULL)
-                            <dt>Miniaturka</dt>
-                            <dd>
-                                <img src="/files/thumb/sliders/300x300_{{$slider->file}}" />
-                            </dd>
-                        @endif
-
-                        <dt> Link</dt>
-                        <dd> {{ $slider->link }} </dd>
+                        <dt> Tytuł</dt>
+                        <dd> {{ $realization->title }} </dd>
 
                         <dt> Aktywny</dt>
                         <dd>
-                            @if($slider->active == 1)
+                            @if($realization->active == 1)
                                 TAK
                             @else
                                 NIE
                             @endif
                         </dd>
+
+                        @if ($realization->file != NULL)
+                            <dt>Miniaturka</dt>
+                            <dd>
+                                <img src="/files/thumb/realizations/300x300_{{$realization->file}}" />
+                            </dd>
+                        @endif
+
+                        <dt> Treść</dt>
+                        <dd> {{ $realization->content }} </dd>
+
                     </dl>
                 </div>
             </div>

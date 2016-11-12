@@ -5,20 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Model\Slider;
 use Illuminate\Http\Request;
 use Session;
+use App\Model\Realization;
 use App\Model\ImageProcessing;
 
 /**
- * Class SlidersController
+ * Class RealizationsController
  * @package App\Http\Controllers\Admin
  */
-class SlidersController extends Controller
+class RealizationsController extends Controller
 {
 
     /**
-     * SlidersController constructor.
+     * RealizationsController constructor.
      */
     public function __construct()
     {
@@ -32,9 +32,9 @@ class SlidersController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::orderBy('position', 'asc')->paginate(25);
+        $realizations = Realization::orderBy('position', 'asc')->paginate(25);
 
-        return view('admin.sliders.index', compact('sliders'));
+        return view('admin.realizations.index', compact('realizations'));
     }
 
     /**
@@ -44,7 +44,7 @@ class SlidersController extends Controller
      */
     public function create()
     {
-        return view('admin.sliders.create');
+        return view('admin.realizations.create');
     }
 
     /**
@@ -58,23 +58,24 @@ class SlidersController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|max:255',
+            'content' => 'required',
             'file' => 'required'
         ]);
 
         $requestData = $request->all();
-        $requestData['position'] = Slider::count() + 1;
+
+        $requestData['position'] = Realization::count() + 1;
+        $requestData['url'] = str_slug($requestData['title'], '-');
 
         $image = $request->file('file');
-        if(!empty($image)) {
-            $fileName = ImageProcessing::transferThumbs($image, 'sliders', Slider::$SIZES);
-            $requestData['file'] = $fileName;
-        }
+        $fileName = ImageProcessing::transferThumbs($image, 'realizations', Realization::$SIZES);
+        $requestData['file'] = $fileName;
+        
+        Realization::create($requestData);
 
-        Slider::create($requestData);
+        Session::flash('flash_message', 'Realization added!');
 
-        Session::flash('flash_message', 'Slider added!');
-
-        return redirect('admin/sliders');
+        return redirect('admin/realizations');
     }
 
     /**
@@ -86,9 +87,9 @@ class SlidersController extends Controller
      */
     public function show($id)
     {
-        $slider = Slider::findOrFail($id);
+        $realization = Realization::findOrFail($id);
 
-        return view('admin.sliders.show', compact('slider'));
+        return view('admin.realizations.show', compact('realization'));
     }
 
     /**
@@ -100,9 +101,9 @@ class SlidersController extends Controller
      */
     public function edit($id)
     {
-        $slider = Slider::findOrFail($id);
+        $realization = Realization::findOrFail($id);
 
-        return view('admin.sliders.edit', compact('slider'));
+        return view('admin.realizations.edit', compact('realization'));
     }
 
     /**
@@ -115,25 +116,23 @@ class SlidersController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required|max:255'
-        ]);
-
         $requestData = $request->all();
         
-        $slider = Slider::findOrFail($id);
+        $realization = Realization::findOrFail($id);
+
+        $requestData['url'] = str_slug($requestData['title'], '-');
 
         $image = $request->file('file');
         if(!empty($image)) {
-            $fileName = ImageProcessing::transferThumbs($image, 'sliders', Slider::$SIZES, $slider->file);
+            $fileName = ImageProcessing::transferThumbs($image, 'realizations', Realization::$SIZES, $realization->file);
             $requestData['file'] = $fileName;
         }
 
-        $slider->update($requestData);
+        $realization->update($requestData);
 
-        Session::flash('flash_message', 'Slider updated!');
+        Session::flash('flash_message', 'Realization updated!');
 
-        return redirect('admin/sliders');
+        return redirect('admin/realizations');
     }
 
     /**
@@ -145,10 +144,10 @@ class SlidersController extends Controller
      */
     public function destroy($id)
     {
-        Slider::destroy($id);
+        Realization::destroy($id);
 
-        Session::flash('flash_message', 'Slider deleted!');
+        Session::flash('flash_message', 'Realization deleted!');
 
-        return redirect('admin/sliders');
+        return redirect('admin/realizations');
     }
 }

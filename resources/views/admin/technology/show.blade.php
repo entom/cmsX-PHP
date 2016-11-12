@@ -5,24 +5,24 @@
 
         <div class="row navigation-row">
             <div class="col s6">
-                <h1>Baner {{ $slider->id }}</h1>
+                <h1>Technologie {{ $technology->id }}</h1>
             </div>
             <div class="col s6">
                 {!! Form::open([
                     'method'=>'DELETE',
-                    'url' => ['admin/sliders', $slider->id],
+                    'url' => ['admin/technology', $technology->id],
                     'style' => 'display:inline'
                 ]) !!}
                 {!! Form::button('<i class="fa fa-trash"></i>', array(
                         'type' => 'submit',
                         'class' => 'waves-effect waves-light btn right',
-                        'title' => 'Usuń slider',
+                        'title' => 'Usuń Technology',
                         'onclick'=>'return confirm("Czy na pewno usunąć?")'
                 ))!!}
                 {!! Form::close() !!}
 
-                <a href="{{ url('admin/sliders/' . $slider->id . '/edit') }}"
-                   class="waves-effect waves-light btn right mr10" title="Edycja slider"><i
+                <a href="{{ url('admin/technology/' . $technology->id . '/edit') }}"
+                   class="waves-effect waves-light btn right mr10" title="Edycja Technology"><i
                             class="fa fa-pencil"></i></a>
             </div>
         </div>
@@ -32,29 +32,33 @@
                 <div class="row">
                     <dl>
                         <dt>ID</dt>
-                        <dd>{{ $slider->id }}</dd>
+                        <dd>{{ $technology->id }}</dd>
 
-                        <dt> Title</dt>
-                        <dd> {{ $slider->title }} </dd>
+                        <dt> Tytuł</dt>
+                        <dd> {{ $technology->title }} </dd>
 
-                        @if ($slider->file != NULL)
-                            <dt>Miniaturka</dt>
-                            <dd>
-                                <img src="/files/thumb/sliders/300x300_{{$slider->file}}" />
-                            </dd>
-                        @endif
-
-                        <dt> Link</dt>
-                        <dd> {{ $slider->link }} </dd>
+                        <dt> Podtytuł</dt>
+                        <dd> {{ $technology->subtitle }} </dd>
 
                         <dt> Aktywny</dt>
                         <dd>
-                            @if($slider->active == 1)
+                            @if($technology->active == 1)
                                 TAK
                             @else
                                 NIE
                             @endif
                         </dd>
+
+                        @if ($technology->file != NULL)
+                            <dt>Miniaturka</dt>
+                            <dd>
+                                <img src="/files/thumb/technologies/300x300_{{$technology->file}}" />
+                            </dd>
+                        @endif
+
+                        <dt> Treść</dt>
+                        <dtt> {{ $technology->content }} </dtt>
+
                     </dl>
                 </div>
             </div>

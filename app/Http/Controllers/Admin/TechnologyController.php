@@ -5,20 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Model\Slider;
 use Illuminate\Http\Request;
 use Session;
+use App\Model\Technology;
 use App\Model\ImageProcessing;
 
 /**
- * Class SlidersController
+ * Class TechnologyController
  * @package App\Http\Controllers\Admin
  */
-class SlidersController extends Controller
+class TechnologyController extends Controller
 {
 
     /**
-     * SlidersController constructor.
+     * TechnologyController constructor.
      */
     public function __construct()
     {
@@ -32,9 +32,9 @@ class SlidersController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::orderBy('position', 'asc')->paginate(25);
+        $technology = Technology::orderBy('position', 'asc')->paginate(25);
 
-        return view('admin.sliders.index', compact('sliders'));
+        return view('admin.technology.index', compact('technology'));
     }
 
     /**
@@ -44,7 +44,7 @@ class SlidersController extends Controller
      */
     public function create()
     {
-        return view('admin.sliders.create');
+        return view('admin.technology.create');
     }
 
     /**
@@ -62,19 +62,19 @@ class SlidersController extends Controller
         ]);
 
         $requestData = $request->all();
-        $requestData['position'] = Slider::count() + 1;
+
+        $requestData['position'] = Technology::count() + 1;
+        $requestData['url'] = str_slug($requestData['title'], '-');
 
         $image = $request->file('file');
-        if(!empty($image)) {
-            $fileName = ImageProcessing::transferThumbs($image, 'sliders', Slider::$SIZES);
-            $requestData['file'] = $fileName;
-        }
+        $fileName = ImageProcessing::transferThumbs($image, 'technologies', Technology::$SIZES);
+        $requestData['file'] = $fileName;
 
-        Slider::create($requestData);
+        Technology::create($requestData);
 
-        Session::flash('flash_message', 'Slider added!');
+        Session::flash('flash_message', 'Technology added!');
 
-        return redirect('admin/sliders');
+        return redirect('admin/technology');
     }
 
     /**
@@ -86,9 +86,9 @@ class SlidersController extends Controller
      */
     public function show($id)
     {
-        $slider = Slider::findOrFail($id);
+        $technology = Technology::findOrFail($id);
 
-        return view('admin.sliders.show', compact('slider'));
+        return view('admin.technology.show', compact('technology'));
     }
 
     /**
@@ -100,9 +100,9 @@ class SlidersController extends Controller
      */
     public function edit($id)
     {
-        $slider = Slider::findOrFail($id);
+        $technology = Technology::findOrFail($id);
 
-        return view('admin.sliders.edit', compact('slider'));
+        return view('admin.technology.edit', compact('technology'));
     }
 
     /**
@@ -115,25 +115,24 @@ class SlidersController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required|max:255'
-        ]);
-
+        
         $requestData = $request->all();
         
-        $slider = Slider::findOrFail($id);
+        $technology = Technology::findOrFail($id);
+
+        $requestData['url'] = str_slug($requestData['title'], '-');
 
         $image = $request->file('file');
         if(!empty($image)) {
-            $fileName = ImageProcessing::transferThumbs($image, 'sliders', Slider::$SIZES, $slider->file);
+            $fileName = ImageProcessing::transferThumbs($image, 'technologies', Technology::$SIZES, $technology->file);
             $requestData['file'] = $fileName;
         }
 
-        $slider->update($requestData);
+        $technology->update($requestData);
 
-        Session::flash('flash_message', 'Slider updated!');
+        Session::flash('flash_message', 'Technology updated!');
 
-        return redirect('admin/sliders');
+        return redirect('admin/technology');
     }
 
     /**
@@ -145,10 +144,10 @@ class SlidersController extends Controller
      */
     public function destroy($id)
     {
-        Slider::destroy($id);
+        Technology::destroy($id);
 
-        Session::flash('flash_message', 'Slider deleted!');
+        Session::flash('flash_message', 'Technology deleted!');
 
-        return redirect('admin/sliders');
+        return redirect('admin/technology');
     }
 }

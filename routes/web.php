@@ -57,6 +57,9 @@ Route::resource('admin/albums', 'Admin\\AlbumsController');
 Route::resource('admin/logos', 'Admin\\LogosController');
 Route::resource('admin/sliders', 'Admin\\SlidersController');
 Route::resource('admin/paralax', 'Admin\\ParalaxController');
+Route::resource('admin/offer', 'Admin\\OfferController');
+Route::resource('admin/realizations', 'Admin\\RealizationsController');
+Route::resource('admin/technology', 'Admin\\TechnologyController');
 
 Route::resource('api/calendar-event-category', 'Api\\CalendarEventCategoryController');
 

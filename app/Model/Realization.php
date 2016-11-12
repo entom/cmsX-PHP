@@ -5,10 +5,10 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Slider
- * @package App
+ * Class Realization
+ * @package App\Model
  */
-class Slider extends Model
+class Realization extends Model
 {
     use \Rutorika\Sortable\SortableTrait;
 
@@ -17,7 +17,7 @@ class Slider extends Model
      *
      * @var string
      */
-    protected $table = 'sliders';
+    protected $table = 'realizations';
 
     /**
     * The database primary key value.
@@ -27,11 +27,19 @@ class Slider extends Model
     protected $primaryKey = 'id';
 
     /**
+     * @var string $sortableField
+     */
+    protected static $sortableField = 'position';
+
+    /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['title', 'subtitle', 'link', 'active', 'file'];
+    protected $fillable = [
+        'title', 'content', 'file', 'active', 'file', 'position',
+        'url', 'meta_title', 'meta_keywords', 'meta_description'
+    ];
 
     /**
      * @var array $SIZES
@@ -39,7 +47,8 @@ class Slider extends Model
     public static $SIZES = [
         ['w' => 100, 'h' => 100, 'type' => 'resize'],
         ['w' => 300, 'h' => 300, 'type' => 'resize'],
-        ['w' => 1920, 'h' => 700, 'type' => 'fit'],
+        ['w' => 416, 'h' => 277, 'type' => 'fit'],
+        ['w' => 800, 'h' => 600, 'type' => 'resize'],
     ];
-
+    
 }
