@@ -77,3 +77,7 @@ table .badge {
 .paralax-image-small {
     height: 30px;
 }
+
+span.badge {
+    display: inline-block;
+}
