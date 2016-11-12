@@ -77,3 +77,44 @@ table .badge {
 .paralax-image-small {
     height: 30px;
 }
+
+span.badge {
+    display: inline-block;
+}
+
+.ajax-loader {
+    font-size: 35px;
+}
+
+.photo-preview {
+    margin-bottom: 15px;
+}
+
+nav .badge {
+    min-width: 10px!important;
+    padding: 12px 10px!important;
+}
+
+#dropdown-messages {
+    min-width: 300px;
+}
+
+.message-preview div {
+    line-height: 1.23;
+}
+
+.message-preview:not(:first-of-type) a {
+    border-top: 1px solid #DDD;
+}
+
+.message-preview a {
+    padding: 10px!important;
+}
+
+.message-preview-date {
+    font-weight: bold;
+}
+
+.message-preview-all {
+    border-top: 1px solid #DDD;
+}

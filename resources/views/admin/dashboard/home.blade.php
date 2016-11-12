@@ -193,5 +193,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="col s12 m3 animated flipInX">
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <div class="card-action center">
+                        <a href="/admin/contact-message">Wiadomości: <b>{{ $contact_messages_counter }}</b></a>
+                    </div>
+                    <div class="card-content center">
+                        <i class="fa fa-envelope yellow-text lighten-1"></i>
+                    </div>
+                    <div class="card-action center">
+                        <a href="/admin/contact-message">Zobacz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

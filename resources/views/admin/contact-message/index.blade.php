@@ -4,11 +4,10 @@
     <div class="col s12">
         <header class="row navigation-row">
             <div class="col s6">
-                <h1>Oferta</h1>
+                <h1>Wiadomości</h1>
             </div>
             <div class="col s6">
-                <a href="{{ url('/admin/offer/create') }}" class="waves-effect waves-light btn right"
-                   title="Dodaj nowy wpis"><i class="fa fa-plus"></i></a>
+
             </div>
         </header>
         <div class="row">
@@ -21,44 +20,35 @@
                         <table class="responsive-table bordered striped highlight">
                             <thead>
                             <tr>
-                                <th class="center"></th>
-                                <th class="center"> # </th>
-                                <th> Plik</th>
-                                <th> Tytuł</th>
-                                <th class="center"> Aktywne</th>
-                                <th> Krótka treść</th>
+                                <th class="center"> #</th>
+                                <th class="center">Status</th>
+                                <th> Email</th>
+                                <th> Telefon</th>
+                                <th> Treść</th>
                                 <th> Akcje</th>
                             </tr>
                             </thead>
-                            <tbody class="sortable" data-entityname="offer">
-                            @foreach($offer as $item)
-                                <tr data-itemId="{{ $item->id }}">
-                                    <td class="center sortable-handle"><span class="fa fa-sort"></span></td>
+                            <tbody>
+                            @foreach($contactmessage as $item)
+                                <tr>
                                     <td class="center">{{ $loop->iteration }}</td>
-                                    <td>
-                                        <img src="/files/thumb/offers/100x100_{{ $item->file }}" class="logo-image-small" />
-                                    </td>
-                                    <td>{{ $item->title }}</td>
                                     <td class="center">
-                                        @if ($item->active === 1)
-                                            <span class="new badge blue" data-badge-caption="">Tak</span>
+                                        @if($item->readed == 1)
+                                            <span class="new red badge" data-badge-caption="">Przeczytane</span>
                                         @else
-                                            <span class="new badge red" data-badge-caption="">Nie</span>
+                                            <span class="badge new blue" data-badge-caption="">Nowe</span>
                                         @endif
                                     </td>
+                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->phone }}</td>
+                                    <td>{{ str_limit($item->content, 64, '...') }}</td>
                                     <td>
-                                        {{ str_limit($item->short_content, 64, '...') }}
-                                    </td>
-                                    <td>
-                                        <a href="{{ url('/admin/offer/' . $item->id) }}"
+                                        <a href="{{ url('/admin/contact-message/' . $item->id) }}"
                                            class="waves-effect waves-light btn"
                                            title="Zobacz"><i class="fa fa-folder-open"></i></a>
-                                        <a href="{{ url('/admin/offer/' . $item->id . '/edit') }}"
-                                           class="waves-effect waves-light btn"
-                                           title="Edycja"><i class="fa fa-edit"></i></a>
                                         {!! Form::open([
                                             'method'=>'DELETE',
-                                            'url' => ['/admin/offer', $item->id],
+                                            'url' => ['/admin/contact-message', $item->id],
                                             'style' => 'display:inline'
                                         ]) !!}
                                         {!! Form::button('<i class="fa fa-trash"></i>', array(
@@ -73,20 +63,10 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="pagination-wrapper"> {!! $offer->render() !!} </div>
+                        <div class="pagination-wrapper"> {!! $contactmessage->render() !!} </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    </script>
 @endsection
