@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/dashboard/node_modules/animate.css/animate.min.css" />
     <link rel="stylesheet" href="/dashboard/css/style.css" type="text/css">
     <link rel="stylesheet" href="/dashboard/css/custom.css" type="text/css">
+    <link rel="stylesheet" href="/dashboard/bower_components/font-awesome-animation/dist/font-awesome-animation.min.css">
 
     <script src="/dashboard/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="/dashboard/bower_components/jquery-ui/jquery-ui.js"></script>
@@ -22,19 +23,11 @@
     <script type="text/javascript" src="/dashboard/bower_components/angular-ui-calendar/src/calendar.js"></script>
     <script type="text/javascript" src="/dashboard/node_modules/fullcalendar/dist/fullcalendar.min.js"></script>
     <script type="text/javascript" src="/dashboard/bower_components/fullcalendar/dist/lang-all.js"></script>
+    <script type="text/javascript" src="/dashboard/node_modules/angular-file-upload-shim/dist/angular-file-upload-shim.min.js"></script>
+    <script type="text/javascript" src="/dashboard/node_modules/angular-file-upload-shim/dist/angular-file-upload.min.js"></script>
 
     <script src="/dashboard/js/init.js"></script>
     <script src="/dashboard/js/dashboard.js"></script>
-
-    {{--<script src="/dashboard/node_modules/angular/angular.min.js"></script>--}}
-    {{--<script src="/dashboard/node_modules/angular-animate/angular-animate.min.js"></script>--}}
-    {{--<script src="/dashboard/node_modules/angular-aria/angular-aria.min.js"></script>--}}
-    {{--<script src="/dashboard/node_modules/angular-messages/angular-messages.min.js"></script>--}}
-
-    {{--<link rel="stylesheet" href="/dashboard/node_modules/angular-material/angular-material.min.css" />--}}
-    {{--<link rel="stylesheet" href="/dashboard/node_modules/angular-material-data-table/dist/md-data-table.min.css" />--}}
-    {{--<script src="/dashboard/node_modules/angular-material/angular-material.min.js"></script>--}}
-    {{--<script src="/dashboard/node_modules/angular-material-data-table/dist/md-data-table.min.js"></script>--}}
     <script src="/dashboard/js/app.js"></script>
 </head>
 <body ng-app="cmsxApp">
