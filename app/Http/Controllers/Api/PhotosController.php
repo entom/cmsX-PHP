@@ -65,10 +65,46 @@ class PhotosController extends Controller
         return Response::json(array('success' => true));
     }
 
+    /**
+     * update method
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+    public function update($id, Request $request)
+    {
+        $requestData = $request->all();
+
+        $photo = Photo::findOrFail($id);
+        $photo->update($requestData);
+
+        return Response::json(['message' => 'Zdjęcie zaktualizowane poprawnie']);
+    }
+
+    /**
+     * show method
+     * @param $album_id
+     * @return mixed
+     */
     public function show($album_id)
     {
         $photos = Photo::where('album_id', '=', $album_id)->orderBy('position', 'asc')->get();
         return Response::json(array('photos' => $photos));
+    }
+
+    /**
+     * destroy method
+     * @param $id
+     * @return mixed
+     */
+    public function destroy($id)
+    {
+        $photo = Photo::findOrFail($id);
+
+        ImageProcessing::removeFromFiles($photo->file, 'photos', Photo::$SIZES);
+
+        Photo::destroy($id);
+        return Response::json(['message' => 'Zdjęcie zostało usunięte']);
     }
 
 }

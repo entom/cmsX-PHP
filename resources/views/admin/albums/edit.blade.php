@@ -124,7 +124,7 @@
                                     <div class="card-reveal">
                                         <span class="card-title grey-text text-darken-4">[[ photo.title ? photo.title : 'Tytuł' ]]<i class="material-icons right">close</i></span>
                                         <div class="input-field col s12">
-                                            <input placeholder="Tytuł" id="title[[photo.id]]" type="text" class="validate">
+                                            <input ng-model="photo.title" placeholder="Tytuł" id="title[[photo.id]]" type="text" class="validate">
                                             <label for="title[[photo.title]]">Tytuł</label>
                                         </div>
 
@@ -133,8 +133,8 @@
                                                 <i class="large material-icons">mode_edit</i>
                                             </a>
                                             <ul>
-                                                <li><a class="btn-floating red"><i class="fa fa-remove"></i></a></li>
-                                                <li><a class="btn-floating blue"><i class="fa fa-save"></i></a></li>
+                                                <li><a ng-click="removeFile($index, photo)" class="btn-floating red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Usuń"><i class="fa fa-remove"></i></a></li>
+                                                <li><a ng-click="updateFile($index, photo)" class="btn-floating blue tooltipped" data-position="bottom" data-delay="50" data-tooltip="Zapisz"><i class="fa fa-save"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>

@@ -71,6 +71,33 @@ cmsx.controller('PhotosController', function ($scope, $http, $upload) {
     };
 
     /**
+     * updateFile method
+     * @param index
+     * @param file
+     */
+    $scope.updateFile = function (index, file) {
+        var config = {};
+        var data = file;
+        $http.put('/api/photos/' + file.id, data, config).then(function (resp) {
+            Materialize.toast(resp.data.message, 5000);
+        });
+    };
+
+    /**
+     * removeFile method
+     * @param index
+     * @param file
+     */
+    $scope.removeFile = function (index, file) {
+        var config = {};
+        var data = {};
+        $http.delete('/api/photos/' + file.id, data, config).then(function (resp) {
+            Materialize.toast(resp.data.message, 5000);
+            $scope.photos.splice(index, 1);
+        });
+    };
+
+    /**
      * uploadFile method
      */
     $scope.uploadFile = function () {
