@@ -22,7 +22,7 @@
                             <thead>
                             <tr>
                                 <th class="center"></th>
-                                <th class="center"> #</th>
+                                <th class="center"> # </th>
                                 <th> Plik</th>
                                 <th> Tytuł</th>
                                 <th class="center"> Aktywne</th>
@@ -34,7 +34,7 @@
                             @foreach($offer as $item)
                                 <tr data-itemId="{{ $item->id }}">
                                     <td class="center sortable-handle"><span class="fa fa-sort"></span></td>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td class="center">{{ $loop->iteration }}</td>
                                     <td>
                                         <img src="/files/thumb/offers/100x100_{{ $item->file }}" class="logo-image-small" />
                                     </td>
