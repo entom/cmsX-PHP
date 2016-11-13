@@ -62,10 +62,16 @@
                         @foreach($unread_messages as $um)
                             <li class="message-preview">
                                 <a href="/admin/contact-message/{{$um->id}}">
-                                    <div class="message-preview-date">{{ $um->created_at }}</div>
-                                    <div>{{ $um->email }}</div>
+                                    <div class="message-preview-date">
+                                        <span><i class="fa fa-calendar"></i> {{ $um->created_date }}</span>
+                                        <span class="ml15"><i class="fa fa-clock-o"></i> {{ $um->created_time }}</span>
+                                    </div>
                                     <div>
-                                        {{ str_limit($um->content, 80, '...') }}
+                                        <span><i class="fa fa-user"></i> {{ $um->email }}</span>
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-envelope"></i>
+                                        <span>{{ str_limit($um->content, 80, '...') }}</span>
                                     </div>
                                 </a>
                             </li>
