@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class News
  * @package App
  */
-class News extends Model
+class News extends BaseModel
 {
     /**
      * The database table used by the model.

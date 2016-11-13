@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Logo extends Model
+class Logo extends BaseModel
 {
 
     use \Rutorika\Sortable\SortableTrait;

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class ContactMessage
  * @package App
  */
-class ContactMessage extends Model
+class ContactMessage extends BaseModel
 {
     /**
      * The database table used by the model.

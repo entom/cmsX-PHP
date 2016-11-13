@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Realization
  * @package App\Model
  */
-class Realization extends Model
+class Realization extends BaseModel
 {
     use \Rutorika\Sortable\SortableTrait;
 

@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Album extends Model
+class Album extends BaseModel
 {
     /**
      * The database table used by the model.

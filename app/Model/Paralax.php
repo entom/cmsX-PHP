@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Paralax
  * @package App
  */
-class Paralax extends Model
+class Paralax extends BaseModel
 {
     /**
      * The database table used by the model.
