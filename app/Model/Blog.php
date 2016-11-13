@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class Blog extends BaseModel
 {
     /**
      * The database table used by the model.

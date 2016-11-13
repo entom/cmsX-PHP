@@ -99,6 +99,13 @@ nav .badge {
     min-width: 300px;
 }
 
+.message-preview span i,
+.message-preview div i {
+    line-height: 1;
+    height: auto;
+    margin-right: 5px;
+}
+.message-preview span,
 .message-preview div {
     line-height: 1.23;
 }
@@ -109,6 +116,10 @@ nav .badge {
 
 .message-preview a {
     padding: 10px!important;
+}
+
+.message-preview a div:not(:last-of-type) {
+    margin-bottom: 5px;
 }
 
 .message-preview-date {

@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CalendarEventCategory extends Model
+class CalendarEventCategory extends BaseModel
 {
     /**
      * The database table used by the model.

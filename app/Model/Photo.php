@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Photo
  * @package App\Model
  */
-class Photo extends Model
+class Photo extends BaseModel
 {
     /**
      * The database table used by the model.
