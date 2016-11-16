@@ -30,7 +30,7 @@ class Photo extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'title', 'active', 'file', 'album_id'
+        'title', 'active', 'file', 'album_id', 'model'
     ];
 
     /**

@@ -15,7 +15,7 @@
                 <ul class="tabs">
                     <li class="tab col s3"><a class="active" href="#contentTab">Treść</a></li>
                     <li class="tab col s3"><a href="#seoTab">SEO</a></li>
-                    <li class="tab col s3"><a href="#photosTab">Zdjęcia</a></li>
+                    @include('admin.partials.photo_tab')
                 </ul>
             </div>
             <div id="contentTab" class="col s12">
@@ -86,20 +86,7 @@
                 </div>
             </div>
 
-            <div id="photosTab" class="col s12">
-                <div class="card">
-                    <div class="card__header">
-                        <span>Zdjęcia</span>
-                    </div>
-                    <div class="card-content">
-                        <div class="row">
-                            <div class="col s12">
-                                <div class="card-panel blue lighten-2 white-text">Dodawanie zdjęć możliwe po zapisaniu galerii.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include('admin.partials.photo_tab_content_empty')
         </div>
 
         <div class="col s12 m12">

@@ -1,0 +1,1 @@
+<li class="tab col s3"><a href="#photosTab">Zdjęcia</a></li>

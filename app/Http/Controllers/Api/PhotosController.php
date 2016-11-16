@@ -88,7 +88,11 @@ class PhotosController extends Controller
      */
     public function show($album_id)
     {
-        $photos = Photo::where('album_id', '=', $album_id)->orderBy('position', 'asc')->get();
+        $model = $_GET['model'];
+        $photos = Photo::where([
+            ['album_id', '=', $album_id],
+            ['model', '=', $model]
+        ])->orderBy('position', 'asc')->get();
         return Response::json(array('photos' => $photos));
     }
 
