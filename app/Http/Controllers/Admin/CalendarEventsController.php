@@ -55,4 +55,16 @@ class CalendarEventsController extends Controller
         return Response::json(array('success' => true));
     }
 
+    /**
+     * destroy method
+     * @param $id
+     * @return mixed
+     */
+    public function destroy($id)
+    {
+        CalendarEvent::destroy($id);
+
+        return Response::json(['success' => true]);
+    }
+
 }

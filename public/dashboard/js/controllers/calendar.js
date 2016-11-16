@@ -46,7 +46,6 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
      * init method
      */
     $scope.init = function () {
-        $scope.getEvents();
         $scope.getEventsCategories();
     };
 
@@ -55,6 +54,22 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
      */
     $scope.showEventModal = function () {
         $('#EventModal').openModal();
+    };
+
+    /**
+     * removeEvent method
+     * @param id
+     */
+    $scope.removeEvent = function (id) {
+        var config = {};
+        $http.delete('/admin/calendar-events/' + id, config).then(function (resp) {
+            console.log(resp);
+            for(var e in $scope.events) {
+                if($scope.events[e].id == id) {
+                    $scope.events.splice(e, 1);
+                }
+            }
+        });
     };
 
     /**

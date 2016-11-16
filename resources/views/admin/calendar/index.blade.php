@@ -58,7 +58,8 @@
             <p>[[ event_selected.description ]]</p>
         </div>
         <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn mr10" ng-click="removeEvent(event_selected.id)"><i class="fa fa-trash"></i> Usuń</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn mr10"><i class="fa fa-check"></i> OK</a>
         </div>
     </div>
 
