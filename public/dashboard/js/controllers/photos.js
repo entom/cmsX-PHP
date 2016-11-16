@@ -52,6 +52,7 @@ cmsx.controller('PhotosController', function ($scope, $http, $upload) {
     $scope.init = function (album_id, model) {
         console.log('::PhotosController ::init');
         $scope.album_id = album_id;
+        $scope.model = model;
         $scope.getFiles();
     };
 
