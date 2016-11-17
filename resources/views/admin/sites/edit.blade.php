@@ -30,11 +30,7 @@
                                 {!! Form::label('title', 'Tytuł', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
                             </div>
 
-                            <div class="input-field col s12 m6 {{ $errors->has('active') ? 'has-error' : ''}}">
-                                {!! $errors->first('active', '<p class="help-block">:message</p>') !!}
-                                {!! Form::select('active', [1 => 'Tak', 0 => 'Nie']) !!}
-                                {!! Form::label('active', 'Aktywny', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
-                            </div>
+                            @include('admin.partials.form.active')
 
                             <div class="input-field col s12 m12 {{ $errors->has('description') ? 'has-error' : ''}}">
                                 {!! $errors->first('description', '<p class="help-block">:message</p>') !!}

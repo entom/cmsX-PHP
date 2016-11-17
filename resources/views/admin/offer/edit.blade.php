@@ -31,12 +31,7 @@
                             </div>
 
                             @include('admin.partials.form.file')
-
-                            <div class="input-field col s12 m6 {{ $errors->has('active') ? 'has-error' : ''}}">
-                                {!! $errors->first('active', '<p class="help-block">:message</p>') !!}
-                                {!! Form::select('active', [1 => 'Tak', 0 => 'Nie']) !!}
-                                {!! Form::label('active', 'Aktywny', ['data-error' => 'wrong', 'data-success' => 'right']) !!}
-                            </div>
+                            @include('admin.partials.form.active')
 
                             <div class="input-field col s12 m12 {{ $errors->has('short_content') ? 'has-error' : ''}}">
                                 {!! $errors->first('short_content', '<p class="help-block">:message</p>') !!}
