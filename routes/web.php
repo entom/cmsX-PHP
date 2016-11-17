@@ -65,4 +65,6 @@ Route::resource('admin/contact-message', 'Admin\\ContactMessageController');
 Route::resource('api/calendar-event-category', 'Api\\CalendarEventCategoryController');
 Route::resource('api/photos', 'Api\\PhotosController');
 
+Route::get('/admin/help', 'Admin\\HelpController@index');
+
 Route::get('/{url}', 'SitesController@show');
