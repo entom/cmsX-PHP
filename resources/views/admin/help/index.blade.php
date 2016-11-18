@@ -64,6 +64,15 @@
 
                         <div class="row help-row">
                             <div class="col s2">
+                                <a class="waves-effect waves-light btn"><i class="fa fa-check"></i></a>
+                            </div>
+                            <div class="col s10">
+                                Przycisk służy do potwierdzania akcji, oznacza również wiadomości otwarte/przeczytane.
+                            </div>
+                        </div>
+
+                        <div class="row help-row">
+                            <div class="col s2">
                                 <span class="fa fa-sort"></span>
                             </div>
                             <div class="col s10">
