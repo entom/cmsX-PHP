@@ -43,6 +43,9 @@
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ str_limit($item->content, 64, '...') }}</td>
                                     <td>
+                                        @if($item->readed==0)
+                                            <a class="waves-effect waves-light btn" href="{{'/admin/contact-message/read/'}}{{$item->id}}"><i class="fa fa-check"></i></a>
+                                        @endif
                                         <a href="{{ url('/admin/contact-message/' . $item->id) }}"
                                            class="waves-effect waves-light btn"
                                            title="Zobacz"><i class="fa fa-folder-open"></i></a>

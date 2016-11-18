@@ -76,6 +76,11 @@ class ContactMessageController extends Controller
     {
         $contactmessage = ContactMessage::findOrFail($id);
 
+        if($contactmessage->readed == 0)
+        {
+            $contactmessage->update(['readed' => 1]);
+        }
+
         return view('admin.contact-message.show', compact('contactmessage'));
     }
 
@@ -129,4 +134,18 @@ class ContactMessageController extends Controller
 
         return redirect('admin/contact-message');
     }
+
+    /**
+     * read method
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function read($id)
+    {
+        $contactmessage = ContactMessage::findOrFail($id);
+        $contactmessage->update(['readed' => 1]);
+
+        return redirect('/admin/contact-message');
+    }
+
 }
