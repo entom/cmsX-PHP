@@ -65,6 +65,7 @@ Route::get('admin/contact-message/read/{id}', 'Admin\\ContactMessageController@r
 
 Route::resource('api/calendar-event-category', 'Api\\CalendarEventCategoryController');
 Route::resource('api/photos', 'Api\\PhotosController');
+Route::resource('api/pagination-limit', 'Api\\PaginationLimitController');
 
 Route::get('/admin/help', 'Admin\\HelpController@index');
 
