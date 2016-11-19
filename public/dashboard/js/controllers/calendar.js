@@ -114,6 +114,7 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
         $scope.event.calendar_event_category_id = $scope.event.calendar_event_category_id.id;
 
         if(!errors) {
+            $scope.overlay = true;
             var config = {};
             var data = $scope.event;
             $http.post('/admin/calendar-events', data, config).then(function (resp) {
@@ -139,9 +140,12 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
                         calendar_event_category_id: ''
                     };
                     $timeout(function () {
-                        $('#EventModal').closeModal();
+                        $scope.overlay = false;
                         Materialize.toast('Zadanie zostało zapisane', 5000);
+                        $('#EventModal').closeModal();
                     });
+                } else {
+                    $scope.overlay = false;
                 }
             });
         }

@@ -9,6 +9,14 @@ $(function(){
     $('select').material_select();
     $('ul.tabs').tabs();
     $('.modal-trigger').leanModal();
+
+    $('.button-collapse-user').sideNav({
+            menuWidth: 300,
+            edge: 'right',
+            closeOnClick: true,
+            draggable: true
+        }
+    );
 });
 
 /**

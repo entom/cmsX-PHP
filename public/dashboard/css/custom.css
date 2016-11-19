@@ -145,3 +145,26 @@ nav .badge {
     left: calc(50% - 20.5px);
     top: calc(50% - 20.5px);
 }
+
+.activated {
+    background: rgb(103, 58, 183)!important;
+}
+
+.side-nav .userView .circle {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.side-nav-user .fa {
+    color: rgba(207, 216, 220, 0.7)!important;
+    font-size: 20px!important;
+}
+
+.side-nav-user .subheader {
+    color: rgba(207, 216, 220, 0.7)!important;
+}
+
+.with-padding {
+    line-height: 123%;
+    padding: 20px 32px;
+    color: rgba(207, 216, 220, 0.7)!important;
+}

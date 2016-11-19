@@ -7,6 +7,9 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
+setlocale(LC_ALL, 'pl_PL');
+date_default_timezone_set('Europe/Warsaw');
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
