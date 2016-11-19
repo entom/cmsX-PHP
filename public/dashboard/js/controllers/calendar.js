@@ -81,6 +81,24 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
     };
 
     /**
+     * updateEvent method
+     * @param id
+     * @param start
+     */
+    $scope.updateEvent = function (id, start) {
+        var config = {};
+        var data = {
+            id: id,
+            event_date: start
+        };
+        $scope.overlay = true;
+        $http.put('/admin/calendar-events/' + id, data, config).then(function (resp) {
+            console.log(resp);
+            $scope.overlay = false;
+        });
+    };
+
+    /**
      * saveEvent method
      */
     $scope.saveEvent = function () {
@@ -209,7 +227,9 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
      * @param view
      */
     $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
-        $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
+        var id = event.id;
+        var start = event.start._d;
+        $scope.updateEvent(id, start);
     };
 
     /**

@@ -58,6 +58,24 @@ class CalendarEventsController extends Controller
     }
 
     /**
+     * update method
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+    public function update($id, Request $request)
+    {
+        $requestData = $request->all();
+        $requestData['event_date'] = date('Y-m-d', strtotime($requestData['event_date']));
+
+        $event = CalendarEvent::findOrFail($id);
+        $event->update($requestData);
+
+        return Response::json(['success' => true]);
+    }
+
+
+    /**
      * destroy method
      * @param $id
      * @return mixed
