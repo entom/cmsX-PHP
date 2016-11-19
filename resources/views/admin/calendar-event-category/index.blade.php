@@ -60,7 +60,9 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="pagination-wrapper"> {!! $calendareventcategory->render() !!} </div>
+
+                        @include('admin.partials.form.pagination', ['items' => $calendareventcategory])
+
                     </div>
                 </div>
             </div>

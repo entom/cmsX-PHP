@@ -66,7 +66,9 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="pagination-wrapper"> {!! $contactmessage->render() !!} </div>
+
+                        @include('admin.partials.form.pagination', ['items' => $contactmessage])
+
                     </div>
                 </div>
             </div>

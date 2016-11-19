@@ -9,7 +9,7 @@
         </select>
     </div>
     <div class="col s10 right-align">
-        <div class="pagination-wrapper"> {!! $albums->render() !!} </div>
+        <div class="pagination-wrapper"> {!! $items->render() !!} </div>
     </div>
 </div>
 

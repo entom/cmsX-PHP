@@ -58,7 +58,9 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="pagination-wrapper"> {!! $paralax->render() !!} </div>
+
+                        @include('admin.partials.form.pagination', ['items' => $paralax])
+
                     </div>
                 </div>
             </div>

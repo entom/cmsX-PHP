@@ -73,7 +73,9 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="pagination-wrapper"> {!! $offer->render() !!} </div>
+
+                        @include('admin.partials.form.pagination', ['items' => $offer])
+
                     </div>
                 </div>
             </div>
