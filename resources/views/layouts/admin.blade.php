@@ -127,7 +127,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'SitesController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-th" aria-hidden="true"></i>
@@ -145,7 +145,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'SlidersController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-picture-o" aria-hidden="true"></i>
@@ -163,7 +163,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'BlogsController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-folder-open-o" aria-hidden="true"></i>
@@ -181,7 +181,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'NewsController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-newspaper-o" aria-hidden="true"></i>
@@ -199,7 +199,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'AlbumsController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-picture-o" aria-hidden="true"></i>
@@ -217,7 +217,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'LogosController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-file-image-o" aria-hidden="true"></i>
@@ -235,7 +235,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'OfferController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-list-ul" aria-hidden="true"></i>
@@ -253,7 +253,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'RealizationsController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-briefcase" aria-hidden="true"></i>
@@ -271,7 +271,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'TechnologyController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-tags" aria-hidden="true"></i>
@@ -289,7 +289,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'UsersController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-users" aria-hidden="true"></i>
@@ -307,7 +307,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'ParalaxController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-file-picture-o" aria-hidden="true"></i>
@@ -324,7 +324,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'CalendarController' || $controller == 'CalendarEventCategoryController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -342,7 +342,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'ContactMessageController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -359,7 +359,7 @@
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="collapsible__element">
+                        <li class="collapsible__element @if($controller == 'HelpController') activated @endif">
                             <a class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-question-circle" aria-hidden="true"></i>
