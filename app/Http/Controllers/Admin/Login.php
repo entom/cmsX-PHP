@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Model\User;
 
 /**
  * Class Login
@@ -72,6 +73,10 @@ class Login extends Controller
         if ($throttles) {
             $this->clearLoginAttempts($request);
         }
+
+        $user_id = Auth::user()->id;
+        $user = User::findOrFail($user_id);
+        $user->update(['last_login' => date('Y-m-d H:i:s')]);
 
         if (method_exists($this, 'authenticated')) {
             return $this->authenticated($request, Auth::user());

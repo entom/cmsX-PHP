@@ -395,10 +395,24 @@
                 <a href="#!email"><span class="white-text email">{{Auth::user()->email}}</span></a>
             </div></li>
         <li><a href="/admin/users/{{ Auth::user()->id }}/edit"><i class="fa fa-user"></i>Moje konto</a></li>
-        <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> Wyloguj</a></li>
+        <li>
+            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+            <a href="#!" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                <span>Wyloguj</span>
+            </a>
+        </li>
+
         <li><div class="divider"></div></li>
         <li>
-            <div class="with-padding center-align">Dzisiaj jest {{strftime('%A')}},<br/>{{strftime('%d %B %Y')}}</div>
+            <div class="with-padding center-align">
+                Dzisiaj jest {{strftime('%A')}},<br/>{{strftime('%d %B %Y')}}
+                <br /><br />
+                Ostatnie logowanie:<br/>
+                {{strftime('%d %B %Y', strtotime(Auth::user()->last_login))}}
+            </div>
         </li>
     </ul>
 
