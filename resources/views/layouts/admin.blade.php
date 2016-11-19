@@ -109,6 +109,10 @@
                         </a>
                     </li>
                 </ul>
+
+                <li>
+                    <a href="#" data-activates="slide-out" class="button-collapse-user"><i class="material-icons">menu</i></a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -380,6 +384,24 @@
             @yield('content')
         </div>
     </div>
+
+    <ul id="slide-out" class="side-nav side-nav-user">
+        <li><div class="userView">
+                <div class="background">
+                    <img src="/dashboard/images/background.jpg">
+                </div>
+                <a href="#!user"><img class="circle" src="/dashboard/images/avatar-male.svg"></a>
+                <a href="#!name"><span class="white-text name">{{Auth::user()->name}}</span></a>
+                <a href="#!email"><span class="white-text email">{{Auth::user()->email}}</span></a>
+            </div></li>
+        <li><a href="/admin/users/{{ Auth::user()->id }}/edit"><i class="fa fa-user"></i>Moje konto</a></li>
+        <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> Wyloguj</a></li>
+        <li><div class="divider"></div></li>
+        <li>
+            <div class="with-padding center-align">Dzisiaj jest {{strftime('%A')}},<br/>{{strftime('%d %B %Y')}}</div>
+        </li>
+    </ul>
+
 </main>
 
 <meta name="csrf-token" content="{{ csrf_token() }}" />
