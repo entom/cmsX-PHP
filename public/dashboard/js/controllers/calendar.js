@@ -25,6 +25,12 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
     };
 
     /**
+     * overlay
+     * @type {boolean}
+     */
+    $scope.overlay = false;
+
+    /**
      * events
      * @type {*[]}
      */
@@ -62,6 +68,7 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
      */
     $scope.removeEvent = function (id) {
         var config = {};
+        $scope.overlay = true;
         $http.delete('/admin/calendar-events/' + id, config).then(function (resp) {
             console.log(resp);
             for(var e in $scope.events) {
@@ -69,6 +76,7 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
                     $scope.events.splice(e, 1);
                 }
             }
+            $scope.overlay = false;
         });
     };
 
@@ -123,9 +131,20 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
 
     /**
      * getEvents method
+     * @param start
+     * @param end
      */
-    $scope.getEvents = function () {
-        $http.get('/admin/calendar-events').then(function (resp) {
+    $scope.getEvents = function (start, end) {
+        $scope.overlay = true;
+        var config = {
+            params: {}
+        };
+        if(start != undefined && end != undefined) {
+            config.params.start = start;
+            config.params.end = end;
+        }
+        console.log(config);
+        $http.get('/admin/calendar-events', config).then(function (resp) {
             console.log(resp);
             var events = resp.data.events;
 
@@ -137,6 +156,7 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
                 }
                 $scope.events.push(events[event]);
             }
+            $scope.overlay = false;
         });
     };
 
@@ -256,7 +276,10 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
             eventRender: $scope.eventRender,
             dayClick: $scope.alertDayOnClick,
             viewRender: function(view, element) {
-                $scope.getEvents();
+                var start = view.start._d;
+                var end = view.end._d
+                $scope.overlay = true;
+                $scope.getEvents(start, end);
             }
         }
     };
