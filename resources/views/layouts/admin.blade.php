@@ -96,7 +96,7 @@
                     </a>
                 </li>
                 <ul id="dropdown-navbar" class="dropdown-content dropdown__navbar">
-                    <li><a href="/admin/users/{{ Auth::user()->id }}/edit">Moje konto</a></li>
+                    <li><a href="/admin/users/{{ Auth::user()->id }}/edit"><i class="fa fa-user"></i> Moje konto</a></li>
                     <li class="divider"></li>
 
                     <li>
