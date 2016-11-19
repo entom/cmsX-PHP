@@ -408,8 +408,8 @@
         <li><div class="divider"></div></li>
         <li>
             <div class="with-padding center-align">
-                Dzisiaj jest {{strftime('%A')}},<br/>{{strftime('%d %B %Y')}}
-                <br /><br />
+                {{--Dzisiaj jest {{strftime('%A')}},<br/>{{strftime('%d %B %Y')}}--}}
+                {{--<br /><br />--}}
                 Ostatnie logowanie:<br/>
                 {{strftime('%d %B %Y', strtotime(Auth::user()->last_login))}}
             </div>
