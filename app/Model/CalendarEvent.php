@@ -29,10 +29,24 @@ class CalendarEvent extends BaseModel
 
     /**
      * getAllWithCategory method
+     * @param null $start
+     * @param null $end
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public static function getAllWithCategory() {
-        return self::with('category')->get();
+    public static function getAllWithCategory($start = null, $end = null) {
+        if($start != null && $end != null) {
+            $start = date('Y-m-d', strtotime($start));
+            $end = date('Y-m-d', strtotime($end));
+            $conds = [
+                ['event_date', '>=', $start],
+                ['event_date', '<=', $end],
+            ];
+            $data = self::with('category')->where($conds)->get();
+        } else {
+            $data = self::with('category')->get();
+        }
+
+        return $data;
     }
 
 }

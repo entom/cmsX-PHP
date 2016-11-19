@@ -96,7 +96,7 @@
                     </a>
                 </li>
                 <ul id="dropdown-navbar" class="dropdown-content dropdown__navbar">
-                    <li><a href="/admin/users/{{ Auth::user()->id }}/edit">Moje konto</a></li>
+                    <li><a href="/admin/users/{{ Auth::user()->id }}/edit"><i class="fa fa-user"></i> Moje konto</a></li>
                     <li class="divider"></li>
 
                     <li>
@@ -357,6 +357,23 @@
                         </li>
                     </ul>
                 </li>
+                <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="collapsible__element">
+                            <a class="collapsible-header">
+                                <sapn class="icon__container">
+                                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                                </sapn>
+                                <span>Pomoc</span>
+                            </a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li><a href="{{url('/admin/help')}}">Zobacz</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </aside>
         <div class="col s12">
@@ -364,5 +381,16 @@
         </div>
     </div>
 </main>
+
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
+
 </body>
 </html>

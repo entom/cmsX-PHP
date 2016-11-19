@@ -35,7 +35,9 @@ class CalendarEventsController extends Controller
      */
     public function index()
     {
-        $events = CalendarEvent::getAllWithCategory();
+        $start = Input::get('start');
+        $end = Input::get('end');
+        $events = CalendarEvent::getAllWithCategory($start, $end);
         return Response::json(array('events' => $events));
     }
 
@@ -53,6 +55,36 @@ class CalendarEventsController extends Controller
         ));
 
         return Response::json(array('success' => true));
+    }
+
+    /**
+     * update method
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+    public function update($id, Request $request)
+    {
+        $requestData = $request->all();
+        $requestData['event_date'] = date('Y-m-d', strtotime($requestData['event_date']));
+
+        $event = CalendarEvent::findOrFail($id);
+        $event->update($requestData);
+
+        return Response::json(['success' => true]);
+    }
+
+
+    /**
+     * destroy method
+     * @param $id
+     * @return mixed
+     */
+    public function destroy($id)
+    {
+        CalendarEvent::destroy($id);
+
+        return Response::json(['success' => true]);
     }
 
 }

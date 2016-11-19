@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use App\Model\ContactMessage;
 use Illuminate\Support\Facades\View;
+use Session;
 /**
  * Class AppServiceProvider
  * @package App\Providers
@@ -24,6 +25,13 @@ class AppServiceProvider extends ServiceProvider
             $action = app('request')->route()->getAction();
             $controller = class_basename($action['controller']);
             list($controller, $action) = explode('@', $controller);
+
+            if(Session::has($controller.'Limit'))
+            {
+                $paginationLimit = Session::get($controller.'Limit');
+                $view->with(compact('paginationLimit'));
+            }
+
             $view->with(compact('controller', 'action'));
 
             if(Auth::check())

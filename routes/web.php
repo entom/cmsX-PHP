@@ -61,8 +61,12 @@ Route::resource('admin/offer', 'Admin\\OfferController');
 Route::resource('admin/realizations', 'Admin\\RealizationsController');
 Route::resource('admin/technology', 'Admin\\TechnologyController');
 Route::resource('admin/contact-message', 'Admin\\ContactMessageController');
+Route::get('admin/contact-message/read/{id}', 'Admin\\ContactMessageController@read');
 
 Route::resource('api/calendar-event-category', 'Api\\CalendarEventCategoryController');
 Route::resource('api/photos', 'Api\\PhotosController');
+Route::resource('api/pagination-limit', 'Api\\PaginationLimitController');
+
+Route::get('/admin/help', 'Admin\\HelpController@index');
 
 Route::get('/{url}', 'SitesController@show');

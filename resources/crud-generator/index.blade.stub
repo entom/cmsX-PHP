@@ -52,7 +52,9 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="pagination-wrapper"> {!! $%%crudName%%->render() !!} </div>
+
+                        @include('admin.partials.form.pagination', ['items' => $%%crudName%%])
+
                     </div>
                 </div>
             </div>

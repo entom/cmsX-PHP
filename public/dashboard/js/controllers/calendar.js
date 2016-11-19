@@ -25,6 +25,12 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
     };
 
     /**
+     * overlay
+     * @type {boolean}
+     */
+    $scope.overlay = false;
+
+    /**
      * events
      * @type {*[]}
      */
@@ -46,7 +52,6 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
      * init method
      */
     $scope.init = function () {
-        $scope.getEvents();
         $scope.getEventsCategories();
     };
 
@@ -55,6 +60,42 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
      */
     $scope.showEventModal = function () {
         $('#EventModal').openModal();
+    };
+
+    /**
+     * removeEvent method
+     * @param id
+     */
+    $scope.removeEvent = function (id) {
+        var config = {};
+        $scope.overlay = true;
+        $http.delete('/admin/calendar-events/' + id, config).then(function (resp) {
+            console.log(resp);
+            for(var e in $scope.events) {
+                if($scope.events[e].id == id) {
+                    $scope.events.splice(e, 1);
+                }
+            }
+            $scope.overlay = false;
+        });
+    };
+
+    /**
+     * updateEvent method
+     * @param id
+     * @param start
+     */
+    $scope.updateEvent = function (id, start) {
+        var config = {};
+        var data = {
+            id: id,
+            event_date: start
+        };
+        $scope.overlay = true;
+        $http.put('/admin/calendar-events/' + id, data, config).then(function (resp) {
+            console.log(resp);
+            $scope.overlay = false;
+        });
     };
 
     /**
@@ -108,9 +149,20 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
 
     /**
      * getEvents method
+     * @param start
+     * @param end
      */
-    $scope.getEvents = function () {
-        $http.get('/admin/calendar-events').then(function (resp) {
+    $scope.getEvents = function (start, end) {
+        $scope.overlay = true;
+        var config = {
+            params: {}
+        };
+        if(start != undefined && end != undefined) {
+            config.params.start = start;
+            config.params.end = end;
+        }
+        console.log(config);
+        $http.get('/admin/calendar-events', config).then(function (resp) {
             console.log(resp);
             var events = resp.data.events;
 
@@ -122,6 +174,7 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
                 }
                 $scope.events.push(events[event]);
             }
+            $scope.overlay = false;
         });
     };
 
@@ -174,7 +227,9 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
      * @param view
      */
     $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
-        $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
+        var id = event.id;
+        var start = event.start._d;
+        $scope.updateEvent(id, start);
     };
 
     /**
@@ -241,7 +296,10 @@ cmsx.controller('CalendarController', function ($scope, $rootScope, $http, $comp
             eventRender: $scope.eventRender,
             dayClick: $scope.alertDayOnClick,
             viewRender: function(view, element) {
-                $scope.getEvents();
+                var start = view.start._d;
+                var end = view.end._d
+                $scope.overlay = true;
+                $scope.getEvents(start, end);
             }
         }
     };

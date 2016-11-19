@@ -16,6 +16,12 @@ cmsx.controller('PhotosController', function ($scope, $http, $upload) {
     $scope.album_id = 0;
 
     /**
+     * model
+     * @type {string}
+     */
+    $scope.model = 'Album';
+
+    /**
      * percentage
      * @type {number}
      */
@@ -43,9 +49,10 @@ cmsx.controller('PhotosController', function ($scope, $http, $upload) {
      * init method
      * @param album_id
      */
-    $scope.init = function (album_id) {
+    $scope.init = function (album_id, model) {
         console.log('::PhotosController ::init');
         $scope.album_id = album_id;
+        $scope.model = model;
         $scope.getFiles();
     };
 
@@ -53,7 +60,7 @@ cmsx.controller('PhotosController', function ($scope, $http, $upload) {
      * getFiles method
      */
     $scope.getFiles = function () {
-        $http.get('/api/photos/' + $scope.album_id).then(function (resp) {
+        $http.get('/api/photos/' + $scope.album_id + "?model=" + $scope.model).then(function (resp) {
             $scope.photos = resp.data.photos;
         });
     };
@@ -107,7 +114,8 @@ cmsx.controller('PhotosController', function ($scope, $http, $upload) {
                 url: '/api/photos',
                 method: 'POST',
                 data: {
-                    album_id: $scope.album_id
+                    album_id: $scope.album_id,
+                    model: $scope.model
                 },
                 file: $scope.files[$scope.counter]
             }).progress(function(evt) {

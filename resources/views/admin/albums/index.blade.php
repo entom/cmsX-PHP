@@ -69,7 +69,9 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="pagination-wrapper"> {!! $albums->render() !!} </div>
+
+                        @include('admin.partials.form.pagination', ['items' => $albums])
+
                     </div>
                 </div>
             </div>
