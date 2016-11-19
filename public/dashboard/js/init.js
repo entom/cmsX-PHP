@@ -73,4 +73,26 @@ $(document).ready(function(){
             cursor: "move"
         });
     }
+
+    $('#ChangePaginationLimit').change(function () {
+        $.ajax({
+            'url': '/api/pagination-limit',
+            'type': 'POST',
+            'data': {
+                limit: $(this).val(),
+                controller: $(this).data('controller')
+            },
+            'success': function(data) {
+                if (data.success) {
+                    console.log('Saved!');
+                    window.location = window.location;
+                } else {
+                    console.error(data.errors);
+                }
+            },
+            'error': function(){
+                console.error('Something wrong!');
+            }
+        });
+    });
 });
