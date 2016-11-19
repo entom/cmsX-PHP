@@ -11,9 +11,19 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testHomepage()
     {
         $this->visit('/')
              ->see('Homepage');
     }
+
+    /**
+     * testNotFoundPage method
+     */
+    public function testNotFoundPage()
+    {
+        $this->visit('/strona-glowna')
+            ->dontSee('Strona główna');
+    }
+
 }

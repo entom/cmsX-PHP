@@ -23,5 +23,7 @@ class SitesControllerTest extends TestCase
 
         $response = $this->call('GET', '/strona-glowna');
         $this->assertEquals(404, $response->status());
+
+        $this->assertEquals(1, 1);
     }
 }
