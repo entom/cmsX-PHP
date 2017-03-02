@@ -19,7 +19,7 @@ $jsons = null;
 
 if(isset($fullPath) && !empty($fullPath))
 {
-    `../vendor/bin/phpunit $fullPath --log-json ../storage/logs/test.json --no-configuration --debug`;
+    $result = `../vendor/bin/phpunit $fullPath --log-json ../storage/logs/test.json --no-configuration --debug`;
 
     $fileContent = file_get_contents('../storage/logs/test.json');
 
