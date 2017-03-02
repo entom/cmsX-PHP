@@ -134,4 +134,15 @@ class ImageProcessing extends BaseModel
         }
     }
 
+    /**
+     * getFileExt method
+     * @param null|string $fileName
+     * @return string
+     */
+    public static function getFileExt($fileName = NULL)
+    {
+        $extension = pathinfo($fileName, PATHINFO_EXTENSION);
+        return $extension;
+    }
+
 }
