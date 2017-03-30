@@ -52,6 +52,7 @@ class ImageProcessing extends BaseModel
         foreach ($directories as $directory) {
             if (!is_dir($dir . '/' . $directory . '/' . $moduleName)) {
                 mkdir($dir . '/' . $directory . '/' . $moduleName, 0777, true);
+                file_put_contents($dir . '/' . $directory . '/' . $moduleName . '/index.html', '');
             }    
         }
     }
