@@ -364,17 +364,12 @@
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
                         <li class="collapsible__element @if($controller == 'HelpController') activated @endif">
-                            <a class="collapsible-header">
+                            <a href="{{url('/admin/help')}}" class="collapsible-header">
                                 <sapn class="icon__container">
                                     <i class="fa fa-question-circle" aria-hidden="true"></i>
                                 </sapn>
                                 <span>Pomoc</span>
                             </a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="{{url('/admin/help')}}">Zobacz</a></li>
-                                </ul>
-                            </div>
                         </li>
                     </ul>
                 </li>

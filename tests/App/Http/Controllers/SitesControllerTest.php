@@ -20,5 +20,10 @@ class SitesControllerTest extends TestCase
     public function testShow()
     {
         $this->visit('/kontakt')->see('Kontakt');
+
+        $response = $this->call('GET', '/strona-glowna');
+        $this->assertEquals(404, $response->status());
+
+        $this->assertEquals(1, 1);
     }
 }

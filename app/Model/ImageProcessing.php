@@ -52,6 +52,7 @@ class ImageProcessing extends BaseModel
         foreach ($directories as $directory) {
             if (!is_dir($dir . '/' . $directory . '/' . $moduleName)) {
                 mkdir($dir . '/' . $directory . '/' . $moduleName, 0777, true);
+                file_put_contents($dir . '/' . $directory . '/' . $moduleName . '/index.html', '');
             }    
         }
     }
@@ -132,6 +133,17 @@ class ImageProcessing extends BaseModel
         if(file_exists($dir . '/original/' . $moduleName . '/' . $fileName)) {
             unlink($dir . '/original/' . $moduleName . '/' . $fileName);
         }
+    }
+
+    /**
+     * getFileExt method
+     * @param null|string $fileName
+     * @return string
+     */
+    public static function getFileExt($fileName = NULL)
+    {
+        $extension = pathinfo($fileName, PATHINFO_EXTENSION);
+        return $extension;
     }
 
 }
